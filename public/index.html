@@ -95,8 +95,11 @@
   <div class="tabs-container">
     <nav class="tabs-nav">
       <button class="tab-btn active" data-tab="general" onclick="switchTab('general')">General</button>
+      <button class="tab-btn" data-tab="evolucion" onclick="switchTab('evolucion')">Evolución</button>
       <button class="tab-btn" data-tab="montos" onclick="switchTab('montos')">Montos</button>
-      <button class="tab-btn" data-tab="universidad" onclick="switchTab('universidad')">Universidad</button>
+      <button class="tab-btn" data-tab="universidad" onclick="switchTab('universidad')">Universidades</button>
+      <button class="tab-btn" data-tab="xray" onclick="switchTab('xray')">Xray</button>
+      <button class="tab-btn" data-tab="justicia" onclick="switchTab('justicia')">Justicia</button>
       <button class="tab-btn" data-tab="geografia" onclick="switchTab('geografia')">Geografía</button>
       <button class="tab-btn" data-tab="demografia" onclick="switchTab('demografia')">Demografía</button>
       <button class="tab-btn" data-tab="linkedin" onclick="switchTab('linkedin')">LinkedIn</button>
@@ -114,6 +117,66 @@
       </div>
     </div>
     <div class="full-row"><div class="card"><div class="card-label">Distribución por rango de deuda (UTM)</div><div class="chart-wrap tall"><canvas id="chartMontoBucket"></canvas></div><div class="card-note">UTM = Unidad Tributaria Mensual, unidad legal de la deuda. Conversión vigente al 2026-04-17: 1 UTM = $69.889 CLP ≈ US$ 78,85.</div></div></div>
+  </div>
+
+  <div class="tab-content" id="tab-evolucion">
+    <div class="section-tag">Serie histórica 2022-2026</div>
+    <div class="section-title">Evolución de la cartera FSCU</div>
+    <div class="section-desc">5 años de nóminas oficiales del CRUCH, desde el año tributario 2022 al 2026. Incluye flujos año a año: nuevos ingresos, salidas (pago total o condonación), pagos parciales y acumulación de intereses.</div>
+    <div class="kpi-grid cols-4 mb-sm" id="kpiEvol"></div>
+    <div class="grid-2">
+      <div class="card"><div class="card-label">Nº deudores por año</div><div class="chart-wrap tall"><canvas id="chartEvolDeudores"></canvas></div></div>
+      <div class="card"><div class="card-label">Cartera vencida (UTM)</div><div class="chart-wrap tall"><canvas id="chartEvolUtm"></canvas></div></div>
+    </div>
+    <div class="full-row"><div class="card"><div class="card-label">Cartera vencida en CLP</div><div class="chart-wrap tall"><canvas id="chartEvolClp"></canvas></div></div></div>
+    <div class="full-row"><div class="card">
+      <div class="card-label">Flujos año a año · ¿quién paga, quién acumula?</div>
+      <div class="chart-wrap tall"><canvas id="chartFlujos"></canvas></div>
+      <div class="card-note">Clasificación por RUT comparando nóminas consecutivas: <b>nuevo</b>=ingresó a la nómina · <b>salió</b>=dejó la nómina (pagó total o fue condonado) · <b>pago parcial</b>=monto bajó &gt;1 UTM · <b>acumuló intereses</b>=monto subió &gt;1 UTM · <b>estable</b>=sin cambios significativos.</div>
+    </div></div>
+    <div class="full-row"><div class="card">
+      <div class="card-label">Evolución deudores por universidad (top 10)</div>
+      <div class="chart-wrap tall"><canvas id="chartEvolUniv"></canvas></div>
+    </div></div>
+  </div>
+
+  <div class="tab-content" id="tab-xray">
+    <div class="section-tag">Análisis institucional</div>
+    <div class="section-title">Xray · Perfil detallado por universidad</div>
+    <div class="section-desc">Selecciona una universidad para ver sus deudores en detalle: evolución histórica, demografía, perfil profesional, montos y exposición judicial.</div>
+    <div style="margin-bottom: 20px;">
+      <select id="xraySelect" style="font-family:'Hanken Grotesk',sans-serif;font-size:14px;padding:10px 16px;border:1px solid #E5E7EB;border-radius:8px;background:#fff;min-width:300px;cursor:pointer"></select>
+    </div>
+    <div class="kpi-grid cols-4 mb-sm" id="xrayKpis"></div>
+    <div class="grid-2">
+      <div class="card"><div class="card-label">Evolución deudores (esta universidad)</div><div class="chart-wrap tall"><canvas id="xrayEvol"></canvas></div></div>
+      <div class="card"><div class="card-label">Cartera UTM por año</div><div class="chart-wrap tall"><canvas id="xrayEvolUtm"></canvas></div></div>
+    </div>
+    <div class="grid-2">
+      <div class="card"><div class="card-label">Distribución edad</div><div class="chart-wrap tall"><canvas id="xrayEdad"></canvas></div></div>
+      <div class="card"><div class="card-label">Sexo</div><div class="chart-wrap tall"><canvas id="xraySexo"></canvas></div></div>
+    </div>
+    <div class="grid-2">
+      <div class="card"><div class="card-label">Top regiones de origen</div><div class="chart-wrap tall"><canvas id="xrayRegion"></canvas></div></div>
+      <div class="card"><div class="card-label">Rango de deuda (UTM)</div><div class="chart-wrap tall"><canvas id="xrayMonto"></canvas></div></div>
+    </div>
+    <div class="grid-2">
+      <div class="card"><div class="card-label">Nivel jerárquico (subconjunto LinkedIn)</div><div class="chart-wrap tall"><canvas id="xraySeniority"></canvas></div></div>
+      <div class="card"><div class="card-label">Exposición judicial</div><div class="chart-wrap tall" id="xrayJusticiaCard" style="display:flex;align-items:center;justify-content:center;font-size:14px;color:#6B7280">—</div></div>
+    </div>
+  </div>
+
+  <div class="tab-content" id="tab-justicia">
+    <div class="section-tag">Cruce con Poder Judicial</div>
+    <div class="section-title">Exposición judicial de los deudores</div>
+    <div class="section-desc">Cruce de los 370.292 RUTs contra la base PJUD_Unholster (litigantes civiles y laborales del Poder Judicial chileno, ~22M registros). Un deudor aparece si figura en causas como demandante, demandado, acreedor u otro rol. Para morosidad crediticia, lo relevante es ser <b>demandado civil (DDO.)</b>.</div>
+    <div class="kpi-grid cols-4 mb-sm" id="kpiJusticia"></div>
+    <div class="grid-2">
+      <div class="card"><div class="card-label">Distribución por nº de causas</div><div class="chart-wrap tall"><canvas id="chartJustCausa"></canvas></div></div>
+      <div class="card"><div class="card-label">% demandados por perfil profesional</div><div class="chart-wrap tall"><canvas id="chartJustPerfil"></canvas></div></div>
+    </div>
+    <div class="full-row"><div class="card"><div class="card-label">% demandados civil por región</div><div class="chart-wrap xtall"><canvas id="chartJustRegion"></canvas></div></div></div>
+    <div class="full-row"><div class="card"><div class="card-label">% demandados civil por universidad</div><div class="chart-wrap xtall"><canvas id="chartJustUniv"></canvas></div></div></div>
   </div>
 
   <div class="tab-content" id="tab-montos">
@@ -247,6 +310,7 @@ window.switchTab = function(name) {
 function initTab(name) {
   const r = D.resumen;
   if (name === 'general') { renderPerfiles(); renderMontoBucket('chartMontoBucket'); }
+  if (name === 'evolucion') renderEvolucion();
   if (name === 'montos') {
     document.getElementById('kpiMontos').innerHTML =
       kpiCard('Cartera vencida', fmtCLP(r.total_clp), fmtUSD(r.total_usd) + ' · ' + fmt(Math.round(r.total_utm)) + ' UTM', 'cash') +
@@ -256,6 +320,8 @@ function initTab(name) {
     renderMontoBucket('chartMontoBucket2');
   }
   if (name === 'universidad') renderUniversidad();
+  if (name === 'xray') renderXrayInit();
+  if (name === 'justicia') renderJusticia();
   if (name === 'geografia') renderGeografia();
   if (name === 'demografia') renderDemografia();
   if (name === 'linkedin') {
@@ -263,6 +329,200 @@ function initTab(name) {
       `${fmt(r.en_linkedin)} deudores (${r.pct_linkedin}% del total) fueron identificados con alta confianza en LinkedIn Chile mediante rutificación nominal. Las distribuciones siguientes corresponden sólo a ese subconjunto.`;
     renderLinkedIn();
   }
+}
+
+function renderEvolucion() {
+  const ev = D.evolucion;
+  const years = ev.map(x => x.year);
+  const last = ev[ev.length-1];
+  const first = ev[0];
+  const delta_n = last.deudores - first.deudores;
+  const delta_utm = last.utm_total - first.utm_total;
+  const delta_pct = (100 * delta_utm / first.utm_total).toFixed(1);
+  document.getElementById('kpiEvol').innerHTML =
+    kpiCard('Deudores 2022', fmt(first.deudores), 'Año tributario 2022', 'users') +
+    kpiCard('Deudores 2026', fmt(last.deudores), `+${fmt(delta_n)} en 4 años`, 'users', 'amber') +
+    kpiCard('Cartera 2022', fmtCLP(first.clp_total), fmt(Math.round(first.utm_total)) + ' UTM', 'cash') +
+    kpiCard('Cartera 2026', fmtCLP(last.clp_total), `+${delta_pct}% vs 2022`, 'cash', 'red');
+
+  new Chart(document.getElementById('chartEvolDeudores'), {
+    type: 'line', data: { labels: years, datasets: [{ label: 'Deudores', data: ev.map(x => x.deudores), borderColor: C.blue, backgroundColor: 'rgba(38,111,224,0.08)', borderWidth: 2, pointRadius: 4, pointBackgroundColor: C.blue, fill: true, tension: 0.3 }] },
+    options: { responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { ...tooltipDefaults, callbacks: { label: ctx => fmt(ctx.parsed.y) + ' deudores' } } },
+      scales: { x: { grid: { display: false }, ticks: axisMono }, y: { grid: { color: C.gray200 }, border: { dash:[4,4], display:false }, ticks: { ...axisMono, callback: v => v>=1000?(v/1000)+'k':v }, beginAtZero: false } }
+    }
+  });
+  new Chart(document.getElementById('chartEvolUtm'), {
+    type: 'line', data: { labels: years, datasets: [{ label: 'UTM total', data: ev.map(x => x.utm_total), borderColor: C.green, backgroundColor: 'rgba(16,185,129,0.08)', borderWidth: 2, pointRadius: 4, pointBackgroundColor: C.green, fill: true, tension: 0.3 }] },
+    options: { responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { ...tooltipDefaults, callbacks: { label: ctx => fmt(Math.round(ctx.parsed.y)) + ' UTM · ' + fmtCLP(ctx.parsed.y * D.resumen.utm_clp) } } },
+      scales: { x: { grid: { display: false }, ticks: axisMono }, y: { grid: { color: C.gray200 }, border: { dash:[4,4], display:false }, ticks: { ...axisMono, callback: v => v>=1e6?(v/1e6).toFixed(0)+'M':v>=1e3?(v/1e3)+'k':v }, beginAtZero: false } }
+    }
+  });
+  new Chart(document.getElementById('chartEvolClp'), {
+    type: 'bar', data: { labels: years, datasets: [{ label: 'CLP', data: ev.map(x => x.clp_total), backgroundColor: catColors, borderRadius: {topLeft:4,topRight:4}, borderSkipped: false }] },
+    options: { responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { ...tooltipDefaults, callbacks: { label: ctx => fmtCLP(ctx.parsed.y) + ' · ' + fmtUSD(ctx.parsed.y / D.resumen.usd_clp) } } },
+      scales: { x: { grid: { display: false }, ticks: axisMono }, y: { grid: { color: C.gray200 }, border: { dash:[4,4], display:false }, ticks: { ...axisMono, callback: v => '$' + (v/1e12).toFixed(1) + 'bln' } } }
+    }
+  });
+
+  const fl = D.flujos;
+  new Chart(document.getElementById('chartFlujos'), {
+    type: 'bar', data: { labels: fl.map(x => x.transicion),
+      datasets: [
+        { label: 'Nuevos', data: fl.map(x => x.nuevos), backgroundColor: C.green, stack: 's' },
+        { label: 'Salieron', data: fl.map(x => -x.salieron), backgroundColor: C.blue, stack: 's' },
+        { label: 'Pago parcial', data: fl.map(x => x.pago_parcial), backgroundColor: C.cyan, stack: 't' },
+        { label: 'Acumuló intereses', data: fl.map(x => x.acumulo_intereses), backgroundColor: C.red, stack: 't' },
+        { label: 'Estable', data: fl.map(x => x.estable), backgroundColor: C.gray500, stack: 't' },
+      ]},
+    options: { responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'top', align: 'end', labels: { font: { ...defaultFont, size: 11, weight: 300 }, color: C.gray500, padding: 12, usePointStyle: true, pointStyle: 'circle', boxWidth: 6, boxHeight: 6 } }, tooltip: { ...tooltipDefaults, callbacks: { label: ctx => ctx.dataset.label + ': ' + fmt(Math.abs(ctx.parsed.y)) } } },
+      scales: { x: { stacked: false, grid: { display: false }, ticks: axisMono }, y: { stacked: false, grid: { color: C.gray200 }, border: { dash:[4,4], display:false }, ticks: { ...axisMono, callback: v => v>=1000?(v/1000)+'k':v<=-1000?(v/1000)+'k':v } } }
+    }
+  });
+
+  // Evolución por universidad — top 10 canonicas
+  const evu = D.evolucion_universidad;
+  const univTotals = {};
+  evu.forEach(r => { univTotals[r.universidad_canon] = (univTotals[r.universidad_canon] || 0) + r.deudores; });
+  const top10 = Object.entries(univTotals).sort((a,b) => b[1]-a[1]).slice(0, 10).map(e => e[0]);
+  const datasets = top10.map((u, i) => {
+    const data = years.map(y => {
+      const row = evu.find(x => x.year === y && x.universidad_canon === u);
+      return row ? row.deudores : 0;
+    });
+    return { label: u, data, borderColor: catColors[i % catColors.length], backgroundColor: catColors[i % catColors.length], borderWidth: 2, pointRadius: 3, tension: 0.3, fill: false };
+  });
+  new Chart(document.getElementById('chartEvolUniv'), {
+    type: 'line', data: { labels: years, datasets },
+    options: { responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'right', labels: { font: { ...defaultFont, size: 10, weight: 300 }, color: C.gray500, padding: 6, usePointStyle: true, pointStyle: 'circle', boxWidth: 6, boxHeight: 6 } }, tooltip: tooltipDefaults },
+      scales: { x: { grid: { display: false }, ticks: axisMono }, y: { grid: { color: C.gray200 }, border: { dash:[4,4], display:false }, ticks: { ...axisMono, callback: v => v>=1000?(v/1000)+'k':v } } }
+    }
+  });
+}
+
+function renderXrayInit() {
+  const sel = document.getElementById('xraySelect');
+  if (sel.options.length > 0) return;  // ya inicializado
+  const univs = Object.keys(D.xray_universidades).sort((a,b) =>
+    D.xray_universidades[b].resumen.deudores_2026 - D.xray_universidades[a].resumen.deudores_2026);
+  sel.innerHTML = univs.map(u => `<option value="${u}">${u}</option>`).join('');
+  sel.onchange = () => renderXray(sel.value);
+  renderXray(univs[0]);
+}
+
+const xrayCharts = {};
+function renderXray(uname) {
+  const u = D.xray_universidades[uname];
+  if (!u) return;
+  const r = u.resumen;
+  // Ranking nacional
+  const sorted = Object.values(D.xray_universidades).sort((a,b) => b.resumen.deudores_2026 - a.resumen.deudores_2026);
+  const rank = sorted.findIndex(x => x.resumen.universidad === uname) + 1;
+  document.getElementById('xrayKpis').innerHTML =
+    kpiCard('Deudores 2026', fmt(r.deudores_2026), `Ranking nacional: #${rank}/${sorted.length}`, 'users') +
+    kpiCard('Cartera vencida', fmtCLP(r.clp_total), fmtUSD(r.usd_total) + ' · ' + fmt(Math.round(r.utm_total)) + ' UTM', 'cash', 'red') +
+    kpiCard('Deuda promedio', fmt(Math.round(r.utm_avg)) + ' UTM', fmtCLP(r.utm_avg * D.resumen.utm_clp), 'chart') +
+    kpiCard('Deuda mediana', fmt(Math.round(r.utm_median)) + ' UTM', fmtCLP(r.utm_median * D.resumen.utm_clp), 'chart');
+
+  // destroy previous charts
+  Object.values(xrayCharts).forEach(c => c && c.destroy());
+  const ev = u.evolucion;
+  const years = ev.map(x => x.year);
+  xrayCharts.evol = new Chart(document.getElementById('xrayEvol'), {
+    type: 'line', data: { labels: years, datasets: [{ label: 'Deudores', data: ev.map(x => x.deudores), borderColor: C.blue, backgroundColor: 'rgba(38,111,224,0.08)', borderWidth: 2, pointRadius: 4, pointBackgroundColor: C.blue, fill: true, tension: 0.3 }] },
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: tooltipDefaults }, scales: { x: { grid: { display: false }, ticks: axisMono }, y: { grid: { color: C.gray200 }, border: { dash:[4,4], display:false }, ticks: { ...axisMono, callback: v => v>=1000?(v/1000)+'k':v } } } }
+  });
+  xrayCharts.evolUtm = new Chart(document.getElementById('xrayEvolUtm'), {
+    type: 'line', data: { labels: years, datasets: [{ label: 'UTM', data: ev.map(x => x.utm_total), borderColor: C.green, backgroundColor: 'rgba(16,185,129,0.08)', borderWidth: 2, pointRadius: 4, pointBackgroundColor: C.green, fill: true, tension: 0.3 }] },
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { ...tooltipDefaults, callbacks: { label: ctx => fmt(Math.round(ctx.parsed.y)) + ' UTM · ' + fmtCLP(ctx.parsed.y * D.resumen.utm_clp) } } }, scales: { x: { grid: { display: false }, ticks: axisMono }, y: { grid: { color: C.gray200 }, border: { dash:[4,4], display:false }, ticks: { ...axisMono, callback: v => v>=1e6?(v/1e6).toFixed(0)+'M':v>=1e3?(v/1e3)+'k':v } } } }
+  });
+  xrayCharts.edad = makeHbar('xrayEdad', (u.por_edad||[]).map(x=>x.rango_edad), (u.por_edad||[]).map(x=>x.n), C.blue);
+  xrayCharts.sexo = makeDonut('xraySexo', (u.por_sexo||[]).map(x=>x.sexo), (u.por_sexo||[]).map(x=>x.n));
+  xrayCharts.region = makeHbar('xrayRegion', (u.por_region||[]).slice(0,10).map(x=>x.region), (u.por_region||[]).slice(0,10).map(x=>x.n), C.blueDark);
+  xrayCharts.monto = makeVbar('xrayMonto', (u.por_monto_bucket||[]).map(x=>x.bucket), (u.por_monto_bucket||[]).map(x=>x.n), C.amber);
+  xrayCharts.seniority = makeHbar('xraySeniority', (u.por_seniority||[]).map(x=>x.seniority), (u.por_seniority||[]).map(x=>x.n), C.violet);
+
+  const j = u.justicia;
+  const jc = document.getElementById('xrayJusticiaCard');
+  if (j && j.total >= 10) {
+    jc.innerHTML = `<div style="text-align:center">
+      <div class="kpi-value" style="font-size:36px;color:${C.red}">${j.pct_demandados}%</div>
+      <div class="kpi-sub">Demandados civil (DDO.) — ${fmt(j.demandados_civil)} de ${fmt(j.total)}</div>
+      <div class="kpi-sub" style="margin-top:8px">vs. promedio nacional ${D.justicia_resumen.pct_con_civil_ddo}%</div>
+    </div>`;
+  } else {
+    jc.innerHTML = '<span>Sin datos suficientes (k &lt; 10)</span>';
+  }
+}
+
+function renderJusticia() {
+  const jr = D.justicia_resumen;
+  document.getElementById('kpiJusticia').innerHTML =
+    kpiCard('Con alguna causa', fmt(jr.con_pjud), jr.pct_con_pjud + '% del total', 'globe', 'amber') +
+    kpiCard('Demandados civil', fmt(jr.con_civil_ddo), jr.pct_con_civil_ddo + '% del total', 'cash', 'red') +
+    kpiCard('Total deudores', fmt(jr.total), 'Base de cruce', 'users') +
+    kpiCard('Fuente', 'PJUD · Grupo Defensa', 'Litigantes civiles + laborales', 'link');
+
+  const jc = D.justicia_por_causa.sort((a,b) => b.n - a.n);
+  makeHbar('chartJustCausa', jc.map(x=>x.bucket), jc.map(x=>x.n), C.blue);
+
+  const jp = D.justicia_por_perfil;
+  new Chart(document.getElementById('chartJustPerfil'), {
+    type: 'bar', data: { labels: jp.map(x=>x.perfil),
+      datasets: [{ label: '% demandados', data: jp.map(x=>x.pct), backgroundColor: jp.map(x => x.pct > 30 ? C.red : x.pct > 20 ? C.amber : C.blue), borderRadius: {topRight:4,bottomRight:4}, borderSkipped: false }] },
+    options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { ...tooltipDefaults, callbacks: { label: ctx => ctx.parsed.x + '% (' + fmt(jp[ctx.dataIndex].demandados) + ' de ' + fmt(jp[ctx.dataIndex].n) + ')' } } },
+      scales: { y: { grid: { display: false }, ticks: axisSans }, x: { grid: { color: C.gray200 }, border: { dash:[4,4], display:false }, ticks: { ...axisMono, callback: v => v + '%' }, beginAtZero: true } }
+    }
+  });
+
+  const jreg = D.justicia_por_region.sort((a,b) => b.pct_demandados - a.pct_demandados);
+  new Chart(document.getElementById('chartJustRegion'), {
+    type: 'bar', data: { labels: jreg.map(x=>x.region),
+      datasets: [{ label: '% demandados', data: jreg.map(x=>x.pct_demandados), backgroundColor: jreg.map(x => x.pct_demandados > 25 ? C.red : x.pct_demandados > 20 ? C.amber : C.blue), borderRadius: {topRight:4,bottomRight:4}, borderSkipped: false }] },
+    options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { ...tooltipDefaults, callbacks: { label: ctx => ctx.parsed.x + '% (' + fmt(jreg[ctx.dataIndex].demandados_civil) + ' de ' + fmt(jreg[ctx.dataIndex].n) + ')' } } },
+      scales: { y: { grid: { display: false }, ticks: { ...axisSans, font: { ...defaultFont, size: 11, weight: 300 } } }, x: { grid: { color: C.gray200 }, border: { dash:[4,4], display:false }, ticks: { ...axisMono, callback: v => v + '%' } } }
+    }
+  });
+
+  const ju = D.justicia_por_universidad.sort((a,b) => b.pct_demandados - a.pct_demandados);
+  new Chart(document.getElementById('chartJustUniv'), {
+    type: 'bar', data: { labels: ju.map(x=>x.universidad),
+      datasets: [{ label: '% demandados', data: ju.map(x=>x.pct_demandados), backgroundColor: ju.map(x => x.pct_demandados > 25 ? C.red : x.pct_demandados > 20 ? C.amber : C.blue), borderRadius: {topRight:4,bottomRight:4}, borderSkipped: false }] },
+    options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { ...tooltipDefaults, callbacks: { label: ctx => ctx.parsed.x + '% (' + fmt(ju[ctx.dataIndex].demandados_civil) + ' de ' + fmt(ju[ctx.dataIndex].n) + ')' } } },
+      scales: { y: { grid: { display: false }, ticks: { ...axisSans, font: { ...defaultFont, size: 11, weight: 300 } } }, x: { grid: { color: C.gray200 }, border: { dash:[4,4], display:false }, ticks: { ...axisMono, callback: v => v + '%' } } }
+    }
+  });
+}
+
+function makeHbar(id, labels, values, color) {
+  return new Chart(document.getElementById(id), {
+    type: 'bar', data: { labels, datasets: [{ data: values, backgroundColor: color, borderRadius: {topRight:4,bottomRight:4}, borderSkipped: false }] },
+    options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { ...tooltipDefaults, callbacks: { label: ctx => fmt(ctx.parsed.x) } } },
+      scales: { y: { grid: { display: false }, ticks: { ...axisSans, font: { ...defaultFont, size: 11, weight: 300 } } }, x: { grid: { color: C.gray200 }, border: { dash:[4,4], display:false }, ticks: { ...axisMono, callback: v => v>=1000?(v/1000)+'k':v }, beginAtZero: true } }
+    }
+  });
+}
+function makeVbar(id, labels, values, color) {
+  return new Chart(document.getElementById(id), {
+    type: 'bar', data: { labels, datasets: [{ data: values, backgroundColor: color, borderRadius: {topLeft:4,topRight:4}, borderSkipped: false }] },
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: tooltipDefaults }, scales: { x: { grid: { display: false }, ticks: axisMono }, y: { grid: { color: C.gray200 }, border: { dash:[4,4], display:false }, ticks: { ...axisMono, callback: v => v>=1000?(v/1000)+'k':v }, beginAtZero: true } } }
+  });
+}
+function makeDonut(id, labels, values) {
+  return new Chart(document.getElementById(id), {
+    type: 'doughnut', data: { labels, datasets: [{ data: values, backgroundColor: catColors, borderWidth: 0 }] },
+    options: { responsive: true, maintainAspectRatio: false, cutout: '60%',
+      plugins: { legend: { position: 'bottom', labels: { font: { ...defaultFont, size: 11, weight: 300 }, color: C.gray500, padding: 10, usePointStyle: true, pointStyle: 'circle', boxWidth: 6, boxHeight: 6 } }, tooltip: { ...tooltipDefaults, callbacks: { label: ctx => ctx.label + ': ' + fmt(ctx.parsed) } } }
+    }
+  });
 }
 
 function renderMain() {
