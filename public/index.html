@@ -229,7 +229,11 @@
     <button class="carousel-arrow carousel-prev" onclick="carouselPrev()" aria-label="Anterior">←</button>
     <div class="carousel-viewport"><div class="carousel-track" id="carouselTrack"></div></div>
     <button class="carousel-arrow carousel-next" onclick="carouselNext()" aria-label="Siguiente">→</button>
-    <div class="carousel-dots" id="carouselDots"></div>
+    <div style="display:flex;justify-content:center;align-items:center;gap:12px;margin-top:16px">
+      <button id="carouselPlayBtn" onclick="carouselTogglePlay()" aria-label="Pausar"
+        title="Pausar" style="background:#fff;border:1px solid #E5E7EB;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:11px;color:#266FE0;display:flex;align-items:center;justify-content:center;transition:all .15s">⏸</button>
+      <div class="carousel-dots" id="carouselDots" style="margin-top:0"></div>
+    </div>
   </div>
 
   <div class="tabs-container">
@@ -532,6 +536,42 @@
     <div class="section-title">Montos de deuda</div>
     <div class="section-desc">Valores expresados en UTM, CLP y USD al 17 de abril de 2026 (SII y Banco Central de Chile).</div>
     <div class="kpi-grid cols-4 mb-sm" id="kpiMontos"></div>
+
+    <div class="card" style="margin-bottom:16px;padding:28px">
+      <div class="card-label">Conversor interactivo UTM · CLP · USD</div>
+      <div style="font-size:13px;color:#6B7280;font-weight:300;margin-bottom:20px">Escribe un monto en cualquiera de los 3 campos y los otros se actualizan automáticamente. Conversión al 17 de abril de 2026 (1 UTM = $69.889 CLP · 1 USD = $886,32 CLP).</div>
+      <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:14px" id="convGrid">
+        <label style="display:flex;flex-direction:column;gap:6px;cursor:pointer">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:#6B7280">UTM</span>
+          <input id="convUTM" type="text" value="172" inputmode="decimal"
+            style="font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;padding:12px 14px;border:2px solid #E5E7EB;border-radius:8px;background:#fff;color:#266FE0;outline:none;transition:border-color .2s">
+          <span style="font-size:11px;color:#6B7280">Unidad Tributaria Mensual · abril 2026</span>
+        </label>
+        <label style="display:flex;flex-direction:column;gap:6px;cursor:pointer">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:#6B7280">CLP</span>
+          <input id="convCLP" type="text" value="12.020.908" inputmode="decimal"
+            style="font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;padding:12px 14px;border:2px solid #E5E7EB;border-radius:8px;background:#fff;color:#10B981;outline:none;transition:border-color .2s">
+          <span style="font-size:11px;color:#6B7280">Pesos chilenos</span>
+        </label>
+        <label style="display:flex;flex-direction:column;gap:6px;cursor:pointer">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:#6B7280">USD</span>
+          <input id="convUSD" type="text" value="13.562" inputmode="decimal"
+            style="font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;padding:12px 14px;border:2px solid #E5E7EB;border-radius:8px;background:#fff;color:#F59E0B;outline:none;transition:border-color .2s">
+          <span style="font-size:11px;color:#6B7280">Dólares observados</span>
+        </label>
+      </div>
+      <div style="margin-top:16px;padding:14px 16px;background:#F5F5F5;border-radius:8px;font-size:12px;color:#3A3A3A">
+        <b>Valores preestablecidos</b> (click para usar):
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px">
+          <button class="conv-preset" onclick="convSet(172)" style="font-family:'JetBrains Mono',monospace;font-size:11px;padding:6px 10px;border:1px solid #E5E7EB;border-radius:6px;background:#fff;cursor:pointer">Deuda promedio · 172 UTM</button>
+          <button class="conv-preset" onclick="convSet(113)" style="font-family:'JetBrains Mono',monospace;font-size:11px;padding:6px 10px;border:1px solid #E5E7EB;border-radius:6px;background:#fff;cursor:pointer">Deuda mediana · 113 UTM</button>
+          <button class="conv-preset" onclick="convSet(1000)" style="font-family:'JetBrains Mono',monospace;font-size:11px;padding:6px 10px;border:1px solid #E5E7EB;border-radius:6px;background:#fff;cursor:pointer">Ultra-ricos · 1.000 UTM</button>
+          <button class="conv-preset" onclick="convSet(2362)" style="font-family:'JetBrains Mono',monospace;font-size:11px;padding:6px 10px;border:1px solid #E5E7EB;border-radius:6px;background:#fff;cursor:pointer">Deuda máxima · 2.362 UTM</button>
+          <button class="conv-preset" onclick="convSet(57549699)" style="font-family:'JetBrains Mono',monospace;font-size:11px;padding:6px 10px;border:1px solid #E5E7EB;border-radius:6px;background:#fff;cursor:pointer">Cartera total · 57,5M UTM</button>
+        </div>
+      </div>
+    </div>
+
     <div class="full-row"><div class="card"><div class="card-label">Rango de deuda por deudor</div><div class="chart-wrap tall"><canvas id="chartMontoBucket2"></canvas></div></div></div>
   </div>
 
@@ -766,6 +806,7 @@ function initTab(name) {
       kpiCard('Deuda mediana', fmt(Math.round(r.median_utm)) + ' UTM', fmtCLP(r.median_utm * r.utm_clp) + ' · ' + fmtUSD(r.median_utm * r.utm_usd), 'chart') +
       kpiCard('Factores de conversión', `UTM = $${fmt(r.utm_clp)}`, `USD = $${r.usd_clp} · al ${r.fecha_conversion}`, 'globe');
     renderMontoBucket('chartMontoBucket2');
+    initConversor();
   }
   if (name === 'universidad') renderUniversidad();
   if (name === 'xray') renderXrayInit();
@@ -1140,9 +1181,78 @@ window.carouselGoto = function(i) {
 };
 function carouselStart() {
   if (carouselTimer) clearInterval(carouselTimer);
-  carouselTimer = setInterval(() => { if (!carouselPaused) carouselNext(); }, 6000);
+  carouselTimer = setInterval(() => { if (!carouselPaused && !carouselManualStop) carouselNext(); }, 6000);
 }
 function carouselResetTimer() { carouselStart(); }
+
+let carouselManualStop = false;
+window.carouselTogglePlay = function() {
+  carouselManualStop = !carouselManualStop;
+  const btn = document.getElementById('carouselPlayBtn');
+  btn.innerHTML = carouselManualStop ? '▶' : '⏸';
+  btn.title = carouselManualStop ? 'Reproducir' : 'Pausar';
+};
+
+/* ═══ Conversor UTM / CLP / USD ═══ */
+function parseNumberCL(s) {
+  if (s == null) return NaN;
+  s = String(s).trim().replace(/\./g, '').replace(',', '.');
+  const n = parseFloat(s);
+  return isNaN(n) ? NaN : n;
+}
+function formatNumberCL(n, decimals = 2) {
+  if (n == null || isNaN(n)) return '';
+  return n.toLocaleString('es-CL', { minimumFractionDigits: 0, maximumFractionDigits: decimals });
+}
+let convLock = false;
+function initConversor() {
+  if (document.getElementById('convUTM').dataset.init) return;
+  document.getElementById('convUTM').dataset.init = '1';
+  const utmF = D.resumen.utm_clp;
+  const usdF = D.resumen.usd_clp;
+  const i_utm = document.getElementById('convUTM');
+  const i_clp = document.getElementById('convCLP');
+  const i_usd = document.getElementById('convUSD');
+  function fromUTM() {
+    if (convLock) return; convLock = true;
+    const v = parseNumberCL(i_utm.value);
+    if (!isNaN(v)) {
+      i_clp.value = formatNumberCL(v * utmF, 0);
+      i_usd.value = formatNumberCL(v * utmF / usdF, 2);
+    }
+    convLock = false;
+  }
+  function fromCLP() {
+    if (convLock) return; convLock = true;
+    const v = parseNumberCL(i_clp.value);
+    if (!isNaN(v)) {
+      i_utm.value = formatNumberCL(v / utmF, 2);
+      i_usd.value = formatNumberCL(v / usdF, 2);
+    }
+    convLock = false;
+  }
+  function fromUSD() {
+    if (convLock) return; convLock = true;
+    const v = parseNumberCL(i_usd.value);
+    if (!isNaN(v)) {
+      i_clp.value = formatNumberCL(v * usdF, 0);
+      i_utm.value = formatNumberCL(v * usdF / utmF, 2);
+    }
+    convLock = false;
+  }
+  i_utm.addEventListener('input', fromUTM);
+  i_clp.addEventListener('input', fromCLP);
+  i_usd.addEventListener('input', fromUSD);
+  [i_utm, i_clp, i_usd].forEach(el => el.addEventListener('focus', e => e.target.style.borderColor = '#266FE0'));
+  [i_utm, i_clp, i_usd].forEach(el => el.addEventListener('blur', e => e.target.style.borderColor = '#E5E7EB'));
+  // inicializar con 172 UTM
+  convSet(172);
+}
+window.convSet = function(utm) {
+  const i_utm = document.getElementById('convUTM');
+  i_utm.value = formatNumberCL(utm, 2);
+  i_utm.dispatchEvent(new Event('input'));
+};
 
 function renderGlobal() {
   const G = D.global; if (!G) return;
@@ -1414,7 +1524,7 @@ function donut(id, labels, values) {
   });
 }
 
-fetch('/static/aggregates.json?v=15').then(r => r.json()).then(d => {
+fetch('/static/aggregates.json?v=16').then(r => r.json()).then(d => {
   D = d;
   renderMain();
   // Check URL hash for deep link
