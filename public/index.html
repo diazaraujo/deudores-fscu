@@ -105,6 +105,7 @@
   <div class="tabs-container">
     <nav class="tabs-nav">
       <button class="tab-btn active" data-tab="general" onclick="switchTab('general')">General</button>
+      <button class="tab-btn" data-tab="conclusiones" onclick="switchTab('conclusiones')">Conclusiones</button>
       <button class="tab-btn" data-tab="global" onclick="switchTab('global')">Política Pública</button>
       <button class="tab-btn" data-tab="interesante" onclick="switchTab('interesante')">Insights</button>
       <button class="tab-btn" data-tab="evolucion" onclick="switchTab('evolucion')">Evolución</button>
@@ -129,6 +130,129 @@
       </div>
     </div>
     <div class="full-row"><div class="card"><div class="card-label">Distribución por rango de deuda (UTM)</div><div class="chart-wrap tall"><canvas id="chartMontoBucket"></canvas></div><div class="card-note">UTM = Unidad Tributaria Mensual, unidad legal de la deuda. Conversión vigente al 2026-04-17: 1 UTM = $69.889 CLP ≈ US$ 78,85.</div></div></div>
+  </div>
+
+  <div class="tab-content" id="tab-conclusiones">
+    <div class="section-tag">Síntesis</div>
+    <div class="section-title">Conclusiones del análisis</div>
+    <div class="section-desc">Los hallazgos organizados por dimensión, con su cifra principal y explicación contextual. Cada bloque agrupa las cuñas relevantes del Insights e interpreta qué revelan sobre el FSCU como política pública.</div>
+
+    <div style="display:flex;flex-direction:column;gap:28px;margin-top:8px">
+
+      <!-- BLOQUE 1: DIAGNÓSTICO -->
+      <div class="card" style="padding:32px">
+        <div style="display:flex;gap:14px;align-items:center;margin-bottom:16px">
+          <div style="width:36px;height:36px;border-radius:8px;background:#FEE2E2;color:#EF4444;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-weight:800;font-size:14px">01</div>
+          <div>
+            <div class="kpi-label">Bloque 1 · Diagnóstico</div>
+            <div style="font-size:22px;font-weight:700;color:#171B21">Un problema de $4 billones de pesos</div>
+          </div>
+        </div>
+        <div style="font-size:14px;font-weight:300;color:#3A3A3A;line-height:1.6;margin-bottom:20px">
+          La cartera vencida del Fondo Solidario asciende a <b>57,5 millones de UTM · $4,02 billones CLP · US$ 4,54 mil millones</b>, equivalente al <b>1,38% del PIB chileno</b>. Acumula 30 años de créditos sin pagar y sigue creciendo: en 4 años aumentó <b>+54,4%</b> en UTM (muy por encima de la inflación, que subió 12% en el mismo período). Cada año ingresan más deudores de los que salen: el saldo neto 2022-2026 es <b>+93.024 personas</b>.
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+          <div style="padding:14px;background:#F5F5F5;border-radius:8px"><div class="kpi-label">Cartera vencida</div><div style="font-size:22px;font-weight:800;color:#EF4444">$4,02 bln CLP</div><div class="kpi-sub">1,38% del PIB</div></div>
+          <div style="padding:14px;background:#F5F5F5;border-radius:8px"><div class="kpi-label">Crecimiento 2022-2026</div><div style="font-size:22px;font-weight:800;color:#EF4444">+54,4%</div><div class="kpi-sub">UTM · 4,5× la inflación</div></div>
+          <div style="padding:14px;background:#F5F5F5;border-radius:8px"><div class="kpi-label">Saldo neto anual</div><div style="font-size:22px;font-weight:800;color:#F59E0B">+93.024</div><div class="kpi-sub">deudores netos en 4 años</div></div>
+        </div>
+      </div>
+
+      <!-- BLOQUE 2: TRAMPA DE CRONICIDAD -->
+      <div class="card" style="padding:32px">
+        <div style="display:flex;gap:14px;align-items:center;margin-bottom:16px">
+          <div style="width:36px;height:36px;border-radius:8px;background:#FEE2E2;color:#EF4444;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-weight:800;font-size:14px">02</div>
+          <div>
+            <div class="kpi-label">Bloque 2 · Cronicidad</div>
+            <div style="font-size:22px;font-weight:700;color:#171B21">No es morosidad coyuntural, es estructural</div>
+          </div>
+        </div>
+        <div style="font-size:14px;font-weight:300;color:#3A3A3A;line-height:1.6;margin-bottom:20px">
+          <b>258.596 deudores (77,2% del total 2026) estuvieron presentes en las 5 nóminas desde 2022</b> sin interrupción. De ellos, la mayoría (<b>247.300</b>) tiene cada año una deuda mayor que la anterior: acumulan intereses pero no pagan. Sólo <b>13.174 personas (3,9%) ingresaron en 2026 sin historial previo</b>. El patrón contradice la hipótesis de morosidad temporal. La deuda mediana de los crónicos pasó de 81 UTM en 2022 a 152 UTM en 2026 (<b>+87%</b>).
+        </div>
+        <div style="padding:18px;background:#FEE2E2;border-radius:8px;margin-bottom:16px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:#EF4444;margin-bottom:6px">⚠️ Trampa de morosidad</div>
+          <div style="font-size:14px;color:#3A3A3A;line-height:1.6">La probabilidad de salir de la nómina cae con la antigüedad: <b>14,85%</b> para quien lleva 1 año, <b>8,19%</b> para 2 años, <b>4,62%</b> para 3, y apenas <b>2,85%</b> para los que llevan 4 o más. El sistema no rescata a los crónicos — los consolida.</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+          <div style="padding:14px;background:#F5F5F5;border-radius:8px"><div class="kpi-label">Crónicos 5 años</div><div style="font-size:22px;font-weight:800;color:#EF4444">258.596</div><div class="kpi-sub">77,2% del 2026</div></div>
+          <div style="padding:14px;background:#F5F5F5;border-radius:8px"><div class="kpi-label">Deuda crónicos (mediana)</div><div style="font-size:22px;font-weight:800;color:#EF4444">81 → 152 UTM</div><div class="kpi-sub">+87% en 4 años</div></div>
+          <div style="padding:14px;background:#F5F5F5;border-radius:8px"><div class="kpi-label">Tasa recuperación</div><div style="font-size:22px;font-weight:800;color:#EF4444">5,27%/año</div><div class="kpi-sub">salidas + pagos parciales</div></div>
+        </div>
+      </div>
+
+      <!-- BLOQUE 3: PERFIL DE DEUDORES -->
+      <div class="card" style="padding:32px">
+        <div style="display:flex;gap:14px;align-items:center;margin-bottom:16px">
+          <div style="width:36px;height:36px;border-radius:8px;background:#FEF3C7;color:#F59E0B;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-weight:800;font-size:14px">03</div>
+          <div>
+            <div class="kpi-label">Bloque 3 · Perfil</div>
+            <div style="font-size:22px;font-weight:700;color:#171B21">No son los más pobres</div>
+          </div>
+        </div>
+        <div style="font-size:14px;font-weight:300;color:#3A3A3A;line-height:1.6;margin-bottom:20px">
+          El FSCU fue diseñado para egresados sin capacidad de pago. Los datos contradicen parcialmente ese supuesto: <b>118.579 deudores (35%) están en el decil 8-10 de avalúo fiscal SII</b> — el 30% más rico en patrimonio declarado. Entre quienes identificamos en LinkedIn, hay <b>3.628 ejecutivos C-Level y directores</b> morosos, <b>6.664 académicos</b> (muchos trabajando en las mismas universidades acreedoras), y <b>17.871 empleados de empresas grandes</b> (Codelco, Arauco, BCI, Santander, BancoEstado — incluyendo bancos que cobran créditos). El perfil socioeconómico predominante es <b>"Medio Alto"</b>, no las capas más pobres. La paridad de género es 54% hombres / 46% mujeres.
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+          <div style="padding:14px;background:#F5F5F5;border-radius:8px"><div class="kpi-label">Alto patrimonio</div><div style="font-size:22px;font-weight:800;color:#F59E0B">118.579</div><div class="kpi-sub">decil 8-10 SII</div></div>
+          <div style="padding:14px;background:#F5F5F5;border-radius:8px"><div class="kpi-label">Ejecutivos C-Level</div><div style="font-size:22px;font-weight:800;color:#F59E0B">3.628</div><div class="kpi-sub">en LinkedIn</div></div>
+          <div style="padding:14px;background:#F5F5F5;border-radius:8px"><div class="kpi-label">Académicos</div><div style="font-size:22px;font-weight:800;color:#F59E0B">6.664</div><div class="kpi-sub">muchos en sus propias U.</div></div>
+        </div>
+      </div>
+
+      <!-- BLOQUE 4: COBRANZA -->
+      <div class="card" style="padding:32px">
+        <div style="display:flex;gap:14px;align-items:center;margin-bottom:16px">
+          <div style="width:36px;height:36px;border-radius:8px;background:#E7F0FF;color:#266FE0;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-weight:800;font-size:14px">04</div>
+          <div>
+            <div class="kpi-label">Bloque 4 · Cobranza</div>
+            <div style="font-size:22px;font-weight:700;color:#171B21">El sistema de cobranza es desigual</div>
+          </div>
+        </div>
+        <div style="font-size:14px;font-weight:300;color:#3A3A3A;line-height:1.6;margin-bottom:20px">
+          De las 26 universidades del CRUCH que administran el Fondo Solidario, sólo <b>8 ejercen cobranza judicial directa</b> — las demás se apoyan exclusivamente en la retención de impuestos vía Tesorería. La <b>U. de Chile lidera ampliamente con 2.129 demandas</b> contra sus propios ex-alumnos (12% de sus deudores), seguida a distancia por U. de Valparaíso (436), U. del Bío-Bío (329) y UTEM (306). Los deudores FSCU no sólo deben al Fondo: <b>72.014 (21,5%) tienen causas de cobranza en PJUD</b>, y los bancos privados (BancoEstado, Itaú, BCI, Scotiabank, Banco de Chile) suman <b>45.310 demandas — 4× más que la propia Tesorería (10.256)</b>. Son deudores multi-endeudados, no sólo incumplidores con el Estado.
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+          <div style="padding:14px;background:#F5F5F5;border-radius:8px"><div class="kpi-label">Demandados por deuda</div><div style="font-size:22px;font-weight:800;color:#266FE0">72.014</div><div class="kpi-sub">21,5% del total</div></div>
+          <div style="padding:14px;background:#F5F5F5;border-radius:8px"><div class="kpi-label">U. de Chile demanda</div><div style="font-size:22px;font-weight:800;color:#266FE0">2.129</div><div class="kpi-sub">12% de sus deudores</div></div>
+          <div style="padding:14px;background:#F5F5F5;border-radius:8px"><div class="kpi-label">Bancos persiguen</div><div style="font-size:22px;font-weight:800;color:#266FE0">45.310</div><div class="kpi-sub">4× más que la TGR</div></div>
+        </div>
+      </div>
+
+      <!-- BLOQUE 5: PROYECCIÓN -->
+      <div class="card" style="padding:32px">
+        <div style="display:flex;gap:14px;align-items:center;margin-bottom:16px">
+          <div style="width:36px;height:36px;border-radius:8px;background:#FEE2E2;color:#EF4444;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-weight:800;font-size:14px">05</div>
+          <div>
+            <div class="kpi-label">Bloque 5 · Proyección</div>
+            <div style="font-size:22px;font-weight:700;color:#171B21">Si nada cambia, la cartera llega a $5,47 billones en 2030</div>
+          </div>
+        </div>
+        <div style="font-size:14px;font-weight:300;color:#3A3A3A;line-height:1.6;margin-bottom:20px">
+          Proyección lineal simple basada en los 5 años observados: la cartera vencida crecería <b>+36%</b> en los próximos 4 años, alcanzando <b>78,3 millones UTM · $5,47 billones CLP · US$ 6,17 mil millones</b> para el 2030. La razón es aritmética: los intereses que se suman cada año (7,3M UTM en 2025→2026) superan varias veces lo recuperado (2,7M UTM). Mientras ese diferencial se mantenga, <b>la deuda crece más rápido de lo que se cobra</b>. Para revertir la tendencia se requeriría: (a) reducir ingresos nuevos — prevención en egreso, (b) acelerar salidas — mecanismos activos de regularización o condonación focalizada, (c) quebrar la trampa de los crónicos — segmento de 247k personas donde la probabilidad de pago es 3%.
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+          <div style="padding:14px;background:#F5F5F5;border-radius:8px"><div class="kpi-label">Cartera 2030 (proyectada)</div><div style="font-size:22px;font-weight:800;color:#EF4444">$5,47 bln CLP</div><div class="kpi-sub">+36% vs 2026</div></div>
+          <div style="padding:14px;background:#F5F5F5;border-radius:8px"><div class="kpi-label">Intereses 2025→2026</div><div style="font-size:22px;font-weight:800;color:#EF4444">7,3M UTM</div><div class="kpi-sub">vs 2,7M recuperados</div></div>
+          <div style="padding:14px;background:#F5F5F5;border-radius:8px"><div class="kpi-label">Crónicos sin rescate</div><div style="font-size:22px;font-weight:800;color:#EF4444">247.300</div><div class="kpi-sub">prob. pago 2,85%/año</div></div>
+        </div>
+      </div>
+
+      <!-- BLOQUE 6: REFLEXIÓN -->
+      <div class="card" style="padding:32px;background:linear-gradient(135deg, #266FE0 0%, #184D9B 100%);color:#fff">
+        <div style="display:flex;gap:14px;align-items:center;margin-bottom:16px">
+          <div style="width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,0.15);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-weight:800;font-size:14px">06</div>
+          <div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,0.7);margin-bottom:4px">Bloque 6 · Reflexión</div>
+            <div style="font-size:22px;font-weight:700">Un círculo vicioso con responsabilidades distribuidas</div>
+          </div>
+        </div>
+        <div style="font-size:14px;font-weight:300;line-height:1.7;color:rgba(255,255,255,0.92)">
+          El Fondo Solidario se mantiene como política pública en un equilibrio ineficiente: <b>1,38% del PIB atrapado en una cartera que crece 2× la inflación</b>, el <b>77% de los deudores son crónicos de 5 años</b>, el <b>patrimonio y los cargos jerárquicos de muchos morosos sugieren que podrían pagar pero no lo hacen</b>, y <b>la cobranza judicial se concentra en pocas universidades</b>. Las 18 restantes dependen de la retención automática de TGR — un mecanismo pasivo. Los datos no acusan a los deudores individuales: revelan un diseño que premia la permanencia morosa por encima de la regularización. La proyección a 2030 muestra que sin intervención estructural, la cartera seguirá creciendo y la tasa de recuperación seguirá bajando. La pregunta de política pública ya no es cómo cobrar, sino <b>qué costo social tiene mantener este statu quo</b>.
+        </div>
+      </div>
+
+    </div>
   </div>
 
   <div class="tab-content" id="tab-global">
