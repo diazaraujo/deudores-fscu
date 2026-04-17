@@ -640,6 +640,39 @@ global_stats["kpis"] = {
 
 out["global"] = global_stats
 
+# ═══ MATRIZ DE COHORTES + STREAM DE COMPOSICIÓN ═══
+cohort_matrix = []
+for cy in [2022, 2023, 2024, 2025, 2026]:
+    base_rows = con.execute(f"""SELECT DISTINCT rut_dv FROM nominas WHERE year={cy}
+                 AND rut_dv NOT IN (SELECT rut_dv FROM nominas WHERE year<{cy})""").fetchdf()
+    base = len(base_rows)
+    row = {"cohort": cy, "base": base, "years": {}}
+    for y in [2022, 2023, 2024, 2025, 2026]:
+        if y < cy:
+            row["years"][y] = None
+        else:
+            n = con.execute(f"""SELECT COUNT(*) FROM (SELECT DISTINCT rut_dv FROM nominas WHERE year={cy}
+                AND rut_dv NOT IN (SELECT rut_dv FROM nominas WHERE year<{cy})) c
+                WHERE EXISTS(SELECT 1 FROM nominas WHERE rut_dv=c.rut_dv AND year={y})""").fetchone()[0]
+            row["years"][y] = n
+    cohort_matrix.append(row)
+out["cohort_matrix"] = cohort_matrix
+
+# Stream composición: cada año qué % viene de qué cohort
+stream = {}
+for y in [2022, 2023, 2024, 2025, 2026]:
+    stream[y] = {}
+    for cy in [2022, 2023, 2024, 2025, 2026]:
+        if cy > y:
+            stream[y][cy] = 0
+        else:
+            n = con.execute(f"""SELECT COUNT(*) FROM
+                (SELECT DISTINCT rut_dv FROM nominas WHERE year={cy}
+                 AND rut_dv NOT IN (SELECT rut_dv FROM nominas WHERE year<{cy})) c
+                WHERE EXISTS(SELECT 1 FROM nominas WHERE rut_dv=c.rut_dv AND year={y})""").fetchone()[0]
+            stream[y][cy] = n
+out["stream_composicion"] = stream
+
 # ═══ RANKING RECUPERACIÓN POR UNIVERSIDAD (2022 → 2026) ═══
 # Top comunas por perfil LinkedIn (ejecutivos, gerentes, académicos)
 out["comunas_ejecutivos"] = con.execute("""

@@ -535,12 +535,6 @@
       "n": 1068
     },
     {
-      "comuna": "Concon",
-      "cod_comuna": 5103.0,
-      "region": "Valparaíso",
-      "n": 1057
-    },
-    {
       "comuna": "Conchali",
       "cod_comuna": 13104.0,
       "region": "Metropolitana",
@@ -553,14 +547,20 @@
       "n": 1057
     },
     {
-      "comuna": "Colina",
-      "cod_comuna": 13301.0,
-      "region": "Metropolitana",
-      "n": 1048
+      "comuna": "Concon",
+      "cod_comuna": 5103.0,
+      "region": "Valparaíso",
+      "n": 1057
     },
     {
       "comuna": "Independencia",
       "cod_comuna": 13108.0,
+      "region": "Metropolitana",
+      "n": 1048
+    },
+    {
+      "comuna": "Colina",
+      "cod_comuna": 13301.0,
       "region": "Metropolitana",
       "n": 1048
     },
@@ -979,15 +979,15 @@
       "n": 365
     },
     {
-      "comuna": "Salamanca",
-      "cod_comuna": 4204.0,
-      "region": "Coquimbo",
-      "n": 357
-    },
-    {
       "comuna": "Chimbarongo",
       "cod_comuna": 6303.0,
       "region": "O’Higgins",
+      "n": 357
+    },
+    {
+      "comuna": "Salamanca",
+      "cod_comuna": 4204.0,
+      "region": "Coquimbo",
       "n": 357
     },
     {
@@ -1045,15 +1045,15 @@
       "n": 329
     },
     {
-      "comuna": "Mariquina",
-      "cod_comuna": 14106.0,
-      "region": "Los Ríos",
-      "n": 324
-    },
-    {
       "comuna": "Quellon",
       "cod_comuna": 10208.0,
       "region": "Los Lagos",
+      "n": 324
+    },
+    {
+      "comuna": "Mariquina",
+      "cod_comuna": 14106.0,
+      "region": "Los Ríos",
       "n": 324
     },
     {
@@ -1087,15 +1087,15 @@
       "n": 310
     },
     {
-      "comuna": "Cunco",
-      "cod_comuna": 9103.0,
-      "region": "La Araucanía",
-      "n": 309
-    },
-    {
       "comuna": "Cabrero",
       "cod_comuna": 8303.0,
       "region": "Biobío",
+      "n": 309
+    },
+    {
+      "comuna": "Cunco",
+      "cod_comuna": 9103.0,
+      "region": "La Araucanía",
       "n": 309
     },
     {
@@ -1135,15 +1135,15 @@
       "n": 289
     },
     {
-      "comuna": "Hijuelas",
-      "cod_comuna": 5503.0,
-      "region": "Valparaíso",
-      "n": 288
-    },
-    {
       "comuna": "Coelemu",
       "cod_comuna": 16203.0,
       "region": "Ñuble",
+      "n": 288
+    },
+    {
+      "comuna": "Hijuelas",
+      "cod_comuna": 5503.0,
+      "region": "Valparaíso",
       "n": 288
     },
     {
@@ -1165,14 +1165,14 @@
       "n": 275
     },
     {
-      "comuna": "Algarrobo",
-      "cod_comuna": 5602.0,
+      "comuna": "Cabildo",
+      "cod_comuna": 5402.0,
       "region": "Valparaíso",
       "n": 271
     },
     {
-      "comuna": "Cabildo",
-      "cod_comuna": 5402.0,
+      "comuna": "Algarrobo",
+      "cod_comuna": 5602.0,
       "region": "Valparaíso",
       "n": 271
     },
@@ -1333,15 +1333,15 @@
       "n": 210
     },
     {
-      "comuna": "Colbun",
-      "cod_comuna": 7402.0,
-      "region": "Maule",
-      "n": 208
-    },
-    {
       "comuna": "Futrono",
       "cod_comuna": 14202.0,
       "region": "Los Ríos",
+      "n": 208
+    },
+    {
+      "comuna": "Colbun",
+      "cod_comuna": 7402.0,
+      "region": "Maule",
       "n": 208
     },
     {
@@ -1435,12 +1435,6 @@
       "n": 169
     },
     {
-      "comuna": "Pozo Almonte",
-      "cod_comuna": 1401.0,
-      "region": "Tarapacá",
-      "n": 169
-    },
-    {
       "comuna": "Mejillones",
       "cod_comuna": 2102.0,
       "region": "Antofagasta",
@@ -1450,6 +1444,12 @@
       "comuna": "San Ignacio",
       "cod_comuna": 16108.0,
       "region": "Ñuble",
+      "n": 169
+    },
+    {
+      "comuna": "Pozo Almonte",
+      "cod_comuna": 1401.0,
+      "region": "Tarapacá",
       "n": 169
     },
     {
@@ -1471,12 +1471,6 @@
       "n": 165
     },
     {
-      "comuna": "Olivar",
-      "cod_comuna": 6111.0,
-      "region": "O’Higgins",
-      "n": 161
-    },
-    {
       "comuna": "Santa Maria",
       "cod_comuna": 5706.0,
       "region": "Valparaíso",
@@ -1486,6 +1480,12 @@
       "comuna": "Sagrada Familia",
       "cod_comuna": 7307.0,
       "region": "Maule",
+      "n": 161
+    },
+    {
+      "comuna": "Olivar",
+      "cod_comuna": 6111.0,
+      "region": "O’Higgins",
       "n": 161
     },
     {
@@ -1579,15 +1579,9 @@
       "n": 143
     },
     {
-      "comuna": "Calle Larga",
-      "cod_comuna": 5302.0,
-      "region": "Valparaíso",
-      "n": 142
-    },
-    {
-      "comuna": "Florida",
-      "cod_comuna": 8104.0,
-      "region": "Biobío",
+      "comuna": "Saavedra",
+      "cod_comuna": 9116.0,
+      "region": "La Araucanía",
       "n": 142
     },
     {
@@ -1597,9 +1591,15 @@
       "n": 142
     },
     {
-      "comuna": "Saavedra",
-      "cod_comuna": 9116.0,
-      "region": "La Araucanía",
+      "comuna": "Calle Larga",
+      "cod_comuna": 5302.0,
+      "region": "Valparaíso",
+      "n": 142
+    },
+    {
+      "comuna": "Florida",
+      "cod_comuna": 8104.0,
+      "region": "Biobío",
       "n": 142
     },
     {
@@ -1693,15 +1693,15 @@
       "n": 114
     },
     {
-      "comuna": "Punitaqui",
-      "cod_comuna": 4304.0,
-      "region": "Coquimbo",
-      "n": 113
-    },
-    {
       "comuna": "Rauco",
       "cod_comuna": 7305.0,
       "region": "Maule",
+      "n": 113
+    },
+    {
+      "comuna": "Punitaqui",
+      "cod_comuna": 4304.0,
+      "region": "Coquimbo",
       "n": 113
     },
     {
@@ -1753,15 +1753,15 @@
       "n": 107
     },
     {
-      "comuna": "Cisnes",
-      "cod_comuna": 11202.0,
-      "region": "Aysén",
-      "n": 107
-    },
-    {
       "comuna": "Panquehue",
       "cod_comuna": 5704.0,
       "region": "Valparaíso",
+      "n": 107
+    },
+    {
+      "comuna": "Cisnes",
+      "cod_comuna": 11202.0,
+      "region": "Aysén",
       "n": 107
     },
     {
@@ -1783,15 +1783,15 @@
       "n": 104
     },
     {
-      "comuna": "San Rosendo",
-      "cod_comuna": 8310.0,
-      "region": "Biobío",
-      "n": 103
-    },
-    {
       "comuna": "Papudo",
       "cod_comuna": 5403.0,
       "region": "Valparaíso",
+      "n": 103
+    },
+    {
+      "comuna": "San Rosendo",
+      "cod_comuna": 8310.0,
+      "region": "Biobío",
       "n": 103
     },
     {
@@ -1819,15 +1819,15 @@
       "n": 99
     },
     {
-      "comuna": "Puyehue",
-      "cod_comuna": 10304.0,
-      "region": "Los Lagos",
-      "n": 96
-    },
-    {
       "comuna": "Rio Claro",
       "cod_comuna": 7108.0,
       "region": "Maule",
+      "n": 96
+    },
+    {
+      "comuna": "Puyehue",
+      "cod_comuna": 10304.0,
+      "region": "Los Lagos",
       "n": 96
     },
     {
@@ -1837,15 +1837,15 @@
       "n": 95
     },
     {
-      "comuna": "Negrete",
-      "cod_comuna": 8307.0,
-      "region": "Biobío",
-      "n": 94
-    },
-    {
       "comuna": "Renaico",
       "cod_comuna": 9209.0,
       "region": "La Araucanía",
+      "n": 94
+    },
+    {
+      "comuna": "Negrete",
+      "cod_comuna": 8307.0,
+      "region": "Biobío",
       "n": 94
     },
     {
@@ -1855,15 +1855,15 @@
       "n": 93
     },
     {
-      "comuna": "Canela",
-      "cod_comuna": 4202.0,
-      "region": "Coquimbo",
-      "n": 91
-    },
-    {
       "comuna": "Camarones",
       "cod_comuna": 15102.0,
       "region": "Arica Y Parinacota",
+      "n": 91
+    },
+    {
+      "comuna": "Canela",
+      "cod_comuna": 4202.0,
+      "region": "Coquimbo",
       "n": 91
     },
     {
@@ -1897,14 +1897,14 @@
       "n": 85
     },
     {
-      "comuna": "Trehuaco",
-      "cod_comuna": 16207.0,
+      "comuna": "San Fabian",
+      "cod_comuna": 16304.0,
       "region": "Ñuble",
       "n": 84
     },
     {
-      "comuna": "San Fabian",
-      "cod_comuna": 16304.0,
+      "comuna": "Trehuaco",
+      "cod_comuna": 16207.0,
       "region": "Ñuble",
       "n": 84
     },
@@ -1915,15 +1915,15 @@
       "n": 82
     },
     {
-      "comuna": "Cochrane",
-      "cod_comuna": 11301.0,
-      "region": "Aysén",
-      "n": 80
-    },
-    {
       "comuna": "Coinco",
       "cod_comuna": 6103.0,
       "region": "O’Higgins",
+      "n": 80
+    },
+    {
+      "comuna": "Cochrane",
+      "cod_comuna": 11301.0,
+      "region": "Aysén",
       "n": 80
     },
     {
@@ -1939,15 +1939,15 @@
       "n": 78
     },
     {
-      "comuna": "Ercilla",
-      "cod_comuna": 9204.0,
-      "region": "La Araucanía",
-      "n": 78
-    },
-    {
       "comuna": "Tirua",
       "cod_comuna": 8207.0,
       "region": "Biobío",
+      "n": 78
+    },
+    {
+      "comuna": "Ercilla",
+      "cod_comuna": 9204.0,
+      "region": "La Araucanía",
       "n": 78
     },
     {
@@ -2017,15 +2017,15 @@
       "n": 62
     },
     {
-      "comuna": "Rio Hurtado",
-      "cod_comuna": 4305.0,
-      "region": "Coquimbo",
-      "n": 60
-    },
-    {
       "comuna": "Alto Del Carmen",
       "cod_comuna": 3302.0,
       "region": "Atacama",
+      "n": 60
+    },
+    {
+      "comuna": "Rio Hurtado",
+      "cod_comuna": 4305.0,
+      "region": "Coquimbo",
       "n": 60
     },
     {
@@ -2041,6 +2041,12 @@
       "n": 59
     },
     {
+      "comuna": "Pumanque",
+      "cod_comuna": 6309.0,
+      "region": "O’Higgins",
+      "n": 55
+    },
+    {
       "comuna": "Antuco",
       "cod_comuna": 8302.0,
       "region": "Biobío",
@@ -2053,27 +2059,21 @@
       "n": 55
     },
     {
-      "comuna": "Pumanque",
-      "cod_comuna": 6309.0,
-      "region": "O’Higgins",
-      "n": 55
-    },
-    {
       "comuna": "Quemchi",
       "cod_comuna": 10209.0,
       "region": "Los Lagos",
       "n": 54
     },
     {
-      "comuna": "Lumaco",
-      "cod_comuna": 9207.0,
-      "region": "La Araucanía",
-      "n": 53
-    },
-    {
       "comuna": "Rio Ibañez",
       "cod_comuna": 11402.0,
       "region": "Aysén",
+      "n": 53
+    },
+    {
+      "comuna": "Lumaco",
+      "cod_comuna": 9207.0,
+      "region": "La Araucanía",
       "n": 53
     },
     {
@@ -2143,15 +2143,15 @@
       "n": 30
     },
     {
-      "comuna": "Juan Fernandez",
-      "cod_comuna": 5104.0,
-      "region": "Valparaíso",
-      "n": 28
-    },
-    {
       "comuna": "Palena",
       "cod_comuna": 10404.0,
       "region": "Los Lagos",
+      "n": 28
+    },
+    {
+      "comuna": "Juan Fernandez",
+      "cod_comuna": 5104.0,
+      "region": "Valparaíso",
       "n": 28
     },
     {
@@ -2191,15 +2191,15 @@
       "n": 16
     },
     {
-      "comuna": "Laguna Blanca",
-      "cod_comuna": 12102.0,
-      "region": "Magallanes",
-      "n": 16
-    },
-    {
       "comuna": "Lago Verde",
       "cod_comuna": 11102.0,
       "region": "Aysén",
+      "n": 16
+    },
+    {
+      "comuna": "Laguna Blanca",
+      "cod_comuna": 12102.0,
+      "region": "Magallanes",
       "n": 16
     },
     {
@@ -2215,15 +2215,15 @@
       "n": 13
     },
     {
-      "comuna": "O'Higgins",
-      "cod_comuna": 11302.0,
-      "region": "Aysén",
-      "n": 13
-    },
-    {
       "comuna": "Ollague",
       "cod_comuna": 2202.0,
       "region": "Antofagasta",
+      "n": 13
+    },
+    {
+      "comuna": "O'Higgins",
+      "cod_comuna": 11302.0,
+      "region": "Aysén",
       "n": 13
     },
     {
@@ -2295,6 +2295,21 @@
       "n": 34360
     },
     {
+      "rango_edad": "66+",
+      "sexo": "Masculino",
+      "n": 4484
+    },
+    {
+      "rango_edad": "36-45",
+      "sexo": "Femenino",
+      "n": 60550
+    },
+    {
+      "rango_edad": "46-55",
+      "sexo": "Femenino",
+      "n": 25807
+    },
+    {
       "rango_edad": "(sin dato)",
       "sexo": "(sin dato)",
       "n": 38985
@@ -2305,9 +2320,19 @@
       "n": 198
     },
     {
-      "rango_edad": "66+",
+      "rango_edad": "56-65",
       "sexo": "Masculino",
-      "n": 4484
+      "n": 18295
+    },
+    {
+      "rango_edad": "26-35",
+      "sexo": "Masculino",
+      "n": 39566
+    },
+    {
+      "rango_edad": "18-25",
+      "sexo": "Masculino",
+      "n": 343
     },
     {
       "rango_edad": "36-45",
@@ -2323,31 +2348,6 @@
       "rango_edad": "66+",
       "sexo": "Femenino",
       "n": 1854
-    },
-    {
-      "rango_edad": "18-25",
-      "sexo": "Masculino",
-      "n": 343
-    },
-    {
-      "rango_edad": "36-45",
-      "sexo": "Femenino",
-      "n": 60550
-    },
-    {
-      "rango_edad": "46-55",
-      "sexo": "Femenino",
-      "n": 25807
-    },
-    {
-      "rango_edad": "56-65",
-      "sexo": "Masculino",
-      "n": 18295
-    },
-    {
-      "rango_edad": "26-35",
-      "sexo": "Masculino",
-      "n": 39566
     }
   ],
   "por_decil": [
@@ -2878,11 +2878,11 @@
       "n": 130
     },
     {
-      "company": "entel",
+      "company": "duoc uc",
       "n": 128
     },
     {
-      "company": "duoc uc",
+      "company": "entel",
       "n": 128
     },
     {
@@ -2918,19 +2918,19 @@
       "n": 94
     },
     {
-      "company": "pontificia universidad católica de valparaíso",
-      "n": 90
-    },
-    {
       "company": "junji - junta nacional de jardines infantiles",
       "n": 90
     },
     {
-      "company": "falabella",
-      "n": 89
+      "company": "pontificia universidad católica de valparaíso",
+      "n": 90
     },
     {
       "company": "deloitte",
+      "n": 89
+    },
+    {
+      "company": "falabella",
       "n": 89
     },
     {
@@ -2966,15 +2966,15 @@
       "n": 76
     },
     {
+      "company": "universidad austral de chile",
+      "n": 75
+    },
+    {
       "company": "ninguna",
       "n": 75
     },
     {
       "company": "ministerio de obras públicas",
-      "n": 75
-    },
-    {
-      "company": "universidad austral de chile",
       "n": 75
     },
     {
@@ -2986,11 +2986,11 @@
       "n": 74
     },
     {
-      "company": "fundación integra, chile",
+      "company": "universidad de valparaíso",
       "n": 74
     },
     {
-      "company": "universidad de valparaíso",
+      "company": "fundación integra, chile",
       "n": 74
     },
     {
@@ -3006,11 +3006,11 @@
       "n": 72
     },
     {
-      "company": "instituto profesional aiep",
+      "company": "ey",
       "n": 71
     },
     {
-      "company": "ey",
+      "company": "instituto profesional aiep",
       "n": 71
     },
     {
@@ -3030,11 +3030,11 @@
       "n": 62
     },
     {
-      "company": "farmacias cruz verde",
+      "company": "scotiabank",
       "n": 61
     },
     {
-      "company": "scotiabank",
+      "company": "farmacias cruz verde",
       "n": 61
     },
     {
@@ -3156,66 +3156,6 @@
   ],
   "evolucion_universidad": [
     {
-      "year": 2022,
-      "universidad_canon": "PUC de Chile",
-      "deudores": 4340,
-      "utm_total": 520779.0
-    },
-    {
-      "year": 2022,
-      "universidad_canon": "UTFSM",
-      "deudores": 16573,
-      "utm_total": 1049209.0
-    },
-    {
-      "year": 2022,
-      "universidad_canon": "UMCE",
-      "deudores": 9395,
-      "utm_total": 1281496.0
-    },
-    {
-      "year": 2022,
-      "universidad_canon": "U. de O'Higgins",
-      "deudores": 1,
-      "utm_total": 8.0
-    },
-    {
-      "year": 2023,
-      "universidad_canon": "U. Católica del Maule",
-      "deudores": 6298,
-      "utm_total": 636346.0
-    },
-    {
-      "year": 2024,
-      "universidad_canon": "PUC de Chile",
-      "deudores": 5366,
-      "utm_total": 761980.0
-    },
-    {
-      "year": 2024,
-      "universidad_canon": "UTFSM",
-      "deudores": 17783,
-      "utm_total": 2090365.0
-    },
-    {
-      "year": 2024,
-      "universidad_canon": "UMCE",
-      "deudores": 9979,
-      "utm_total": 1587523.0
-    },
-    {
-      "year": 2024,
-      "universidad_canon": "U. de O'Higgins",
-      "deudores": 7,
-      "utm_total": 78.0
-    },
-    {
-      "year": 2025,
-      "universidad_canon": "U. de Chile",
-      "deudores": 16910,
-      "utm_total": 3344341.0
-    },
-    {
       "year": 2026,
       "universidad_canon": "U. de La Serena",
       "deudores": 17452,
@@ -3336,6 +3276,96 @@
       "utm_total": 1106218.0
     },
     {
+      "year": 2022,
+      "universidad_canon": "PUC de Chile",
+      "deudores": 4340,
+      "utm_total": 520779.0
+    },
+    {
+      "year": 2022,
+      "universidad_canon": "UTFSM",
+      "deudores": 16573,
+      "utm_total": 1049209.0
+    },
+    {
+      "year": 2022,
+      "universidad_canon": "UMCE",
+      "deudores": 9395,
+      "utm_total": 1281496.0
+    },
+    {
+      "year": 2022,
+      "universidad_canon": "U. de O'Higgins",
+      "deudores": 1,
+      "utm_total": 8.0
+    },
+    {
+      "year": 2023,
+      "universidad_canon": "U. Católica del Maule",
+      "deudores": 6298,
+      "utm_total": 636346.0
+    },
+    {
+      "year": 2024,
+      "universidad_canon": "PUC de Chile",
+      "deudores": 5366,
+      "utm_total": 761980.0
+    },
+    {
+      "year": 2024,
+      "universidad_canon": "UTFSM",
+      "deudores": 17783,
+      "utm_total": 2090365.0
+    },
+    {
+      "year": 2024,
+      "universidad_canon": "UMCE",
+      "deudores": 9979,
+      "utm_total": 1587523.0
+    },
+    {
+      "year": 2024,
+      "universidad_canon": "U. de O'Higgins",
+      "deudores": 7,
+      "utm_total": 78.0
+    },
+    {
+      "year": 2025,
+      "universidad_canon": "U. de Chile",
+      "deudores": 16910,
+      "utm_total": 3344341.0
+    },
+    {
+      "year": 2026,
+      "universidad_canon": "U. de Chile",
+      "deudores": 17327,
+      "utm_total": 3683561.0
+    },
+    {
+      "year": 2023,
+      "universidad_canon": "U. de Santiago",
+      "deudores": 22829,
+      "utm_total": 2889677.0
+    },
+    {
+      "year": 2023,
+      "universidad_canon": "U. de Magallanes",
+      "deudores": 3946,
+      "utm_total": 639408.0
+    },
+    {
+      "year": 2023,
+      "universidad_canon": "U. de Tarapacá",
+      "deudores": 12766,
+      "utm_total": 1691016.0
+    },
+    {
+      "year": 2023,
+      "universidad_canon": "U. Arturo Prat",
+      "deudores": 6200,
+      "utm_total": 901841.0
+    },
+    {
       "year": 2025,
       "universidad_canon": "U. Católica del Norte",
       "deudores": 9567,
@@ -3403,6 +3433,48 @@
     },
     {
       "year": 2025,
+      "universidad_canon": "U. de La Serena",
+      "deudores": 17127,
+      "utm_total": 3561687.0
+    },
+    {
+      "year": 2022,
+      "universidad_canon": "U. Católica del Maule",
+      "deudores": 5919,
+      "utm_total": 553928.0
+    },
+    {
+      "year": 2023,
+      "universidad_canon": "PUC de Chile",
+      "deudores": 4958,
+      "utm_total": 661749.0
+    },
+    {
+      "year": 2023,
+      "universidad_canon": "UTFSM",
+      "deudores": 18831,
+      "utm_total": 1882616.0
+    },
+    {
+      "year": 2023,
+      "universidad_canon": "UMCE",
+      "deudores": 9861,
+      "utm_total": 1408195.0
+    },
+    {
+      "year": 2023,
+      "universidad_canon": "U. de O'Higgins",
+      "deudores": 4,
+      "utm_total": 33.0
+    },
+    {
+      "year": 2024,
+      "universidad_canon": "U. Católica del Maule",
+      "deudores": 6884,
+      "utm_total": 807496.0
+    },
+    {
+      "year": 2025,
       "universidad_canon": "U. Católica de Temuco",
       "deudores": 13308,
       "utm_total": 1674326.0
@@ -3462,34 +3534,34 @@
       "utm_total": 3707091.0
     },
     {
-      "year": 2026,
-      "universidad_canon": "U. de Chile",
-      "deudores": 17327,
-      "utm_total": 3683561.0
-    },
-    {
-      "year": 2023,
-      "universidad_canon": "U. de Santiago",
-      "deudores": 22829,
-      "utm_total": 2889677.0
-    },
-    {
-      "year": 2023,
+      "year": 2025,
       "universidad_canon": "U. de Magallanes",
-      "deudores": 3946,
-      "utm_total": 639408.0
+      "deudores": 4176,
+      "utm_total": 801146.0
     },
     {
-      "year": 2023,
+      "year": 2025,
       "universidad_canon": "U. de Tarapacá",
-      "deudores": 12766,
-      "utm_total": 1691016.0
+      "deudores": 13772,
+      "utm_total": 2149713.0
     },
     {
-      "year": 2023,
+      "year": 2025,
       "universidad_canon": "U. Arturo Prat",
-      "deudores": 6200,
-      "utm_total": 901841.0
+      "deudores": 6390,
+      "utm_total": 1077577.0
+    },
+    {
+      "year": 2026,
+      "universidad_canon": "U. Católica del Maule",
+      "deudores": 7387,
+      "utm_total": 996189.0
+    },
+    {
+      "year": 2025,
+      "universidad_canon": "U. de Santiago",
+      "deudores": 25154,
+      "utm_total": 3790340.0
     },
     {
       "year": 2025,
@@ -3535,126 +3607,6 @@
     },
     {
       "year": 2025,
-      "universidad_canon": "U. de Magallanes",
-      "deudores": 4176,
-      "utm_total": 801146.0
-    },
-    {
-      "year": 2025,
-      "universidad_canon": "U. de Tarapacá",
-      "deudores": 13772,
-      "utm_total": 2149713.0
-    },
-    {
-      "year": 2025,
-      "universidad_canon": "U. Arturo Prat",
-      "deudores": 6390,
-      "utm_total": 1077577.0
-    },
-    {
-      "year": 2026,
-      "universidad_canon": "U. Católica del Maule",
-      "deudores": 7387,
-      "utm_total": 996189.0
-    },
-    {
-      "year": 2025,
-      "universidad_canon": "U. de Santiago",
-      "deudores": 25154,
-      "utm_total": 3790340.0
-    },
-    {
-      "year": 2025,
-      "universidad_canon": "U. de La Serena",
-      "deudores": 17127,
-      "utm_total": 3561687.0
-    },
-    {
-      "year": 2022,
-      "universidad_canon": "U. Católica del Maule",
-      "deudores": 5919,
-      "utm_total": 553928.0
-    },
-    {
-      "year": 2023,
-      "universidad_canon": "PUC de Chile",
-      "deudores": 4958,
-      "utm_total": 661749.0
-    },
-    {
-      "year": 2023,
-      "universidad_canon": "UTFSM",
-      "deudores": 18831,
-      "utm_total": 1882616.0
-    },
-    {
-      "year": 2023,
-      "universidad_canon": "UMCE",
-      "deudores": 9861,
-      "utm_total": 1408195.0
-    },
-    {
-      "year": 2023,
-      "universidad_canon": "U. de O'Higgins",
-      "deudores": 4,
-      "utm_total": 33.0
-    },
-    {
-      "year": 2024,
-      "universidad_canon": "U. Católica del Maule",
-      "deudores": 6884,
-      "utm_total": 807496.0
-    },
-    {
-      "year": 2026,
-      "universidad_canon": "U. Austral",
-      "deudores": 14117,
-      "utm_total": 2344112.0
-    },
-    {
-      "year": 2026,
-      "universidad_canon": "U. de Talca",
-      "deudores": 9428,
-      "utm_total": 1689868.0
-    },
-    {
-      "year": 2026,
-      "universidad_canon": "U. de Los Lagos",
-      "deudores": 8583,
-      "utm_total": 1314048.0
-    },
-    {
-      "year": 2022,
-      "universidad_canon": "U. de Antofagasta",
-      "deudores": 6947,
-      "utm_total": 956258.0
-    },
-    {
-      "year": 2022,
-      "universidad_canon": "U. de Playa Ancha",
-      "deudores": 14992,
-      "utm_total": 1574631.0
-    },
-    {
-      "year": 2023,
-      "universidad_canon": "U. Católica del Norte",
-      "deudores": 8701,
-      "utm_total": 1096773.0
-    },
-    {
-      "year": 2024,
-      "universidad_canon": "U. de Antofagasta",
-      "deudores": 7425,
-      "utm_total": 1229550.0
-    },
-    {
-      "year": 2024,
-      "universidad_canon": "U. de Playa Ancha",
-      "deudores": 16248,
-      "utm_total": 1998091.0
-    },
-    {
-      "year": 2025,
       "universidad_canon": "UMCE",
       "deudores": 10084,
       "utm_total": 1629662.0
@@ -3694,6 +3646,138 @@
       "universidad_canon": "UTFSM",
       "deudores": 21104,
       "utm_total": 2411112.0
+    },
+    {
+      "year": 2025,
+      "universidad_canon": "U. del Bío-Bío",
+      "deudores": 18789,
+      "utm_total": 2563079.0
+    },
+    {
+      "year": 2025,
+      "universidad_canon": "U. de La Frontera",
+      "deudores": 15053,
+      "utm_total": 2814767.0
+    },
+    {
+      "year": 2025,
+      "universidad_canon": "U. de Atacama",
+      "deudores": 8036,
+      "utm_total": 1689424.0
+    },
+    {
+      "year": 2025,
+      "universidad_canon": "UTEM",
+      "deudores": 16276,
+      "utm_total": 2552147.0
+    },
+    {
+      "year": 2026,
+      "universidad_canon": "PUC de Valparaíso",
+      "deudores": 19721,
+      "utm_total": 3247686.0
+    },
+    {
+      "year": 2026,
+      "universidad_canon": "U. de Valparaíso",
+      "deudores": 18208,
+      "utm_total": 2741418.0
+    },
+    {
+      "year": 2022,
+      "universidad_canon": "U. Católica del Norte",
+      "deudores": 8111,
+      "utm_total": 976756.0
+    },
+    {
+      "year": 2023,
+      "universidad_canon": "U. de Antofagasta",
+      "deudores": 7268,
+      "utm_total": 1055089.0
+    },
+    {
+      "year": 2023,
+      "universidad_canon": "U. de Playa Ancha",
+      "deudores": 15768,
+      "utm_total": 1771642.0
+    },
+    {
+      "year": 2024,
+      "universidad_canon": "U. Católica del Norte",
+      "deudores": 9096,
+      "utm_total": 1282388.0
+    },
+    {
+      "year": 2026,
+      "universidad_canon": "PUC de Chile",
+      "deudores": 5939,
+      "utm_total": 985776.0
+    },
+    {
+      "year": 2026,
+      "universidad_canon": "UTFSM",
+      "deudores": 20324,
+      "utm_total": 2568693.0
+    },
+    {
+      "year": 2026,
+      "universidad_canon": "UMCE",
+      "deudores": 10134,
+      "utm_total": 1739623.0
+    },
+    {
+      "year": 2026,
+      "universidad_canon": "U. de O'Higgins",
+      "deudores": 39,
+      "utm_total": 425.0
+    },
+    {
+      "year": 2025,
+      "universidad_canon": "U. Católica del Maule",
+      "deudores": 7224,
+      "utm_total": 890525.0
+    },
+    {
+      "year": 2026,
+      "universidad_canon": "U. de Santiago",
+      "deudores": 25293,
+      "utm_total": 4153524.0
+    },
+    {
+      "year": 2026,
+      "universidad_canon": "U. de Magallanes",
+      "deudores": 4257,
+      "utm_total": 883329.0
+    },
+    {
+      "year": 2026,
+      "universidad_canon": "U. de Tarapacá",
+      "deudores": 14125,
+      "utm_total": 2400572.0
+    },
+    {
+      "year": 2026,
+      "universidad_canon": "U. Arturo Prat",
+      "deudores": 6457,
+      "utm_total": 1186153.0
+    },
+    {
+      "year": 2022,
+      "universidad_canon": "U. de La Serena",
+      "deudores": 15159,
+      "utm_total": 2443333.0
+    },
+    {
+      "year": 2023,
+      "universidad_canon": "U. de Chile",
+      "deudores": 15663,
+      "utm_total": 2750922.0
+    },
+    {
+      "year": 2024,
+      "universidad_canon": "U. de La Serena",
+      "deudores": 16055,
+      "utm_total": 2969452.0
     },
     {
       "year": 2025,
@@ -3762,90 +3846,6 @@
       "utm_total": 2936017.0
     },
     {
-      "year": 2026,
-      "universidad_canon": "PUC de Chile",
-      "deudores": 5939,
-      "utm_total": 985776.0
-    },
-    {
-      "year": 2026,
-      "universidad_canon": "UTFSM",
-      "deudores": 20324,
-      "utm_total": 2568693.0
-    },
-    {
-      "year": 2026,
-      "universidad_canon": "UMCE",
-      "deudores": 10134,
-      "utm_total": 1739623.0
-    },
-    {
-      "year": 2026,
-      "universidad_canon": "U. de O'Higgins",
-      "deudores": 39,
-      "utm_total": 425.0
-    },
-    {
-      "year": 2025,
-      "universidad_canon": "U. del Bío-Bío",
-      "deudores": 18789,
-      "utm_total": 2563079.0
-    },
-    {
-      "year": 2025,
-      "universidad_canon": "U. de La Frontera",
-      "deudores": 15053,
-      "utm_total": 2814767.0
-    },
-    {
-      "year": 2025,
-      "universidad_canon": "U. de Atacama",
-      "deudores": 8036,
-      "utm_total": 1689424.0
-    },
-    {
-      "year": 2025,
-      "universidad_canon": "UTEM",
-      "deudores": 16276,
-      "utm_total": 2552147.0
-    },
-    {
-      "year": 2026,
-      "universidad_canon": "PUC de Valparaíso",
-      "deudores": 19721,
-      "utm_total": 3247686.0
-    },
-    {
-      "year": 2026,
-      "universidad_canon": "U. de Valparaíso",
-      "deudores": 18208,
-      "utm_total": 2741418.0
-    },
-    {
-      "year": 2022,
-      "universidad_canon": "U. Católica del Norte",
-      "deudores": 8111,
-      "utm_total": 976756.0
-    },
-    {
-      "year": 2023,
-      "universidad_canon": "U. de Antofagasta",
-      "deudores": 7268,
-      "utm_total": 1055089.0
-    },
-    {
-      "year": 2023,
-      "universidad_canon": "U. de Playa Ancha",
-      "deudores": 15768,
-      "utm_total": 1771642.0
-    },
-    {
-      "year": 2024,
-      "universidad_canon": "U. Católica del Norte",
-      "deudores": 9096,
-      "utm_total": 1282388.0
-    },
-    {
       "year": 2025,
       "universidad_canon": "U. Austral",
       "deudores": 17039,
@@ -3888,52 +3888,52 @@
       "utm_total": 1488418.0
     },
     {
-      "year": 2025,
-      "universidad_canon": "U. Católica del Maule",
-      "deudores": 7224,
-      "utm_total": 890525.0
+      "year": 2026,
+      "universidad_canon": "U. Austral",
+      "deudores": 14117,
+      "utm_total": 2344112.0
     },
     {
       "year": 2026,
-      "universidad_canon": "U. de Santiago",
-      "deudores": 25293,
-      "utm_total": 4153524.0
+      "universidad_canon": "U. de Talca",
+      "deudores": 9428,
+      "utm_total": 1689868.0
     },
     {
       "year": 2026,
-      "universidad_canon": "U. de Magallanes",
-      "deudores": 4257,
-      "utm_total": 883329.0
-    },
-    {
-      "year": 2026,
-      "universidad_canon": "U. de Tarapacá",
-      "deudores": 14125,
-      "utm_total": 2400572.0
-    },
-    {
-      "year": 2026,
-      "universidad_canon": "U. Arturo Prat",
-      "deudores": 6457,
-      "utm_total": 1186153.0
+      "universidad_canon": "U. de Los Lagos",
+      "deudores": 8583,
+      "utm_total": 1314048.0
     },
     {
       "year": 2022,
-      "universidad_canon": "U. de La Serena",
-      "deudores": 15159,
-      "utm_total": 2443333.0
+      "universidad_canon": "U. de Antofagasta",
+      "deudores": 6947,
+      "utm_total": 956258.0
+    },
+    {
+      "year": 2022,
+      "universidad_canon": "U. de Playa Ancha",
+      "deudores": 14992,
+      "utm_total": 1574631.0
     },
     {
       "year": 2023,
-      "universidad_canon": "U. de Chile",
-      "deudores": 15663,
-      "utm_total": 2750922.0
+      "universidad_canon": "U. Católica del Norte",
+      "deudores": 8701,
+      "utm_total": 1096773.0
     },
     {
       "year": 2024,
-      "universidad_canon": "U. de La Serena",
-      "deudores": 16055,
-      "utm_total": 2969452.0
+      "universidad_canon": "U. de Antofagasta",
+      "deudores": 7425,
+      "utm_total": 1229550.0
+    },
+    {
+      "year": 2024,
+      "universidad_canon": "U. de Playa Ancha",
+      "deudores": 16248,
+      "utm_total": 1998091.0
     }
   ],
   "flujos": [
@@ -5440,14 +5440,14 @@
       "n_causas": 17.0
     },
     {
-      "dte_rut": "81698900-0",
-      "dte_nombre": "PONTIFICIA U. CATOLICA DE CHILE",
+      "dte_rut": "71540100-2",
+      "dte_nombre": "UNIVERSIDAD NACIONAL ANDRÉS BELLO",
       "n_deudores": 16,
       "n_causas": 16.0
     },
     {
-      "dte_rut": "71540100-2",
-      "dte_nombre": "UNIVERSIDAD NACIONAL ANDRÉS BELLO",
+      "dte_rut": "81698900-0",
+      "dte_nombre": "PONTIFICIA U. CATOLICA DE CHILE",
       "n_deudores": 16,
       "n_causas": 16.0
     },
@@ -5638,6 +5638,100 @@
       "crecimiento_2026_2030_pct": 36.1
     }
   },
+  "cohort_matrix": [
+    {
+      "cohort": 2022,
+      "base": 288290,
+      "years": {
+        "2022": 288290,
+        "2023": 277179,
+        "2024": 273610,
+        "2025": 271501,
+        "2026": 265072
+      }
+    },
+    {
+      "cohort": 2023,
+      "base": 30826,
+      "years": {
+        "2022": null,
+        "2023": 30826,
+        "2024": 24923,
+        "2025": 26086,
+        "2026": 25340
+      }
+    },
+    {
+      "cohort": 2024,
+      "base": 20057,
+      "years": {
+        "2022": null,
+        "2023": null,
+        "2024": 20057,
+        "2025": 16965,
+        "2026": 16266
+      }
+    },
+    {
+      "cohort": 2025,
+      "base": 17947,
+      "years": {
+        "2022": null,
+        "2023": null,
+        "2024": null,
+        "2025": 17947,
+        "2026": 15300
+      }
+    },
+    {
+      "cohort": 2026,
+      "base": 13174,
+      "years": {
+        "2022": null,
+        "2023": null,
+        "2024": null,
+        "2025": null,
+        "2026": 13174
+      }
+    }
+  ],
+  "stream_composicion": {
+    "2022": {
+      "2022": 288290,
+      "2023": 0,
+      "2024": 0,
+      "2025": 0,
+      "2026": 0
+    },
+    "2023": {
+      "2022": 277179,
+      "2023": 30826,
+      "2024": 0,
+      "2025": 0,
+      "2026": 0
+    },
+    "2024": {
+      "2022": 273610,
+      "2023": 24923,
+      "2024": 20057,
+      "2025": 0,
+      "2026": 0
+    },
+    "2025": {
+      "2022": 271501,
+      "2023": 26086,
+      "2024": 16965,
+      "2025": 17947,
+      "2026": 0
+    },
+    "2026": {
+      "2022": 265072,
+      "2023": 25340,
+      "2024": 16266,
+      "2025": 15300,
+      "2026": 13174
+    }
+  },
   "comunas_ejecutivos": [
     {
       "comuna": "Santiago",
@@ -5650,13 +5744,13 @@
       "n": 134
     },
     {
-      "comuna": "Valparaiso",
-      "region": "Valparaíso",
+      "comuna": "Temuco",
+      "region": "La Araucanía",
       "n": 116
     },
     {
-      "comuna": "Temuco",
-      "region": "La Araucanía",
+      "comuna": "Valparaiso",
+      "region": "Valparaíso",
       "n": 116
     },
     {
@@ -5695,6 +5789,11 @@
       "n": 74
     },
     {
+      "comuna": "Valdivia",
+      "region": "Los Ríos",
+      "n": 66
+    },
+    {
       "comuna": "Talca",
       "region": "Maule",
       "n": 66
@@ -5702,11 +5801,6 @@
     {
       "comuna": "La Florida",
       "region": "Metropolitana",
-      "n": 66
-    },
-    {
-      "comuna": "Valdivia",
-      "region": "Los Ríos",
       "n": 66
     },
     {
@@ -6215,24 +6309,24 @@
   },
   "justicia_por_causa": [
     {
-      "bucket": "10+ causas",
-      "n": 476
+      "bucket": "2-3 causas",
+      "n": 20329
     },
     {
       "bucket": "1 causa",
       "n": 43267
     },
     {
-      "bucket": "2-3 causas",
-      "n": 20329
+      "bucket": "4-10 causas",
+      "n": 7942
     },
     {
       "bucket": "Sin causas por deuda",
       "n": 263138
     },
     {
-      "bucket": "4-10 causas",
-      "n": 7942
+      "bucket": "10+ causas",
+      "n": 476
     }
   ],
   "justicia_por_region": [
@@ -6654,11 +6748,11 @@
           "n": 18
         },
         {
-          "region": "Magallanes",
+          "region": "Arica Y Parinacota",
           "n": 12
         },
         {
-          "region": "Arica Y Parinacota",
+          "region": "Magallanes",
           "n": 12
         },
         {
@@ -7958,15 +8052,15 @@
           "n": 21
         },
         {
-          "region": "Antofagasta",
-          "n": 17
-        },
-        {
           "region": "Aysén",
           "n": 17
         },
         {
           "region": "Magallanes",
+          "n": 17
+        },
+        {
+          "region": "Antofagasta",
           "n": 17
         }
       ],

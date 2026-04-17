@@ -563,6 +563,13 @@
       <div class="card"><div class="card-label">Deudores 2026 · ¿estaban también en año X?</div><div class="chart-wrap tall"><canvas id="chartRetencion"></canvas></div><div class="card-note">De los 335.152 deudores del 2026, qué porcentaje ya figuraba en cada año previo.</div></div>
     </div>
 
+    <div class="section-tag" style="margin-top:40px">Matriz de cohortes</div>
+    <div class="section-title">Retención año a año · ¿cuántos de cada generación siguen?</div>
+    <div class="section-desc">Cada fila es un "cohort" — personas que aparecieron por primera vez en ese año. Cada columna muestra cuántos de esa cohorte siguen presentes en los años siguientes. Lees de izquierda a derecha y ves cómo la cohorte se "derrite" muy lentamente con el tiempo. Este es el análisis longitudinal clásico (mismo usado en retención de usuarios de productos digitales).</div>
+    <div class="full-row"><div class="card"><div class="card-label">Matriz de cohortes · valor absoluto y % retenido</div><div id="cohortMatrix" style="overflow-x:auto"></div><div class="card-note">Verde oscuro = alta retención (la cohorte sigue en el sistema). Verde claro = menor retención. El cohort 2022 mantiene 91,9% después de 4 años — prácticamente nadie sale. Las celdas diagonales son el "100% inicial".</div></div></div>
+
+    <div class="full-row"><div class="card"><div class="card-label">Composición de cada año · ¿de qué cohorte vienen los deudores?</div><div class="chart-wrap tall"><canvas id="chartStream"></canvas></div><div class="card-note">Área apilada. Cada color representa una cohorte (año de primera aparición). En 2026, la mayoría (79,1%) sigue siendo gente que ya estaba en 2022. La población es mayoritariamente "vieja".</div></div></div>
+
     <div class="section-tag" style="margin-top:40px">Análisis longitudinal</div>
     <div class="section-title">Trayectoria de cada deudor · ¿pagan, acumulan o van saliendo?</div>
     <div class="section-desc">Clasificación de cada RUT según cómo evolucionó su deuda entre 2022 y 2026. Las categorías "Crónico acumulando/pagando/estable" corresponden a deudores presentes en los 5 años; las otras a quienes entraron, salieron o aparecen esporádicamente.</div>
@@ -1062,6 +1069,69 @@ function renderEvolucion() {
     options: { responsive: true, maintainAspectRatio: false,
       plugins: { legend: { display: false }, tooltip: { ...tooltipDefaults, callbacks: { label: ctx => ctx.parsed.y + '% · ' + fmt(ret[ctx.dataIndex].n) + ' deudores ya figuraban' } } },
       scales: { x: { grid: { display: false }, ticks: axisMono }, y: { grid: { color: C.gray200 }, border: { dash:[4,4], display:false }, ticks: { ...axisMono, callback: v => v + '%' }, beginAtZero: true, max: 100 } }
+    }
+  });
+
+  // ═══ Matriz de cohortes (heatmap-style tabla) ═══
+  const cm = D.cohort_matrix || [];
+  const years = [2022, 2023, 2024, 2025, 2026];
+  let html = `<table style="width:100%;font-family:'JetBrains Mono',monospace;font-size:12px;border-collapse:collapse">
+    <thead><tr>
+      <th style="text-align:left;padding:10px;color:${C.gray500};text-transform:uppercase;font-size:10px;letter-spacing:.1em;border-bottom:2px solid ${C.gray200}">Cohort</th>
+      <th style="text-align:right;padding:10px;color:${C.gray500};text-transform:uppercase;font-size:10px;letter-spacing:.1em;border-bottom:2px solid ${C.gray200}">Base</th>`;
+  years.forEach(y => html += `<th style="text-align:right;padding:10px;color:${C.gray500};text-transform:uppercase;font-size:10px;letter-spacing:.1em;border-bottom:2px solid ${C.gray200}">${y}</th>`);
+  html += '</tr></thead><tbody>';
+  cm.forEach(row => {
+    html += `<tr><td style="padding:10px;font-weight:700;color:${C.blue};border-bottom:1px solid ${C.gray200}">${row.cohort}</td>`;
+    html += `<td style="text-align:right;padding:10px;color:${C.gray900};font-weight:600;border-bottom:1px solid ${C.gray200}">${fmt(row.base)}</td>`;
+    years.forEach(y => {
+      const v = row.years[y];
+      if (v === null || v === undefined) {
+        html += `<td style="text-align:right;padding:10px;color:${C.gray200};border-bottom:1px solid ${C.gray200}">—</td>`;
+      } else {
+        const pct = (100 * v / row.base).toFixed(1);
+        // gradient verde según retención
+        const intensity = Math.min(1, v / row.base);
+        const bgAlpha = 0.15 + intensity * 0.55;
+        const bg = `rgba(16,185,129,${bgAlpha})`;
+        const isCurrent = y === row.cohort;
+        html += `<td style="text-align:right;padding:10px;background:${isCurrent ? C.green : bg};color:${isCurrent || intensity > 0.7 ? '#fff' : C.gray900};font-weight:${isCurrent ? '700' : '500'};border-bottom:1px solid ${C.gray200}"><div>${fmt(v)}</div><div style="font-size:10px;opacity:0.9;margin-top:2px">${pct}%</div></td>`;
+      }
+    });
+    html += '</tr>';
+  });
+  html += '</tbody></table>';
+  document.getElementById('cohortMatrix').innerHTML = html;
+
+  // ═══ Stream graph · composición por cohort ═══
+  const sc = D.stream_composicion || {};
+  const cohortColors = [C.red, C.amber, C.green, C.cyan, C.blueDark];
+  const streamDatasets = years.map((cy, i) => ({
+    label: 'Cohort ' + cy,
+    data: years.map(y => (sc[y] || {})[cy] || 0),
+    backgroundColor: cohortColors[i],
+    borderColor: cohortColors[i],
+    fill: true,
+    tension: 0.4,
+  }));
+  new Chart(document.getElementById('chartStream'), {
+    type: 'line', data: { labels: years.map(String), datasets: streamDatasets },
+    options: { responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'top', align: 'end', labels: { font: { ...defaultFont, size: 11, weight: 300 }, color: C.gray500, padding: 12, usePointStyle: true, pointStyle: 'circle', boxWidth: 6, boxHeight: 6 } },
+        tooltip: { ...tooltipDefaults, mode: 'index',
+          callbacks: {
+            label: ctx => ctx.dataset.label + ': ' + fmt(ctx.parsed.y),
+            footer: items => {
+              const total = items.reduce((s, x) => s + x.parsed.y, 0);
+              return 'Total: ' + fmt(total);
+            }
+          } }
+      },
+      scales: {
+        x: { grid: { display: false }, ticks: axisMono },
+        y: { stacked: true, grid: { color: C.gray200 }, border: { dash:[4,4], display:false }, ticks: { ...axisMono, callback: v => v>=1000?(v/1000)+'k':v }, beginAtZero: true }
+      }
     }
   });
 
@@ -1740,7 +1810,7 @@ function donut(id, labels, values) {
   });
 }
 
-fetch('/static/aggregates.json?v=17').then(r => r.json()).then(d => {
+fetch('/static/aggregates.json?v=18').then(r => r.json()).then(d => {
   D = d;
   renderMain();
   // Check URL hash for deep link
