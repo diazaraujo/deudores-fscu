@@ -1074,23 +1074,22 @@ function renderEvolucion() {
 
   // ═══ Matriz de cohortes (heatmap-style tabla) ═══
   const cm = D.cohort_matrix || [];
-  const years = [2022, 2023, 2024, 2025, 2026];
+  const cohortYears = [2022, 2023, 2024, 2025, 2026];
   let html = `<table style="width:100%;font-family:'JetBrains Mono',monospace;font-size:12px;border-collapse:collapse">
     <thead><tr>
       <th style="text-align:left;padding:10px;color:${C.gray500};text-transform:uppercase;font-size:10px;letter-spacing:.1em;border-bottom:2px solid ${C.gray200}">Cohort</th>
       <th style="text-align:right;padding:10px;color:${C.gray500};text-transform:uppercase;font-size:10px;letter-spacing:.1em;border-bottom:2px solid ${C.gray200}">Base</th>`;
-  years.forEach(y => html += `<th style="text-align:right;padding:10px;color:${C.gray500};text-transform:uppercase;font-size:10px;letter-spacing:.1em;border-bottom:2px solid ${C.gray200}">${y}</th>`);
+  cohortYears.forEach(y => html += `<th style="text-align:right;padding:10px;color:${C.gray500};text-transform:uppercase;font-size:10px;letter-spacing:.1em;border-bottom:2px solid ${C.gray200}">${y}</th>`);
   html += '</tr></thead><tbody>';
   cm.forEach(row => {
     html += `<tr><td style="padding:10px;font-weight:700;color:${C.blue};border-bottom:1px solid ${C.gray200}">${row.cohort}</td>`;
     html += `<td style="text-align:right;padding:10px;color:${C.gray900};font-weight:600;border-bottom:1px solid ${C.gray200}">${fmt(row.base)}</td>`;
-    years.forEach(y => {
-      const v = row.years[y];
+    cohortYears.forEach(y => {
+      const v = row.years[String(y)];
       if (v === null || v === undefined) {
         html += `<td style="text-align:right;padding:10px;color:${C.gray200};border-bottom:1px solid ${C.gray200}">—</td>`;
       } else {
         const pct = (100 * v / row.base).toFixed(1);
-        // gradient verde según retención
         const intensity = Math.min(1, v / row.base);
         const bgAlpha = 0.15 + intensity * 0.55;
         const bg = `rgba(16,185,129,${bgAlpha})`;
@@ -1106,16 +1105,16 @@ function renderEvolucion() {
   // ═══ Stream graph · composición por cohort ═══
   const sc = D.stream_composicion || {};
   const cohortColors = [C.red, C.amber, C.green, C.cyan, C.blueDark];
-  const streamDatasets = years.map((cy, i) => ({
+  const streamDatasets = cohortYears.map((cy, i) => ({
     label: 'Cohort ' + cy,
-    data: years.map(y => (sc[y] || {})[cy] || 0),
+    data: cohortYears.map(y => (sc[String(y)] || {})[String(cy)] || 0),
     backgroundColor: cohortColors[i],
     borderColor: cohortColors[i],
     fill: true,
     tension: 0.4,
   }));
   new Chart(document.getElementById('chartStream'), {
-    type: 'line', data: { labels: years.map(String), datasets: streamDatasets },
+    type: 'line', data: { labels: cohortYears.map(String), datasets: streamDatasets },
     options: { responsive: true, maintainAspectRatio: false,
       plugins: {
         legend: { position: 'top', align: 'end', labels: { font: { ...defaultFont, size: 11, weight: 300 }, color: C.gray500, padding: 12, usePointStyle: true, pointStyle: 'circle', boxWidth: 6, boxHeight: 6 } },
@@ -1810,7 +1809,7 @@ function donut(id, labels, values) {
   });
 }
 
-fetch('/static/aggregates.json?v=19').then(r => r.json()).then(d => {
+fetch('/static/aggregates.json?v=20').then(r => r.json()).then(d => {
   D = d;
   renderMain();
   // Check URL hash for deep link
