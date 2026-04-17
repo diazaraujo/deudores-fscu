@@ -121,6 +121,70 @@
     letter-spacing: .1em; color: #266FE0; margin-top: 12px; font-weight: 600;
   }
 
+  /* Carousel */
+  .carousel-wrap { position: relative; margin-bottom: 28px; }
+  .carousel-viewport {
+    overflow: hidden; border-radius: 12px; background: #fff; border: 1px solid #E5E7EB;
+    min-height: 220px;
+  }
+  .carousel-track {
+    display: flex; transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .carousel-slide {
+    flex: 0 0 100%; padding: 32px 40px; display: grid;
+    grid-template-columns: 60px 1fr 1fr; gap: 24px; align-items: center; cursor: pointer;
+  }
+  .carousel-slide .c-badge {
+    width: 60px; height: 60px; border-radius: 12px; display: flex;
+    align-items: center; justify-content: center;
+    font-family: 'JetBrains Mono', monospace; font-weight: 800; font-size: 16px;
+  }
+  .carousel-slide .c-left { }
+  .carousel-slide .c-tag {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase;
+    letter-spacing: .1em; color: #6B7280; margin-bottom: 6px;
+  }
+  .carousel-slide .c-title { font-size: 18px; font-weight: 700; color: #171B21; line-height: 1.25; margin-bottom: 10px; }
+  .carousel-slide .c-kpi { font-size: 44px; font-weight: 800; line-height: 1; }
+  .carousel-slide .c-sub { font-size: 12px; color: #6B7280; margin-top: 6px; font-weight: 400; }
+  .carousel-slide .c-eli5 {
+    font-size: 13px; line-height: 1.55; color: #3A3A3A; font-weight: 300;
+    padding: 14px 16px; background: #F5F5F5; border-radius: 8px; border-left: 3px solid #F59E0B;
+    max-height: 140px; overflow: hidden; position: relative;
+  }
+  .carousel-slide .c-eli5::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 28px;
+    background: linear-gradient(to bottom, transparent, #F5F5F5);
+  }
+  .carousel-slide .c-cta {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase;
+    letter-spacing: .1em; color: #266FE0; margin-top: 10px; font-weight: 600;
+  }
+  .carousel-arrow {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: #fff; border: 1px solid #E5E7EB; border-radius: 50%;
+    width: 40px; height: 40px; cursor: pointer; font-size: 18px; color: #266FE0;
+    display: flex; align-items: center; justify-content: center; z-index: 5;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08); transition: all 0.15s;
+  }
+  .carousel-arrow:hover { background: #266FE0; color: #fff; transform: translateY(-50%) scale(1.08); }
+  .carousel-prev { left: -18px; } .carousel-next { right: -18px; }
+  .carousel-dots {
+    display: flex; justify-content: center; gap: 6px; margin-top: 16px;
+  }
+  .carousel-dot {
+    width: 8px; height: 8px; border-radius: 50%; background: #E5E7EB;
+    cursor: pointer; transition: all 0.2s; border: none; padding: 0;
+  }
+  .carousel-dot.active { background: #266FE0; width: 24px; border-radius: 4px; }
+  @media (max-width: 768px) {
+    .carousel-slide { grid-template-columns: 1fr; padding: 24px 20px; gap: 16px; }
+    .carousel-slide .c-badge { width: 40px; height: 40px; font-size: 12px; }
+    .carousel-slide .c-kpi { font-size: 32px; }
+    .carousel-prev { left: -4px; } .carousel-next { right: -4px; }
+    .carousel-arrow { width: 32px; height: 32px; font-size: 14px; }
+  }
+
   @media (max-width: 520px) {
     main { padding: 24px 12px 60px; }
     .modal-box { padding: 28px 22px; }
@@ -161,7 +225,12 @@
     <svg class="dash-logo" viewBox="0 0 300.88 92.69" xmlns="http://www.w3.org/2000/svg"><g fill="#2150e8"><path d="m0,0v53.78h135.43v38.92h165.45V0H0Zm4.34,4.34h292.2v45.1H4.34V4.34Zm292.2,84.01h-156.77v-34.58h156.77v34.58Z"/><path d="m203.61,67.43c.91.91,1.37,2.13,1.37,3.64v7.98h-2.78v-7.07c0-.98-.28-1.76-.85-2.35-.57-.58-1.35-.88-2.31-.88-1.01,0-1.82.3-2.43.91-.62.61-.92,1.4-.92,2.37v7.02h-2.79v-12.68h2.79v1.76c1.01-1.37,2.44-2.07,4.27-2.07,1.51,0,2.72.45,3.64,1.36"/><path d="m218.78,67.43c.91.91,1.37,2.13,1.37,3.64v7.98h-2.78v-7.07c0-.98-.28-1.76-.85-2.35-.57-.58-1.35-.88-2.31-.88-1.01,0-1.82.3-2.43.91-.62.61-.92,1.4-.92,2.37v7.02h-2.79v-17.91h2.79v7.07c1.01-1.42,2.44-2.14,4.27-2.14,1.51,0,2.72.45,3.64,1.36"/><path d="m224.42,77.45c-1.3-1.27-1.94-2.85-1.94-4.75s.64-3.46,1.94-4.74c1.29-1.26,2.9-1.89,4.85-1.89s3.55.63,4.85,1.89c1.3,1.28,1.94,2.85,1.94,4.74s-.64,3.47-1.94,4.75c-1.3,1.28-2.91,1.91-4.85,1.91s-3.56-.63-4.85-1.91m4.85-.79c1.11,0,2.04-.38,2.78-1.13.74-.75,1.12-1.7,1.12-2.83s-.38-2.07-1.12-2.82c-.74-.75-1.68-1.13-2.78-1.13s-2.04.38-2.79,1.13c-.76.75-1.14,1.69-1.14,2.82s.38,2.08,1.14,2.83c.75.75,1.69,1.13,2.79,1.13"/><polygon points="241.34 76.49 243.58 76.49 243.58 79.06 238.55 79.06 238.55 61.14 241.34 61.14 241.34 76.49"/><path d="m246.17,78.18c-.85-.78-1.27-1.72-1.27-2.85h2.83c0,.45.17.83.5,1.14.33.32.74.47,1.21.47.45,0,.83-.13,1.15-.39.32-.26.47-.58.47-.96,0-.79-.75-1.38-2.25-1.79-2.5-.63-3.75-1.93-3.75-3.91,0-1.18.41-2.1,1.25-2.79.83-.69,1.84-1.03,3.05-1.03s2.28.38,3.12,1.12c.83.74,1.24,1.65,1.24,2.73h-2.84c0-.79-.63-1.43-1.54-1.43-.79,0-1.45.55-1.45,1.24,0,.79.77,1.38,2.3,1.76,2.47.63,3.7,1.92,3.7,3.86,0,1.23-.43,2.21-1.28,2.93-.86.71-1.93,1.08-3.21,1.08s-2.39-.39-3.24-1.18"/><polygon points="263.67 68.9 260.35 68.9 260.35 76.49 263.67 76.49 263.67 79.06 257.57 79.06 257.57 68.9 255.2 68.9 255.2 66.38 257.57 66.38 257.57 62.64 260.35 62.64 260.35 66.38 263.67 66.38 263.67 68.9"/><path d="m278.26,73.78h-10.51c.21.94.64,1.68,1.34,2.22.69.56,1.52.84,2.48.84,1.59,0,2.92-.72,3.49-1.82h3.02c-.46,1.3-1.28,2.34-2.45,3.13-1.18.8-2.54,1.2-4.08,1.2-1.93,0-3.53-.63-4.82-1.91-1.3-1.28-1.94-2.85-1.94-4.75s.64-3.46,1.94-4.74c1.29-1.26,2.89-1.89,4.82-1.89s3.56.63,4.86,1.89c1.29,1.27,1.93,2.87,1.93,4.77,0,.4-.02.74-.07,1.04m-6.72-5.2c-.91,0-1.71.27-2.39.79-.68.53-1.14,1.24-1.37,2.11h7.54c-.23-.89-.69-1.59-1.38-2.11-.69-.52-1.48-.79-2.39-.79"/><path d="m283.56,68.44c1.01-1.51,2.31-2.26,3.9-2.27v2.87c-1.23,0-2.19.35-2.87,1.04-.69.69-1.03,1.63-1.03,2.81v6.17h-2.79v-12.68h2.79v2.07Z"/><path d="m186.78,61.9v10.48c0,1.25-.39,2.24-1.15,2.99-.78.76-1.81,1.14-3.07,1.14-1.2,0-2.16-.38-2.88-1.11-.73-.73-1.09-1.72-1.09-2.94v-10.56h-2.94v10.82c0,2.13.81,3.73,2.04,4.85,1.28,1.16,3.19,1.8,4.65,1.8,2.01,0,3.61-.96,4.48-2.07v1.76h2.92v-17.16h-2.96Z"/><path d="m156.26,79.24c-.45,0-.88-.09-1.3-.26-.42-.18-.78-.47-1.1-.89-.32-.42-.55-.98-.71-1.68l.55.25v2.4h-2.26v-12.68h2.26v6.13l-.47.15c.11-.62.31-1.13.61-1.54.3-.41.66-.71,1.08-.91.42-.2.87-.3,1.35-.3.7,0,1.35.18,1.93.56.58.37,1.04.9,1.38,1.59.34.69.51,1.53.51,2.51,0,.89-.15,1.68-.46,2.39-.3.71-.74,1.27-1.32,1.67-.57.41-1.26.61-2.04.61m-.62-2.07c.45,0,.83-.11,1.15-.32.32-.21.57-.51.76-.9.18-.39.27-.85.27-1.38s-.09-.99-.27-1.37c-.18-.38-.43-.68-.76-.89-.32-.21-.71-.32-1.15-.32s-.82.11-1.14.32c-.32.21-.57.51-.75.9-.18.39-.26.84-.26,1.36s.09.98.26,1.37c.18.39.42.69.75.91.32.22.7.33,1.14.33"/><polygon points="162.32 82.77 164.13 78.36 160.75 70.09 163.22 70.09 165.33 76.11 167.48 70.09 169.92 70.09 164.77 82.77 162.32 82.77"/><path d="m15.61,39.26V14.69h7.98c1.71,0,3.19.32,4.46.98,1.27.65,2.25,1.57,2.96,2.74.71,1.18,1.06,2.56,1.06,4.16v8.79c0,1.57-.35,2.95-1.06,4.14-.71,1.19-1.69,2.12-2.96,2.78-1.27.66-2.75.99-4.46.99h-7.98Zm5.05-4.71h2.93c1.03,0,1.86-.29,2.49-.88.63-.58.94-1.36.94-2.32v-8.79c0-.94-.31-1.71-.94-2.29-.63-.58-1.46-.88-2.49-.88h-2.93v15.15Z"/><polygon points="41.59 39.26 41.59 14.69 56.74 14.69 56.74 19 46.54 19 46.54 24.52 55.56 24.52 55.56 28.83 46.54 28.83 46.54 34.96 56.74 34.96 56.74 39.26 41.59 39.26"/><path d="m74.57,39.6c-1.66,0-3.11-.31-4.34-.93-1.24-.62-2.19-1.48-2.88-2.59-.68-1.11-1.03-2.41-1.03-3.89v-10.43c0-1.5.34-2.81,1.03-3.9.68-1.1,1.64-1.96,2.88-2.57,1.23-.62,2.68-.93,4.34-.93s3.07.31,4.29.93c1.22.62,2.18,1.48,2.86,2.57s1.03,2.4,1.03,3.9h-5.05c0-.99-.28-1.74-.82-2.26-.55-.52-1.33-.77-2.34-.77s-1.79.26-2.34.77c-.55.52-.82,1.27-.82,2.26v10.43c0,.97.27,1.71.82,2.24.55.53,1.33.79,2.34.79s1.79-.26,2.34-.79c.55-.53.82-1.27.82-2.24h5.05c0,1.48-.34,2.78-1.03,3.89-.68,1.11-1.64,1.97-2.86,2.59-1.22.62-2.65.93-4.29.93"/><polygon points="92.41 39.26 92.41 34.89 97.29 34.89 97.29 19.07 92.41 19.07 92.41 14.69 107.22 14.69 107.22 19.07 102.34 19.07 102.34 34.89 107.22 34.89 107.22 39.26 92.41 39.26"/><path d="m117.25,39.26V14.69h7.98c1.71,0,3.19.32,4.46.98,1.27.65,2.25,1.57,2.96,2.74.71,1.18,1.06,2.56,1.06,4.16v8.79c0,1.57-.35,2.95-1.06,4.14-.71,1.19-1.7,2.12-2.96,2.78-1.27.66-2.76.99-4.46.99h-7.98Zm5.05-4.71h2.93c1.03,0,1.86-.29,2.49-.88.63-.58.94-1.36.94-2.32v-8.79c0-.94-.31-1.71-.94-2.29-.63-.58-1.46-.88-2.49-.88h-2.93v15.15Z"/><polygon points="143.23 39.26 143.23 14.69 158.38 14.69 158.38 19 148.18 19 148.18 24.52 157.2 24.52 157.2 28.83 148.18 28.83 148.18 34.96 158.38 34.96 158.38 39.26 143.23 39.26"/><path d="m176.21,39.6c-1.66,0-3.11-.31-4.34-.93-1.23-.62-2.19-1.48-2.88-2.59-.69-1.11-1.03-2.41-1.03-3.89v-10.43c0-1.5.34-2.81,1.03-3.9.68-1.1,1.64-1.96,2.88-2.57,1.23-.62,2.68-.93,4.34-.93s3.07.31,4.29.93c1.22.62,2.18,1.48,2.86,2.57s1.03,2.4,1.03,3.9h-5.05c0-.99-.28-1.74-.83-2.26-.55-.52-1.33-.77-2.34-.77s-1.79.26-2.34.77c-.55.52-.82,1.27-.82,2.26v10.43c0,.97.27,1.71.82,2.24.55.53,1.33.79,2.34.79s1.79-.26,2.34-.79c.55-.53.83-1.27.83-2.24h5.05c0,1.48-.34,2.78-1.03,3.89-.68,1.11-1.64,1.97-2.86,2.59-1.22.62-2.65.93-4.29.93"/><polygon points="193.58 39.26 193.58 14.69 198.63 14.69 198.63 24.12 204.28 24.12 204.28 14.69 209.33 14.69 209.33 39.26 204.28 39.26 204.28 28.83 198.63 28.83 198.63 39.26 193.58 39.26"/><polygon points="219.46 39.26 219.46 34.89 224.34 34.89 224.34 19.07 219.46 19.07 219.46 14.69 234.27 14.69 234.27 19.07 229.39 19.07 229.39 34.89 234.27 34.89 234.27 39.26 219.46 39.26"/><polygon points="245.38 39.26 245.38 14.69 250.42 14.69 250.42 34.55 260.35 34.55 260.35 39.26 245.38 39.26"/><polygon points="270.28 39.26 270.28 14.69 285.43 14.69 285.43 19 275.23 19 275.23 24.52 284.25 24.52 284.25 28.83 275.23 28.83 275.23 34.96 285.43 34.96 285.43 39.26 270.28 39.26"/></g></svg>
   </div>
 
-  <div class="kpi-grid cols-4" id="kpiMain"></div>
+  <div class="carousel-wrap">
+    <button class="carousel-arrow carousel-prev" onclick="carouselPrev()" aria-label="Anterior">←</button>
+    <div class="carousel-viewport"><div class="carousel-track" id="carouselTrack"></div></div>
+    <button class="carousel-arrow carousel-next" onclick="carouselNext()" aria-label="Siguiente">→</button>
+    <div class="carousel-dots" id="carouselDots"></div>
+  </div>
 
   <div class="tabs-container">
     <nav class="tabs-nav">
@@ -988,25 +1057,92 @@ function renderMain() {
   const r = D.resumen;
   const py = (D.per_year && D.per_year[currentYear]) || null;
   if (currentYear !== 2026 && py) {
-    document.getElementById('kpiMain').innerHTML =
-      kpiCard('Deudores ' + currentYear, fmt(py.total), 'Nómina ' + currentYear, 'users') +
-      kpiCard('Cartera ' + currentYear, fmtCLP(py.clp_total), fmtUSD(py.usd_total) + ' · ' + fmt(Math.round(py.utm_total)) + ' UTM', 'cash', 'red') +
-      kpiCard('Deuda promedio', fmt(Math.round(py.avg_utm)) + ' UTM', fmtCLP(py.avg_utm * r.utm_clp), 'chart') +
-      kpiCard('Deuda mediana', fmt(Math.round(py.median_utm)) + ' UTM', fmtCLP(py.median_utm * r.utm_clp), 'chart');
     document.getElementById('dashYearTag').textContent = 'DecideChile · Nómina ' + currentYear;
     document.getElementById('dashDesc').textContent =
       `Análisis agregado de los ${fmt(py.total)} deudores morosos de la nómina ${currentYear}. Los cortes de patrimonio, perfil LinkedIn y causas judiciales sólo están disponibles para 2026.`;
   } else {
-    document.getElementById('kpiMain').innerHTML =
-      kpiCard('Deudores totales', fmt(r.total), 'Año tributario 2026', 'users') +
-      kpiCard('Cartera vencida', fmtCLP(r.total_clp), fmtUSD(r.total_usd) + ' · ' + fmt(Math.round(r.total_utm)) + ' UTM', 'cash', 'red') +
-      kpiCard('Deuda promedio', fmt(Math.round(r.avg_utm)) + ' UTM', fmtCLP(r.avg_utm * r.utm_clp), 'chart') +
-      kpiCard('En LinkedIn', fmt(r.en_linkedin), `${r.pct_linkedin}% del total`, 'link', 'green');
     document.getElementById('dashYearTag').textContent = 'DecideChile · Nómina 2026';
     document.getElementById('dashDesc').textContent =
       'Análisis agregado y anonimizado de los 335.152 deudores morosos del Fondo Solidario de Crédito Universitario, a partir de la nómina publicada por el Consejo de Rectoras y Rectores de las Universidades Chilenas para el año tributario 2026.';
   }
+  renderCarousel();
 }
+
+let carouselIdx = 0;
+let carouselTimer = null;
+let carouselPaused = false;
+
+function renderCarousel() {
+  const items = D.interesante || [];
+  const cBg = { executives:'#E7F0FF', academic:'#FEF3C7', chronic:'#FEE2E2', wealth:'#D1FAE5', employer:'#E7F0FF',
+    interest:'#FEE2E2', flow:'#FEF3C7', judicial:'#FEE2E2', demographics:'#E7F0FF', economy:'#D1FAE5',
+    education:'#FEF3C7', 'judicial-uni':'#FEE2E2', multi:'#E7F0FF', ultra:'#FEE2E2' };
+  const cFg = { executives:'#266FE0', academic:'#F59E0B', chronic:'#EF4444', wealth:'#10B981', employer:'#266FE0',
+    interest:'#EF4444', flow:'#F59E0B', judicial:'#EF4444', demographics:'#266FE0', economy:'#10B981',
+    education:'#F59E0B', 'judicial-uni':'#EF4444', multi:'#266FE0', ultra:'#EF4444' };
+  const track = document.getElementById('carouselTrack');
+  track.innerHTML = items.map((it, i) => {
+    const bg = cBg[it.tipo] || '#F5F5F5', fg = cFg[it.tipo] || '#266FE0';
+    const eli5Short = (it.eli5 || it.desc || '').substring(0, 260);
+    return `<div class="carousel-slide" onclick="openInsightModal(${i})">
+      <div class="c-badge" style="background:${bg};color:${fg}">#${String(i+1).padStart(2,'0')}</div>
+      <div class="c-left">
+        <div class="c-tag">Insight ${i+1} de ${items.length}</div>
+        <div class="c-title">${it.titulo}</div>
+        <div class="c-kpi" style="color:${fg}">${it.kpi}</div>
+        <div class="c-sub">${it.sub}</div>
+      </div>
+      <div>
+        <div class="c-eli5">${eli5Short}${(it.eli5 || it.desc || '').length > 260 ? '…' : ''}</div>
+        <div class="c-cta">Click para explicación simple →</div>
+      </div>
+    </div>`;
+  }).join('');
+  const dots = document.getElementById('carouselDots');
+  dots.innerHTML = items.map((_, i) => `<button class="carousel-dot${i===0?' active':''}" onclick="carouselGoto(${i})" aria-label="Ir a ${i+1}"></button>`).join('');
+  carouselIdx = 0;
+  carouselApply();
+  carouselStart();
+
+  // pausar al hover, resumir al salir
+  const wrap = track.closest('.carousel-wrap');
+  wrap.addEventListener('mouseenter', () => { carouselPaused = true; });
+  wrap.addEventListener('mouseleave', () => { carouselPaused = false; });
+  // swipe en móvil
+  let startX = 0;
+  wrap.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; }, { passive: true });
+  wrap.addEventListener('touchend', (e) => {
+    const dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 50) dx < 0 ? carouselNext() : carouselPrev();
+  });
+}
+function carouselApply() {
+  const items = D.interesante || [];
+  document.getElementById('carouselTrack').style.transform = `translateX(-${carouselIdx * 100}%)`;
+  document.querySelectorAll('.carousel-dot').forEach((d, i) => d.classList.toggle('active', i === carouselIdx));
+}
+window.carouselPrev = function() {
+  const n = (D.interesante || []).length;
+  carouselIdx = (carouselIdx - 1 + n) % n;
+  carouselApply();
+  carouselResetTimer();
+};
+window.carouselNext = function() {
+  const n = (D.interesante || []).length;
+  carouselIdx = (carouselIdx + 1) % n;
+  carouselApply();
+  carouselResetTimer();
+};
+window.carouselGoto = function(i) {
+  carouselIdx = i;
+  carouselApply();
+  carouselResetTimer();
+};
+function carouselStart() {
+  if (carouselTimer) clearInterval(carouselTimer);
+  carouselTimer = setInterval(() => { if (!carouselPaused) carouselNext(); }, 6000);
+}
+function carouselResetTimer() { carouselStart(); }
 
 function renderGlobal() {
   const G = D.global; if (!G) return;
@@ -1278,7 +1414,7 @@ function donut(id, labels, values) {
   });
 }
 
-fetch('/static/aggregates.json?v=14').then(r => r.json()).then(d => {
+fetch('/static/aggregates.json?v=15').then(r => r.json()).then(d => {
   D = d;
   renderMain();
   // Check URL hash for deep link
