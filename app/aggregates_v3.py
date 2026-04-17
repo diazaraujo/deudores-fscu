@@ -520,6 +520,112 @@ FROM univ_deuda GROUP BY 1, 2
 ORDER BY 3 DESC LIMIT 20
 """).fetchdf().to_dict(orient="records")
 
+# ═══ GLOBAL · POLÍTICA PÚBLICA ═══
+global_stats = {}
+
+# Indicadores macro principales
+transiciones = []
+for y0, y1 in [(2022,2023),(2023,2024),(2024,2025),(2025,2026)]:
+    r = con.execute(f"""
+    WITH a AS (SELECT rut_dv, monto_utm m FROM nominas WHERE year={y0}),
+         b AS (SELECT rut_dv, monto_utm m FROM nominas WHERE year={y1})
+    SELECT ROUND(SUM(a.m)) utm_y0,
+      ROUND(SUM(CASE WHEN b.rut_dv IS NULL THEN a.m ELSE 0 END)) utm_salido,
+      ROUND(SUM(CASE WHEN b.rut_dv IS NOT NULL AND a.m > b.m THEN a.m - b.m ELSE 0 END)) utm_pago_parcial,
+      ROUND(SUM(CASE WHEN b.rut_dv IS NOT NULL AND b.m > a.m THEN b.m - a.m ELSE 0 END)) utm_intereses,
+      COUNT(*) n_y0,
+      SUM(CASE WHEN b.rut_dv IS NULL THEN 1 ELSE 0 END) n_salio
+    FROM a LEFT JOIN b USING (rut_dv)
+    """).fetchone()
+    recov = round(100*(r[1]+r[2])/r[0], 2) if r[0] else 0
+    pct_salio = round(100*r[5]/r[4], 2) if r[4] else 0
+    transiciones.append({
+        "transicion": f"{y0}→{y1}",
+        "utm_inicio": r[0], "utm_salido": r[1],
+        "utm_pago_parcial": r[2], "utm_intereses": r[3],
+        "recovery_rate_pct": recov, "n_inicio": r[4], "n_salio": r[5],
+        "pct_salio": pct_salio,
+    })
+global_stats["transiciones"] = transiciones
+
+# Probabilidad de salir por años consecutivos en nómina al 2025
+global_stats["prob_salir_por_antiguedad"] = con.execute("""
+WITH consec AS (
+  SELECT rut_dv,
+    CASE WHEN m22 IS NOT NULL AND m23 IS NOT NULL AND m24 IS NOT NULL AND m25 IS NOT NULL THEN 4
+         WHEN m23 IS NOT NULL AND m24 IS NOT NULL AND m25 IS NOT NULL THEN 3
+         WHEN m24 IS NOT NULL AND m25 IS NOT NULL THEN 2
+         WHEN m25 IS NOT NULL THEN 1 ELSE 0 END AS anos_consec,
+    m25, m26
+  FROM trayectorias WHERE m25 IS NOT NULL
+)
+SELECT anos_consec, COUNT(*) estaban,
+  SUM(CASE WHEN m26 IS NULL THEN 1 ELSE 0 END) salieron,
+  ROUND(100.0*SUM(CASE WHEN m26 IS NULL THEN 1 ELSE 0 END)/COUNT(*),2) pct_salida
+FROM consec GROUP BY 1 ORDER BY 1
+""").fetchdf().to_dict(orient="records")
+
+# Monto promedio vs años en nómina
+global_stats["monto_vs_antiguedad"] = con.execute("""
+SELECT n_years, COUNT(*) n,
+  ROUND(AVG(COALESCE(m26, m25, m24, m23, m22)),1) avg_monto,
+  ROUND(MEDIAN(COALESCE(m26, m25, m24, m23, m22)),1) med_monto
+FROM trayectorias GROUP BY 1 ORDER BY 1
+""").fetchdf().to_dict(orient="records")
+
+# Retención por cohort
+cohorts = []
+for cy in [2022, 2023, 2024, 2025]:
+    r = con.execute(f"""
+    WITH cohort AS (SELECT DISTINCT rut_dv FROM nominas WHERE year={cy}
+                    AND rut_dv NOT IN (SELECT rut_dv FROM nominas WHERE year<{cy}))
+    SELECT COUNT(DISTINCT c.rut_dv) base,
+      SUM(CASE WHEN EXISTS(SELECT 1 FROM nominas WHERE rut_dv=c.rut_dv AND year=2026) THEN 1 ELSE 0 END) en_2026
+    FROM cohort c
+    """).fetchone()
+    pct = round(100 * r[1] / r[0], 1) if r[0] else 0
+    cohorts.append({"cohort": cy, "base": r[0], "en_2026": r[1], "pct_retenido": pct})
+global_stats["cohorts"] = cohorts
+
+# Proyección lineal de cartera
+import statistics
+yrs_list = [e["year"] for e in out["evolucion"]]
+utm_list = [e["utm_total"] for e in out["evolucion"]]
+n = len(yrs_list)
+mx, my = statistics.mean(yrs_list), statistics.mean(utm_list)
+slope = sum((x-mx)*(y-my) for x,y in zip(yrs_list, utm_list)) / sum((x-mx)**2 for x in yrs_list)
+intercept = my - slope * mx
+proyeccion = []
+for y in [2027, 2028, 2029, 2030]:
+    utm = int(intercept + slope * y)
+    proyeccion.append({
+        "year": y, "utm_total": utm,
+        "clp_total": int(utm * UTM_CLP), "usd_total": int(utm * UTM_USD),
+        "tipo": "proyeccion"
+    })
+global_stats["proyeccion"] = proyeccion
+global_stats["proyeccion_slope_utm_anual"] = int(slope)
+global_stats["proyeccion_desc"] = f"Regresión lineal simple basada en 2022-2026 (pendiente {int(slope):,} UTM/año)."
+
+# KPIs resumen
+avg_recovery = round(sum(t["recovery_rate_pct"] for t in transiciones) / len(transiciones), 2)
+avg_growth_utm = round(100 * ((utm_list[-1]/utm_list[0])**(1/(len(utm_list)-1)) - 1), 2)
+global_stats["kpis"] = {
+    "tasa_recuperacion_anual_pct": avg_recovery,
+    "tasa_crecimiento_cartera_anual_pct": avg_growth_utm,
+    "pct_cronicos_5_anos": out["cronicidad"]["pct_cronicos"],
+    "pct_retencion_cohort_2022": cohorts[0]["pct_retenido"],
+    "utm_2026": out["resumen"]["total_utm"],
+    "utm_2030_proyectado": proyeccion[-1]["utm_total"],
+    "clp_2030_proyectado": proyeccion[-1]["clp_total"],
+    "crecimiento_2026_2030_pct": round(100*(proyeccion[-1]["utm_total"]-out["resumen"]["total_utm"])/out["resumen"]["total_utm"], 1),
+}
+
+out["global"] = global_stats
+
+print("\n=== GLOBAL KPIs ===")
+for k, v in global_stats["kpis"].items(): print(f"  {k}: {v:,}" if isinstance(v,(int,float)) else f"  {k}: {v}")
+
 # ═══ JUSTICIA ═══
 out["justicia_resumen"] = {
     "total": out["resumen"]["total"],

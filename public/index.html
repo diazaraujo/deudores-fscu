@@ -105,6 +105,7 @@
   <div class="tabs-container">
     <nav class="tabs-nav">
       <button class="tab-btn active" data-tab="general" onclick="switchTab('general')">General</button>
+      <button class="tab-btn" data-tab="global" onclick="switchTab('global')">Política Pública</button>
       <button class="tab-btn" data-tab="interesante" onclick="switchTab('interesante')">Insights</button>
       <button class="tab-btn" data-tab="evolucion" onclick="switchTab('evolucion')">Evolución</button>
       <button class="tab-btn" data-tab="montos" onclick="switchTab('montos')">Montos</button>
@@ -128,6 +129,36 @@
       </div>
     </div>
     <div class="full-row"><div class="card"><div class="card-label">Distribución por rango de deuda (UTM)</div><div class="chart-wrap tall"><canvas id="chartMontoBucket"></canvas></div><div class="card-note">UTM = Unidad Tributaria Mensual, unidad legal de la deuda. Conversión vigente al 2026-04-17: 1 UTM = $69.889 CLP ≈ US$ 78,85.</div></div></div>
+  </div>
+
+  <div class="tab-content" id="tab-global">
+    <div class="section-tag">Análisis de política pública</div>
+    <div class="section-title">Estado del FSCU y probabilidad de cobrar</div>
+    <div class="section-desc">Indicadores consolidados 2022-2026 sobre la salud del Fondo Solidario de Crédito Universitario como política pública: tasa de recuperación, crecimiento de cartera, probabilidad de pago según antigüedad de la morosidad y proyecciones futuras.</div>
+    <div class="kpi-grid cols-4 mb-sm" id="kpiGlobal"></div>
+
+    <div class="full-row" style="margin-top:24px"><div class="card">
+      <div class="card-label">⚠️ Trampa de morosidad · probabilidad de salir el año siguiente</div>
+      <div class="chart-wrap tall"><canvas id="chartProbSalir"></canvas></div>
+      <div class="card-note">A más años llevando moroso, menor es la probabilidad de pagar o salir. Quien lleva 1 año tiene 14,85% de chance de salir; quien lleva 4+ años apenas 2,85%. El sistema no logra rescatar a los crónicos — se consolidan.</div>
+    </div></div>
+
+    <div class="grid-2">
+      <div class="card"><div class="card-label">Monto promedio según antigüedad en la nómina</div><div class="chart-wrap tall"><canvas id="chartMontoAntig"></canvas></div><div class="card-note">Los deudores que llevan 5 años tienen una deuda promedio 8,5× mayor que los nuevos (207 vs 24 UTM). Los intereses son el motor.</div></div>
+      <div class="card"><div class="card-label">Retención por cohorte de ingreso</div><div class="chart-wrap tall"><canvas id="chartCohorts"></canvas></div><div class="card-note">% de cada cohorte que sigue moroso en 2026. El cohorte 2022 retiene 91,9% después de 4 años — la deserción del problema es mínima.</div></div>
+    </div>
+
+    <div class="full-row"><div class="card">
+      <div class="card-label">Balance anual · intereses acumulados vs recuperación</div>
+      <div class="chart-wrap tall"><canvas id="chartBalance"></canvas></div>
+      <div class="card-note">Cada transición, los intereses acumulados superan varias veces la recuperación (salidas + pagos parciales). El saldo siempre es negativo: la cartera crece más rápido de lo que se cobra.</div>
+    </div></div>
+
+    <div class="full-row"><div class="card">
+      <div class="card-label">📈 Proyección lineal 2027-2030 (en billones CLP)</div>
+      <div class="chart-wrap tall"><canvas id="chartProyeccion"></canvas></div>
+      <div class="card-note">Si el trend continúa, en 2030 la cartera alcanzará $5,47 billones CLP (+36% vs 2026). Regresión lineal simple basada en los 5 años observados.</div>
+    </div></div>
   </div>
 
   <div class="tab-content" id="tab-interesante">
@@ -354,6 +385,7 @@ window.switchTab = function(name) {
 function initTab(name) {
   const r = D.resumen;
   if (name === 'general') { renderPerfiles(); renderMontoBucket('chartMontoBucket'); }
+  if (name === 'global') renderGlobal();
   if (name === 'interesante') renderInsights();
   if (name === 'evolucion') renderEvolucion();
   if (name === 'montos') {
@@ -674,6 +706,91 @@ function renderMain() {
   }
 }
 
+function renderGlobal() {
+  const G = D.global; if (!G) return;
+  const k = G.kpis;
+  document.getElementById('kpiGlobal').innerHTML =
+    kpiCard('Tasa de recuperación anual', k.tasa_recuperacion_anual_pct + '%', 'Promedio 2022-2026 · salidas + pagos parciales', 'cash', 'red') +
+    kpiCard('Crecimiento cartera UTM', k.tasa_crecimiento_cartera_anual_pct + '%/año', 'CAGR 2022-2026', 'chart', 'amber') +
+    kpiCard('Crónicos 5 años', k.pct_cronicos_5_anos + '%', fmt(D.cronicidad.cronicos_5_anos) + ' deudores estructurales', 'users', 'red') +
+    kpiCard('Proyección 2030', fmtCLP(k.clp_2030_proyectado), `+${k.crecimiento_2026_2030_pct}% vs 2026`, 'globe', 'red');
+
+  // Probabilidad de salir por años consecutivos
+  const ps = G.prob_salir_por_antiguedad;
+  new Chart(document.getElementById('chartProbSalir'), {
+    type: 'bar', data: { labels: ps.map(x => x.anos_consec + (x.anos_consec===4?'+ años':' año'+(x.anos_consec>1?'s':''))),
+      datasets: [{ label: '% salida', data: ps.map(x => x.pct_salida),
+        backgroundColor: ps.map(x => x.pct_salida < 5 ? C.red : x.pct_salida < 10 ? C.amber : C.green),
+        borderRadius: {topLeft:4,topRight:4}, borderSkipped: false }]},
+    options: { responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { ...tooltipDefaults, callbacks: { label: ctx => ctx.parsed.y + '% · ' + fmt(Math.round(ps[ctx.dataIndex].salieron)) + ' de ' + fmt(ps[ctx.dataIndex].estaban) + ' salieron' } } },
+      scales: { x: { grid: { display: false }, ticks: { ...axisSans, font: { ...defaultFont, size: 12, weight: 500 } }, title: { display: true, text: 'Años consecutivos en la nómina al 2025', font: { ...monoFont, size: 10 }, color: C.gray500 } }, y: { grid: { color: C.gray200 }, border: { dash:[4,4], display:false }, ticks: { ...axisMono, callback: v => v + '%' }, beginAtZero: true, max: 20 } }
+    }
+  });
+
+  // Monto vs antigüedad
+  const ma = G.monto_vs_antiguedad;
+  new Chart(document.getElementById('chartMontoAntig'), {
+    type: 'bar', data: { labels: ma.map(x => x.n_years + ' año' + (x.n_years>1?'s':'')),
+      datasets: [
+        { label: 'Promedio UTM', data: ma.map(x => x.avg_monto), backgroundColor: C.red, borderRadius: {topLeft:4,topRight:4}, borderSkipped: false },
+        { label: 'Mediana UTM', data: ma.map(x => x.med_monto), backgroundColor: C.amber, borderRadius: {topLeft:4,topRight:4}, borderSkipped: false }
+      ]},
+    options: { responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'top', align: 'end', labels: { font: { ...defaultFont, size: 11, weight: 300 }, color: C.gray500, padding: 12, usePointStyle: true, pointStyle: 'circle', boxWidth: 6, boxHeight: 6 } }, tooltip: { ...tooltipDefaults, callbacks: { label: ctx => ctx.dataset.label + ': ' + fmt(ctx.parsed.y) + ' UTM · ' + fmtCLP(ctx.parsed.y * D.resumen.utm_clp) } } },
+      scales: { x: { grid: { display: false }, ticks: axisMono }, y: { grid: { color: C.gray200 }, border: { dash:[4,4], display:false }, ticks: { ...axisMono, callback: v => v + ' UTM' }, beginAtZero: true } }
+    }
+  });
+
+  // Cohort retention
+  const co = G.cohorts;
+  new Chart(document.getElementById('chartCohorts'), {
+    type: 'bar', data: { labels: co.map(x => 'Cohorte ' + x.cohort),
+      datasets: [{ label: '% retenido en 2026', data: co.map(x => x.pct_retenido),
+        backgroundColor: co.map(x => x.pct_retenido > 85 ? C.red : x.pct_retenido > 75 ? C.amber : C.blue),
+        borderRadius: {topLeft:4,topRight:4}, borderSkipped: false }]},
+    options: { responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { ...tooltipDefaults, callbacks: { label: ctx => ctx.parsed.y + '% · ' + fmt(co[ctx.dataIndex].en_2026) + ' de ' + fmt(co[ctx.dataIndex].base) } } },
+      scales: { x: { grid: { display: false }, ticks: axisMono }, y: { grid: { color: C.gray200 }, border: { dash:[4,4], display:false }, ticks: { ...axisMono, callback: v => v + '%' }, beginAtZero: true, max: 100 } }
+    }
+  });
+
+  // Balance (intereses vs recuperación)
+  const t = G.transiciones;
+  new Chart(document.getElementById('chartBalance'), {
+    type: 'bar', data: { labels: t.map(x => x.transicion),
+      datasets: [
+        { label: 'Recuperado (salidas)', data: t.map(x => x.utm_salido), backgroundColor: C.green, stack: 'rec' },
+        { label: 'Pago parcial', data: t.map(x => x.utm_pago_parcial), backgroundColor: C.cyan, stack: 'rec' },
+        { label: 'Intereses acumulados', data: t.map(x => -x.utm_intereses), backgroundColor: C.red, stack: 'int' }
+      ]},
+    options: { responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'top', align: 'end', labels: { font: { ...defaultFont, size: 11, weight: 300 }, color: C.gray500, padding: 12, usePointStyle: true, pointStyle: 'circle', boxWidth: 6, boxHeight: 6 } }, tooltip: { ...tooltipDefaults, callbacks: { label: ctx => ctx.dataset.label + ': ' + fmt(Math.abs(ctx.parsed.y)) + ' UTM · ' + fmtCLP(Math.abs(ctx.parsed.y) * D.resumen.utm_clp) } } },
+      scales: { x: { stacked: false, grid: { display: false }, ticks: axisMono }, y: { stacked: false, grid: { color: C.gray200 }, border: { dash:[4,4], display:false }, ticks: { ...axisMono, callback: v => v>=0?(v/1e6).toFixed(0)+'M':(v/1e6).toFixed(0)+'M' } } }
+    }
+  });
+
+  // Proyección
+  const real = D.evolucion;
+  const proj = G.proyeccion;
+  const allYears = real.map(x => x.year).concat(proj.map(x => x.year));
+  const dataReal = real.map(x => x.utm_total / 1e6).concat(proj.map(_ => null));
+  const dataProj = real.map(_ => null).concat([real[real.length-1].utm_total / 1e6]).concat(proj.slice(1).map(x => x.utm_total / 1e6));
+  // adjust: the connection point
+  const dataProjPlot = real.map((x, i) => i === real.length-1 ? x.utm_total / 1e6 : null).concat(proj.map(x => x.utm_total / 1e6));
+  new Chart(document.getElementById('chartProyeccion'), {
+    type: 'line', data: { labels: allYears,
+      datasets: [
+        { label: 'Histórico', data: dataReal, borderColor: C.blue, backgroundColor: 'rgba(38,111,224,0.08)', borderWidth: 2, pointRadius: 4, pointBackgroundColor: C.blue, fill: true, tension: 0.3 },
+        { label: 'Proyección', data: dataProjPlot, borderColor: C.red, backgroundColor: 'rgba(239,68,68,0.06)', borderWidth: 2, borderDash: [6,4], pointRadius: 4, pointBackgroundColor: C.red, fill: false, tension: 0.3 }
+      ]},
+    options: { responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'top', align: 'end', labels: { font: { ...defaultFont, size: 11, weight: 300 }, color: C.gray500, padding: 12, usePointStyle: true, pointStyle: 'circle', boxWidth: 6, boxHeight: 6 } }, tooltip: { ...tooltipDefaults, callbacks: { label: ctx => ctx.dataset.label + ': ' + fmt(Math.round(ctx.parsed.y)) + 'M UTM · ' + fmtCLP(ctx.parsed.y * 1e6 * D.resumen.utm_clp) } } },
+      scales: { x: { grid: { display: false }, ticks: axisMono }, y: { grid: { color: C.gray200 }, border: { dash:[4,4], display:false }, ticks: { ...axisMono, callback: v => v + 'M UTM' }, beginAtZero: false } }
+    }
+  });
+}
+
 function renderInsights() {
   const items = D.interesante || [];
   const cBg = { executives:'#E7F0FF', academic:'#FEF3C7', chronic:'#FEE2E2', wealth:'#D1FAE5', employer:'#E7F0FF',
@@ -829,7 +946,7 @@ function donut(id, labels, values) {
   });
 }
 
-fetch('/static/aggregates.json?v=11').then(r => r.json()).then(d => {
+fetch('/static/aggregates.json?v=12').then(r => r.json()).then(d => {
   D = d;
   renderMain();
   initTab('general');
