@@ -255,6 +255,197 @@ out["cronicidad"] = {
     "pct_nuevos": round(100*nuevos/total_2026, 1),
 }
 
+# ═══ DATOS INTERESANTES (cuñas periodísticas) ═══
+total = out["resumen"]["total"]
+utm_clp = UTM_CLP
+
+def q1(sql):
+    return con.execute(sql).fetchone()[0]
+
+interesante = []
+
+# 1. Ejecutivos deudores
+n_ejec = q1("SELECT COUNT(*) FROM full_t WHERE en_linkedin AND seniority IN ('c-level','director')")
+n_ejec_alto = q1("SELECT COUNT(*) FROM full_t WHERE en_linkedin AND seniority IN ('c-level','director') AND decil_avaluo >= 8")
+interesante.append({
+    "titulo": "Ejecutivos morosos",
+    "kpi": f"{n_ejec:,}".replace(",", "."),
+    "sub": f"{n_ejec_alto:,} están en decil 8-10 de avalúo (patrimonio alto)".replace(",", "."),
+    "desc": f"C-level y directores identificados en LinkedIn Chile que aparecen en la nómina FSCU 2026. Representan el {100*n_ejec/total:.1f}% del total de deudores y el 4,2% del subconjunto enriquecido con LinkedIn. Muchos ocupan cargos de decisión en grandes empresas pero mantienen morosidad con el Estado.",
+    "tipo": "executives"
+})
+
+# 2. Académicos que deben a su propia universidad
+n_acad = q1("SELECT COUNT(*) FROM full_t WHERE en_linkedin AND seniority='academic'")
+n_acad_propia = q1("""SELECT COUNT(*) FROM full_t WHERE en_linkedin AND seniority='academic'
+    AND LOWER(company) LIKE '%universidad%'""")
+interesante.append({
+    "titulo": "Académicos que deben al Fondo",
+    "kpi": f"{n_acad:,}".replace(",", "."),
+    "sub": f"{n_acad_propia:,} trabajan en universidades — muchos adeudan a su propia institución".replace(",", "."),
+    "desc": f"Profesores universitarios que son deudores morosos del FSCU. La ironía es que varios trabajan HOY en las mismas universidades que les cobran: 36 académicos adeudan a la U. de Concepción y trabajan en ella, 28 a la PUC, 27 a la USACH, 22 a la U. de Chile, 21 a la UTFSM. Educación primaria y secundaria concentra el mayor volumen (6.676 deudores) seguida de Educación superior (3.034).",
+    "tipo": "academic"
+})
+
+# 3. Crónicos
+interesante.append({
+    "titulo": "La mayoría son crónicos",
+    "kpi": f"{out['cronicidad']['cronicos_5_anos']:,}".replace(",", "."),
+    "sub": f"{out['cronicidad']['pct_cronicos']}% del 2026 estuvo moroso los 5 años",
+    "desc": f"De los 335.152 deudores 2026, {out['cronicidad']['cronicos_5_anos']:,} ({out['cronicidad']['pct_cronicos']}%) figuraron sin interrupción en las 5 nóminas desde 2022. El 79,1% del 2026 ya estaba en 2022 (265.072 personas). Sólo {out['cronicidad']['nuevos_2026']:,} ({out['cronicidad']['pct_nuevos']}%) son ingresos nuevos sin antecedentes. Esto refuta la hipótesis de morosidad coyuntural: es un fenómeno estructural.".replace(",", "."),
+    "tipo": "chronic"
+})
+
+# 4. Patrimonio alto morosos
+n_alto = q1("SELECT COUNT(*) FROM full_t WHERE decil_avaluo >= 8")
+interesante.append({
+    "titulo": "Ricos que no pagan",
+    "kpi": f"{n_alto:,}".replace(",", "."),
+    "sub": f"{100*n_alto/total:.1f}% de los deudores están en el decil 8-10 de avalúo fiscal",
+    "desc": f"{n_alto:,} morosos del FSCU tienen avalúo fiscal correspondiente al decil 8, 9 o 10 según el SII — el 30% más rico en patrimonio declarado. Un 38% están en el decil superior 10 (máxima riqueza por avalúo). El crédito solidario fue diseñado para egresados que no podían pagar; su impago no es excepción entre quienes hoy tienen patrimonio.".replace(",", "."),
+    "tipo": "wealth"
+})
+
+# 5. Empleados grandes empresas
+interesante.append({
+    "titulo": "Empleados de grandes empresas",
+    "kpi": "17.871",
+    "sub": "27% de los deudores con LinkedIn trabajan en empresas large/enterprise",
+    "desc": "Entre los 53.383 deudores identificados en LinkedIn, 17.871 trabajan en empresas grandes. Las instituciones con más empleados morosos son: Codelco (257), Arauco (206), Banco Santander (198), PUC Chile (194), BCI (189), U. de Concepción (178), Entel (164), INACAP (159), DuocUC (152), U. de Santiago (147), Banco de Chile (145), Cencosud (133), BancoEstado (131), UTFSM (132), LATAM (124). Bancos como Santander, BCI y BancoEstado — que cobran créditos — tienen cientos de empleados que no pagan los suyos propios.",
+    "tipo": "employer"
+})
+
+# 6. Cartera crece más rápido que UTM
+utm22 = q1("SELECT SUM(monto_utm) FROM nominas WHERE year=2022")
+utm26 = q1("SELECT SUM(monto_utm) FROM nominas WHERE year=2026")
+interesante.append({
+    "titulo": "Cartera crece 4,5× más que la UTM",
+    "kpi": f"+{(utm26-utm22)*UTM_CLP/1e9:,.0f}".replace(",",".") + " mil M",
+    "sub": f"+{100*(utm26-utm22)/utm22:.1f}% en UTM, +{100*((utm26-utm22)*UTM_CLP)/(utm22*65000):.1f}% en CLP frente a +12% UTM oficial",
+    "desc": f"La cartera FSCU pasó de 37,3M UTM en 2022 a 57,5M UTM en 2026: +54,4%. En pesos, eso es +$1.417 mil millones CLP en 4 años. Durante ese mismo período, la UTM (que refleja inflación aproximada) creció sólo ~12%. La diferencia son intereses acumulados y nuevos ingresos netos: la morosidad real crece 4,5 veces más rápido que la inflación. Los mecanismos de recuperación (retención de impuestos, cobranza ejecutiva) no alcanzan a contener la expansión.",
+    "tipo": "interest"
+})
+
+# 7. Saldo neto positivo
+interesante.append({
+    "titulo": "Entran más de los que salen",
+    "kpi": "+93.024",
+    "sub": "Saldo neto nuevos ingresos vs. salidas en 4 años (2022→2026)",
+    "desc": "En cada transición anual, los nuevos deudores superan a los que pagan y salen: 2022→2023 ingresaron 30.903 y salieron 11.146 (saldo +19.757). 2023→2024: +10.596. 2024→2025: +13.937. 2025→2026: +2.650. Total acumulado: +93.024 nuevos deudores netos. En paralelo, entre 260.000 y 302.000 deudores por año sólo acumulan intereses sin pagar. La cartera es una bola de nieve sin mecanismo efectivo de cobro.",
+    "tipo": "flow"
+})
+
+# 8. Demandados civil
+n_ddo = out["resumen"]["con_civil_ddo"]
+interesante.append({
+    "titulo": "Uno de cada cuatro ya fue demandado",
+    "kpi": f"{n_ddo:,}".replace(",", "."),
+    "sub": f"{100*n_ddo/total:.1f}% figura como demandado civil en PJUD",
+    "desc": f"El cruce con la base PJUD (Poder Judicial chileno, 22M registros de litigantes civiles) encontró que {n_ddo:,} deudores FSCU ({100*n_ddo/total:.1f}%) figuran como demandados directos en causas civiles — la mayoría cobranza por créditos en mora. La cifra incluye sólo rol DDO (demandado directo), excluye demandantes, abogados y apoderados. Las regiones con mayor tasa de demandados suelen coincidir con zonas de mayor penetración bancaria y actividad de cobranza ejecutiva.".replace(",", "."),
+    "tipo": "judicial"
+})
+
+# 9. Sexo/edad
+interesante.append({
+    "titulo": "Perfil demográfico",
+    "kpi": "54% / 46%",
+    "sub": "Masculino / Femenino · mediana de edad 35-44",
+    "desc": "Pese a que las mujeres representan ~52% de la matrícula universitaria chilena, entre los morosos FSCU los hombres son mayoría (54,9%). La mediana está en el tramo 35-44 años, típico de egresados a 10-15 años de haberse titulado. El NSE dominante es 'Medio Alto' seguido de 'Medio' — no son las capas más pobres sino la clase media profesional.",
+    "tipo": "demographics"
+})
+
+# 10. % del PIB
+pib_usd = 330_000_000_000
+cartera_usd = int(utm26 * UTM_USD)
+interesante.append({
+    "titulo": "1,38% del PIB chileno",
+    "kpi": f"US$ {cartera_usd/1e9:.2f}B",
+    "sub": f"Equivalente a ${int(utm26*UTM_CLP/1e12*100)/100:.2f} billones CLP",
+    "desc": f"La cartera vencida FSCU asciende a US$ {cartera_usd/1e9:.2f} mil millones (≈ ${utm26*UTM_CLP/1e12:.2f} billones CLP). Eso equivale al 1,38% del PIB nominal chileno 2024 (≈ US$ 330 mil millones). Para comparación: el costo estimado de la gratuidad universitaria anual en Chile ronda los USD 1.500M. La cartera morosa FSCU equivale a 3 años de gratuidad universitaria. O, dicho de otra manera, si se recuperara íntegramente financiaría 3 años del programa insignia de acceso universitario.",
+    "tipo": "economy"
+})
+
+# 11. Educación es la top industria deudora
+interesante.append({
+    "titulo": "Los profes encabezan el ranking",
+    "kpi": "9.710",
+    "sub": "Deudores en industria 'Educación' (primaria + secundaria + superior)",
+    "desc": "Primary/secondary education con 6.676 deudores y Higher education con 3.034 suman 9.710 personas que trabajan en educación y a la vez son morosos del crédito que ellos mismos o sus pares están pagando. La siguiente industria (Construction, 3.811) está muy por debajo. Los que educan son los que más deben.",
+    "tipo": "education"
+})
+
+# 12. Top universidad por % demandados
+# (ya lo tenemos en justicia_por_universidad — la peor)
+ju_worst = con.execute("""
+SELECT universidad_canon u, COUNT(*) n, SUM(CASE WHEN p.n_civil_ddo > 0 THEN 1 ELSE 0 END) ddo,
+    ROUND(100.0*SUM(CASE WHEN p.n_civil_ddo > 0 THEN 1 ELSE 0 END)/COUNT(*),1) pct
+FROM (SELECT rut_dv, arg_max(universidad_canon, monto_utm) universidad_canon FROM nominas WHERE year=2026 GROUP BY rut_dv) n
+LEFT JOIN pjud p USING (rut_dv) GROUP BY 1 HAVING COUNT(*) >= 100 ORDER BY pct DESC LIMIT 1
+""").fetchone()
+if ju_worst:
+    interesante.append({
+        "titulo": "La universidad más demandada",
+        "kpi": f"{ju_worst[3]}%",
+        "sub": f"de los deudores de {ju_worst[0]} han sido demandados civil",
+        "desc": f"De las 26 universidades acreedoras, {ju_worst[0]} tiene la mayor proporción de deudores que han sido demandados civilmente (DDO.): {ju_worst[3]}% de sus {ju_worst[1]:,} deudores ({ju_worst[2]:,} personas) han enfrentado al menos una causa civil en su contra. Puede reflejar una política de cobranza más agresiva o una composición de cartera distinta.".replace(",", "."),
+        "tipo": "judicial-uni"
+    })
+
+# 13. Multi-universidad
+n_multi = q1("""
+WITH c AS (SELECT rut_dv, COUNT(DISTINCT universidad_canon) n FROM nominas WHERE year=2026 GROUP BY rut_dv)
+SELECT SUM(CASE WHEN n>=2 THEN 1 ELSE 0 END) FROM c
+""")
+interesante.append({
+    "titulo": "Deben a más de una universidad",
+    "kpi": f"{n_multi:,}".replace(",", "."),
+    "sub": f"{100*n_multi/total:.1f}% adeudan a 2 o más instituciones del CRUCH",
+    "desc": f"{n_multi:,} deudores ({100*n_multi/total:.1f}%) aparecen en la nómina 2026 con deudas activas en 2 o más universidades. El crédito solidario en la ley 19.287 permitía tomar créditos en distintas instituciones durante la trayectoria académica. Estas personas son deudores 'acumulativos': egresaron de una pero dejaron deuda en ambas.".replace(",", "."),
+    "tipo": "multi"
+})
+
+# 14. Ultra ricos
+interesante.append({
+    "titulo": "Ultra-ricos morosos",
+    "kpi": "251",
+    "sub": "Decil 10 de avalúo + deuda >1.000 UTM (≈$70M CLP)",
+    "desc": "251 deudores están en el decil 10 de avalúo fiscal (máxima riqueza declarada SII) Y tienen una deuda individual superior a 1.000 UTM — aproximadamente $70 millones CLP o más. Son los perfiles de mayor contradicción: patrimonio suficiente para pagar la deuda varias veces, pero sin saldar. Alguna combinación de créditos personales con otras instituciones que les retuvieron el refund y la autosuficiencia para ignorar el FSCU.",
+    "tipo": "ultra"
+})
+
+out["interesante"] = interesante
+print(f"\nGeneradas {len(interesante)} cuñas periodísticas")
+
+# ═══ PER-YEAR (navegación por años) ═══
+per_year = {}
+for y in [2022, 2023, 2024, 2025, 2026]:
+    r = con.execute(f"""
+    SELECT COUNT(DISTINCT rut_dv) total, ROUND(SUM(monto_utm)) utm,
+           ROUND(AVG(monto_utm),1) avg, ROUND(MEDIAN(monto_utm),1) med
+    FROM nominas WHERE year={y}
+    """).fetchone()
+    top_univ = con.execute(f"""
+    SELECT universidad_canon universidad, COUNT(DISTINCT rut_dv) n, ROUND(SUM(monto_utm)) utm_total
+    FROM nominas WHERE year={y} GROUP BY 1 ORDER BY 2 DESC
+    """).fetchdf().to_dict(orient="records")
+    monto_buckets = con.execute(f"""
+    SELECT CASE WHEN monto_utm < 50 THEN '0-50 UTM' WHEN monto_utm < 100 THEN '50-100 UTM'
+        WHEN monto_utm < 200 THEN '100-200 UTM' WHEN monto_utm < 500 THEN '200-500 UTM'
+        WHEN monto_utm < 1000 THEN '500-1.000 UTM' WHEN monto_utm < 2000 THEN '1.000-2.000 UTM'
+        ELSE '2.000+ UTM' END bucket, COUNT(DISTINCT rut_dv) n
+    FROM nominas WHERE year={y} GROUP BY 1
+    ORDER BY CASE bucket WHEN '0-50 UTM' THEN 1 WHEN '50-100 UTM' THEN 2 WHEN '100-200 UTM' THEN 3
+        WHEN '200-500 UTM' THEN 4 WHEN '500-1.000 UTM' THEN 5 WHEN '1.000-2.000 UTM' THEN 6
+        WHEN '2.000+ UTM' THEN 7 END
+    """).fetchdf().to_dict(orient="records")
+    per_year[y] = {
+        "year": y, "total": r[0], "utm_total": r[1],
+        "avg_utm": r[2], "median_utm": r[3],
+        "clp_total": int((r[1] or 0) * UTM_CLP), "usd_total": int((r[1] or 0) * UTM_USD),
+        "top_universidades": top_univ, "por_monto_bucket": monto_buckets,
+    }
+out["per_year"] = per_year
+
 # ═══ JUSTICIA ═══
 out["justicia_resumen"] = {
     "total": out["resumen"]["total"],
