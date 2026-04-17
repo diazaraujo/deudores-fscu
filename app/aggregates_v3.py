@@ -270,6 +270,7 @@ interesante.append({
     "kpi": f"{n_ejec:,}".replace(",", "."),
     "sub": f"{n_ejec_alto:,} están en decil 8-10 de avalúo (patrimonio alto)".replace(",", "."),
     "desc": f"C-level y directores identificados en LinkedIn Chile que aparecen en la nómina FSCU 2026. Representan el {100*n_ejec/total:.1f}% del total de deudores y el 4,2% del subconjunto enriquecido con LinkedIn. Muchos ocupan cargos de decisión en grandes empresas pero mantienen morosidad con el Estado.",
+    "eli5": "Imagínate al gerente de una empresa grande — alguien que toma decisiones importantes, que firma contratos millonarios, que maneja equipos de 100 personas. Esa persona estudió en la universidad con un préstamo del Estado y todavía no lo ha pagado. Hay 3.628 personas así. Es como si el dueño de la panadería te debiera todavía los pancitos de hace 15 años.",
     "tipo": "executives"
 })
 
@@ -282,6 +283,7 @@ interesante.append({
     "kpi": f"{n_acad:,}".replace(",", "."),
     "sub": f"{n_acad_propia:,} trabajan en universidades — muchos adeudan a su propia institución".replace(",", "."),
     "desc": f"Profesores universitarios que son deudores morosos del FSCU. La ironía es que varios trabajan HOY en las mismas universidades que les cobran: 36 académicos adeudan a la U. de Concepción y trabajan en ella, 28 a la PUC, 27 a la USACH, 22 a la U. de Chile, 21 a la UTFSM. Educación primaria y secundaria concentra el mayor volumen (6.676 deudores) seguida de Educación superior (3.034).",
+    "eli5": "Hay 6.664 profesores (de colegio y de universidad) que deben plata al Estado por su propio crédito universitario. Y lo más loco: MUCHOS de estos profes siguen trabajando en la MISMA universidad que les prestó la plata. Es como si trabajaras en una panadería, tuvieras una cuenta en esa panadería desde hace años, y cada día llegaras a trabajar pasando por el mostrador donde dice tu nombre con la deuda sin pagar.",
     "tipo": "academic"
 })
 
@@ -291,6 +293,7 @@ interesante.append({
     "kpi": f"{out['cronicidad']['cronicos_5_anos']:,}".replace(",", "."),
     "sub": f"{out['cronicidad']['pct_cronicos']}% del 2026 estuvo moroso los 5 años",
     "desc": f"De los 335.152 deudores 2026, {out['cronicidad']['cronicos_5_anos']:,} ({out['cronicidad']['pct_cronicos']}%) figuraron sin interrupción en las 5 nóminas desde 2022. El 79,1% del 2026 ya estaba en 2022 (265.072 personas). Sólo {out['cronicidad']['nuevos_2026']:,} ({out['cronicidad']['pct_nuevos']}%) son ingresos nuevos sin antecedentes. Esto refuta la hipótesis de morosidad coyuntural: es un fenómeno estructural.".replace(",", "."),
+    "eli5": "De cada 10 personas que deben al Estado hoy, 8 llevan 5 años completos sin pagar NADA. No es que un día se atrasaron: son crónicos. Es como ese amigo que te dice 'la próxima semana te pago' hace 5 años. No es que tenga mala memoria — es que nunca va a pagar. El sistema está lleno de estos 'amigos eternos'.",
     "tipo": "chronic"
 })
 
@@ -301,6 +304,7 @@ interesante.append({
     "kpi": f"{n_alto:,}".replace(",", "."),
     "sub": f"{100*n_alto/total:.1f}% de los deudores están en el decil 8-10 de avalúo fiscal",
     "desc": f"{n_alto:,} morosos del FSCU tienen avalúo fiscal correspondiente al decil 8, 9 o 10 según el SII — el 30% más rico en patrimonio declarado. Un 38% están en el decil superior 10 (máxima riqueza por avalúo). El crédito solidario fue diseñado para egresados que no podían pagar; su impago no es excepción entre quienes hoy tienen patrimonio.".replace(",", "."),
+    "eli5": "Hay 118.579 personas que SÍ PODRÍAN pagar — tienen casas caras, autos, propiedades. El Servicio de Impuestos los ubica en el 30% MÁS RICO de Chile. Pero igual no pagan la deuda universitaria. Es como si el vecino que tiene la casa más linda de la cuadra no pagara el almacén del barrio. No es que no pueda: es que no quiere, o nadie lo obliga.",
     "tipo": "wealth"
 })
 
@@ -310,6 +314,7 @@ interesante.append({
     "kpi": "17.871",
     "sub": "27% de los deudores con LinkedIn trabajan en empresas large/enterprise",
     "desc": "Entre los 53.383 deudores identificados en LinkedIn, 17.871 trabajan en empresas grandes. Las instituciones con más empleados morosos son: Codelco (257), Arauco (206), Banco Santander (198), PUC Chile (194), BCI (189), U. de Concepción (178), Entel (164), INACAP (159), DuocUC (152), U. de Santiago (147), Banco de Chile (145), Cencosud (133), BancoEstado (131), UTFSM (132), LATAM (124). Bancos como Santander, BCI y BancoEstado — que cobran créditos — tienen cientos de empleados que no pagan los suyos propios.",
+    "eli5": "17.871 deudores trabajan en empresas como Codelco (la del cobre), Santander (el banco), LATAM (la aerolínea). Casi 200 trabajan en el Banco Santander. Piénsalo: el banco que todos los días llama por teléfono a los morosos tiene casi 200 empleados que ellos mismos son morosos con el Estado. Es como que el profe de matemáticas no supiera sumar.",
     "tipo": "employer"
 })
 
@@ -321,6 +326,7 @@ interesante.append({
     "kpi": f"+{(utm26-utm22)*UTM_CLP/1e9:,.0f}".replace(",",".") + " mil M",
     "sub": f"+{100*(utm26-utm22)/utm22:.1f}% en UTM, +{100*((utm26-utm22)*UTM_CLP)/(utm22*65000):.1f}% en CLP frente a +12% UTM oficial",
     "desc": f"La cartera FSCU pasó de 37,3M UTM en 2022 a 57,5M UTM en 2026: +54,4%. En pesos, eso es +$1.417 mil millones CLP en 4 años. Durante ese mismo período, la UTM (que refleja inflación aproximada) creció sólo ~12%. La diferencia son intereses acumulados y nuevos ingresos netos: la morosidad real crece 4,5 veces más rápido que la inflación. Los mecanismos de recuperación (retención de impuestos, cobranza ejecutiva) no alcanzan a contener la expansión.",
+    "eli5": "La inflación de Chile subió 12% en 4 años. La deuda universitaria subió 54%. Eso significa que la deuda está creciendo 4 veces y media más rápido que los precios normales. En solo 4 años, la deuda total aumentó en $1,4 billones de pesos — eso es casi 3 años de presupuesto del Ministerio de Deporte. No es inflación: es deuda real creciendo sola.",
     "tipo": "interest"
 })
 
@@ -330,6 +336,7 @@ interesante.append({
     "kpi": "+93.024",
     "sub": "Saldo neto nuevos ingresos vs. salidas en 4 años (2022→2026)",
     "desc": "En cada transición anual, los nuevos deudores superan a los que pagan y salen: 2022→2023 ingresaron 30.903 y salieron 11.146 (saldo +19.757). 2023→2024: +10.596. 2024→2025: +13.937. 2025→2026: +2.650. Total acumulado: +93.024 nuevos deudores netos. En paralelo, entre 260.000 y 302.000 deudores por año sólo acumulan intereses sin pagar. La cartera es una bola de nieve sin mecanismo efectivo de cobro.",
+    "eli5": "Imagina una fila en el banco donde cada día entran 3 personas y sólo sale 1. La fila crece. El Fondo Solidario funciona así: cada año ingresan más deudores nuevos de los que logran salir pagando. En 4 años, neto, se sumaron 93.024 deudores. Y la mayoría de los que ya estaban NO se mueven: siguen ahí acumulando intereses como quien deja hervir la olla.",
     "tipo": "flow"
 })
 
@@ -340,6 +347,7 @@ interesante.append({
     "kpi": f"{n_ddo:,}".replace(",", "."),
     "sub": f"{100*n_ddo/total:.1f}% del total fue demandado por cobranza de deuda",
     "desc": f"El cruce con PJUD (22M registros de litigantes del Poder Judicial) encontró que {n_ddo:,} deudores FSCU ({100*n_ddo/total:.1f}%) figuran como demandados directos (DDO.) en causas civiles de cobranza de deuda. El filtro excluye divorcios, daños, arrendamiento y otras causas civiles no vinculadas a morosidad; incluye Juicio Ejecutivo Obligación de Dar (mayoritario), Ejecutivo Mínima Cuantía, Monitorio, Ley de Bancos y Gestión Preparatoria de Cobranza. Estas personas ya tuvieron al menos una acción judicial de cobro en su contra — señal de morosidad estructural más allá del FSCU.".replace(",", "."),
+    "eli5": "Cruzamos los RUT de los deudores con la base del Poder Judicial de Chile. Resultado: 1 de cada 5 morosos del Fondo Solidario ya fue llevado a juicio por NO pagar alguna deuda. Cualquier deuda. Son 72.014 personas. O sea, no es sólo el Estado el que no cobra: el banco, la tarjeta Falabella, la caja de compensación — todos los demandaron y siguen sin pagar.",
     "tipo": "judicial"
 })
 
@@ -349,6 +357,7 @@ interesante.append({
     "kpi": "54% / 46%",
     "sub": "Masculino / Femenino · mediana de edad 35-44",
     "desc": "Pese a que las mujeres representan ~52% de la matrícula universitaria chilena, entre los morosos FSCU los hombres son mayoría (54,9%). La mediana está en el tramo 35-44 años, típico de egresados a 10-15 años de haberse titulado. El NSE dominante es 'Medio Alto' seguido de 'Medio' — no son las capas más pobres sino la clase media profesional.",
+    "eli5": "¿Quién es el deudor típico? Un hombre o mujer de 35-44 años, clase media alta, que egresó hace 10-15 años. No es el pobre que no llega a fin de mes — es el profesional que compra auto, que tiene Netflix, que va a Airbnb en verano. La morosidad no se concentra en los más vulnerables: se concentra en la clase media profesional.",
     "tipo": "demographics"
 })
 
@@ -360,6 +369,7 @@ interesante.append({
     "kpi": f"US$ {cartera_usd/1e9:.2f}B",
     "sub": f"Equivalente a ${int(utm26*UTM_CLP/1e12*100)/100:.2f} billones CLP",
     "desc": f"La cartera vencida FSCU asciende a US$ {cartera_usd/1e9:.2f} mil millones (≈ ${utm26*UTM_CLP/1e12:.2f} billones CLP). Eso equivale al 1,38% del PIB nominal chileno 2024 (≈ US$ 330 mil millones). Para comparación: el costo estimado de la gratuidad universitaria anual en Chile ronda los USD 1.500M. La cartera morosa FSCU equivale a 3 años de gratuidad universitaria. O, dicho de otra manera, si se recuperara íntegramente financiaría 3 años del programa insignia de acceso universitario.",
+    "eli5": "El dinero que deben es MUCHO. Si juntaras en una pila todo lo que se debe al Fondo Solidario, sería como el 1,4% de toda la riqueza que produce Chile en un año entero. ¿Para qué alcanzaría? Para financiar 3 años completos de la GRATUIDAD universitaria. Sí: la plata que 335 mil personas no pagan alcanza para que muchos nuevos estudien gratis durante 3 años.",
     "tipo": "economy"
 })
 
@@ -369,6 +379,7 @@ interesante.append({
     "kpi": "9.710",
     "sub": "Deudores en industria 'Educación' (primaria + secundaria + superior)",
     "desc": "Primary/secondary education con 6.676 deudores y Higher education con 3.034 suman 9.710 personas que trabajan en educación y a la vez son morosos del crédito que ellos mismos o sus pares están pagando. La siguiente industria (Construction, 3.811) está muy por debajo. Los que educan son los que más deben.",
+    "eli5": "Los profes de colegio y los profes universitarios son, juntos, la profesión con MÁS morosos del Fondo Solidario. Casi 10 mil personas enseñan cada día en salas de clases, y al mismo tiempo deben plata por su propia carrera. Es como el dentista al que le duelen las muelas, pero no va al dentista. Hay ironía ahí.",
     "tipo": "education"
 })
 
@@ -386,6 +397,7 @@ if ju_worst:
         "kpi": f"{ju_worst[3]}%",
         "sub": f"de los deudores de {ju_worst[0]} han sido demandados civil",
         "desc": f"De las 26 universidades acreedoras, {ju_worst[0]} tiene la mayor proporción de deudores que han sido demandados civilmente (DDO.): {ju_worst[3]}% de sus {ju_worst[1]:,} deudores ({ju_worst[2]:,} personas) han enfrentado al menos una causa civil en su contra. Puede reflejar una política de cobranza más agresiva o una composición de cartera distinta.".replace(",", "."),
+        "eli5": f"Hay una universidad donde 3 de cada 10 de sus ex-alumnos deudores ya fueron llevados a los tribunales. Eso es MUY alto comparado con el promedio nacional de 1 de cada 5. Puede ser porque es más dura cobrando, o porque a sus deudores les pasan otras cosas en la vida. Es la 'universidad cobradora' del grupo.",
         "tipo": "judicial-uni"
     })
 
@@ -399,6 +411,7 @@ interesante.append({
     "kpi": f"{n_multi:,}".replace(",", "."),
     "sub": f"{100*n_multi/total:.1f}% adeudan a 2 o más instituciones del CRUCH",
     "desc": f"{n_multi:,} deudores ({100*n_multi/total:.1f}%) aparecen en la nómina 2026 con deudas activas en 2 o más universidades. El crédito solidario en la ley 19.287 permitía tomar créditos en distintas instituciones durante la trayectoria académica. Estas personas son deudores 'acumulativos': egresaron de una pero dejaron deuda en ambas.".replace(",", "."),
+    "eli5": "Casi 7.000 personas estudiaron en DOS universidades distintas (primero en una, se cambiaron, y terminaron en otra), y deben plata en AMBAS. Es como tomar clases de piano en una escuela, después guitarra en otra, y no pagar ninguna.",
     "tipo": "multi"
 })
 
@@ -408,6 +421,7 @@ interesante.append({
     "kpi": "251",
     "sub": "Decil 10 de avalúo + deuda >1.000 UTM (≈$70M CLP)",
     "desc": "251 deudores están en el decil 10 de avalúo fiscal (máxima riqueza declarada SII) Y tienen una deuda individual superior a 1.000 UTM — aproximadamente $70 millones CLP o más. Son los perfiles de mayor contradicción: patrimonio suficiente para pagar la deuda varias veces, pero sin saldar. Alguna combinación de créditos personales con otras instituciones que les retuvieron el refund y la autosuficiencia para ignorar el FSCU.",
+    "eli5": "251 personas están entre los MÁS ricos de Chile (decil 10, el 10% más rico) Y a la vez deben más de $70 millones cada una al Fondo Solidario. Son los 'peces gordos' de la morosidad. Con su patrimonio podrían pagar la deuda 100 veces y no se sentiría. Pero no lo hacen. Es como un multimillonario que se olvida pagar la cuenta del taxi: para él no significa nada, pero el taxista sí lo siente.",
     "tipo": "ultra"
 })
 
@@ -417,6 +431,7 @@ interesante.append({
     "kpi": "2.129",
     "sub": "ex-alumnos demandados judicialmente por cobranza (12% de sus deudores)",
     "desc": "De las 26 universidades del CRUCH que administran el Fondo Solidario, sólo unas pocas ejercen cobranza judicial directa. La Universidad de Chile lidera con 2.129 demandas contra sus propios ex-alumnos morosos — 12% de sus 17.327 deudores. Le siguen U. de Valparaíso (436), U. del Bío Bío (329), UTEM (306), U. Arturo Prat (271) y U. de La Serena (222). Las demás universidades del CRUCH prefieren el mecanismo indirecto: retención de la devolución de impuestos vía Tesorería General de la República, que demanda a 10.256 deudores FSCU por cuenta de todas.",
+    "eli5": "De las 26 universidades que prestan plata, SÓLO unas 8 llevan a juicio a sus ex-alumnos que no pagan. La Universidad de Chile es la más dura: llevó a 2.129 personas a tribunales. Las otras 18 universidades? NO demandan. Esperan que el Estado les descuente la deuda de la devolución de impuestos cuando llegue. Es la diferencia entre llamar por teléfono a cobrar vs. esperar que alguien te traiga la plata.",
     "tipo": "judicial-uni"
 })
 
@@ -426,6 +441,7 @@ interesante.append({
     "kpi": "45.310",
     "sub": "deudores FSCU demandados por BancoEstado + privados",
     "desc": "Entre los 72.014 deudores FSCU con demandas de cobranza, los cobradores privados los persiguen más que el propio Estado: BancoEstado (8.678), CMR Falabella (8.582), Itaú (7.467), BCI (7.328), Scotiabank (7.220) y Banco de Chile (6.335) acumulan 45.310 demandas — 4 veces más que la Tesorería General (10.256). El deudor FSCU típico no tiene sólo una deuda con el Estado; tiene múltiples obligaciones vencidas con el sistema financiero.",
+    "eli5": "Cuando alguien no paga al Fondo Solidario, ¿quién lo persigue más duro? Los BANCOS. Mucho más que el propio Estado. BancoEstado, Itaú, BCI, Scotiabank, Banco de Chile — todos juntos hicieron 45.310 demandas contra estos deudores. La Tesorería del Estado: sólo 10.256. Los bancos son 4 veces más agresivos cobrando que el Estado mismo. Como un hermano mayor que te pesca al doblar la esquina.",
     "tipo": "employer"
 })
 
@@ -435,6 +451,7 @@ interesante.append({
     "kpi": "247.300",
     "sub": "73,8% del 2026 lleva 5 años seguidos y su deuda sólo crece",
     "desc": "247.300 deudores aparecen en las 5 nóminas consecutivas (2022 a 2026) y su saldo en UTM aumentó más de 5% entre ese rango. La mediana de deuda de este grupo pasó de 81 UTM en 2022 a 152 UTM en 2026: casi se duplicó en 4 años. Son el núcleo estructural del problema: egresados que no pagaron, la deuda siguió sumando intereses, y los mecanismos de recuperación del FSCU no alcanzan a frenarla. Representan el 73,8% de todos los deudores actuales.",
+    "eli5": "3 de cada 4 personas que deben hoy al Fondo Solidario llevan 5 AÑOS COMPLETOS sin pagar y su deuda SUBE cada año. No es que no bajen: es que crecen. La deuda del 'crónico típico' pasó de 81 UTM ($5,6 millones CLP) en 2022 a 152 UTM ($10,6 millones CLP) en 2026. Casi el doble. Los intereses se comen todo. Es como dejar una olla hirviendo: al final ya no hay sopa, solo vapor.",
     "tipo": "chronic"
 })
 
@@ -622,6 +639,21 @@ global_stats["kpis"] = {
 }
 
 out["global"] = global_stats
+
+# ═══ RANKING RECUPERACIÓN POR UNIVERSIDAD (2022 → 2026) ═══
+out["ranking_recuperacion"] = con.execute("""
+WITH y22 AS (SELECT universidad_canon u, COUNT(DISTINCT rut_dv) n, SUM(monto_utm) m FROM nominas WHERE year=2022 GROUP BY 1),
+     y26 AS (SELECT universidad_canon u, COUNT(DISTINCT rut_dv) n, SUM(monto_utm) m FROM nominas WHERE year=2026 GROUP BY 1)
+SELECT y22.u AS universidad,
+       y22.n AS deudores_2022, y26.n AS deudores_2026,
+       ROUND(y22.m) AS utm_2022, ROUND(y26.m) AS utm_2026,
+       ROUND(100.0*(y26.n-y22.n)/y22.n, 1) AS pct_delta_deudores,
+       ROUND(100.0*(y26.m-y22.m)/y22.m, 1) AS pct_delta_cartera_utm,
+       ROUND((y26.m-y22.m)) AS utm_delta
+FROM y22 FULL OUTER JOIN y26 USING (u)
+WHERE y22.u IS NOT NULL AND y26.u IS NOT NULL
+ORDER BY pct_delta_cartera_utm ASC
+""").fetchdf().to_dict(orient="records")
 
 print("\n=== GLOBAL KPIs ===")
 for k, v in global_stats["kpis"].items(): print(f"  {k}: {v:,}" if isinstance(v,(int,float)) else f"  {k}: {v}")

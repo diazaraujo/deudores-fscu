@@ -3,7 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Deudores FSCU 2026 — DecideChile · Unholster</title>
+<title>Radiografía de Deudores FSCU · DecideChile</title>
+<meta name="description" content="Análisis de los 335.152 deudores del Fondo Solidario de Crédito Universitario. Cartera $4,02 billones CLP. 5 años de nóminas del CRUCH cruzadas con patrimonio SII, LinkedIn y Poder Judicial.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Radiografía de Deudores FSCU · DecideChile">
+<meta property="og:description" content="335.152 deudores · $4,02 billones CLP · 77% crónicos · 72.014 demandados judicialmente. Análisis cruzado 5 años de nóminas CRUCH con patrimonio, perfil profesional y causas judiciales.">
+<meta property="og:url" content="https://deudores-fscu.vercel.app/">
+<meta property="og:image" content="https://deudores-fscu.vercel.app/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Radiografía de Deudores FSCU · DecideChile">
+<meta name="twitter:description" content="335.152 deudores · $4,02 billones CLP · 77% crónicos de 5 años · U. de Chile lidera demandas judiciales.">
+<meta name="author" content="Unholster">
+<meta name="robots" content="index, follow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@200;300;400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
@@ -61,8 +72,58 @@
   .card-note { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: #6B7280; margin-top: 12px; line-height: 1.5; }
   .dash-footer { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #6B7280; margin-top: 32px; text-align: center; line-height: 1.6; }
 
+  /* Modal ELI5 */
+  .modal-overlay {
+    position: fixed; inset: 0; background: rgba(23,27,33,0.6); z-index: 999;
+    display: none; align-items: flex-start; justify-content: center; padding: 48px 20px;
+    overflow-y: auto; backdrop-filter: blur(3px);
+  }
+  .modal-overlay.active { display: flex; }
+  .modal-box {
+    background: #fff; border-radius: 14px; max-width: 640px; width: 100%;
+    padding: 36px 40px; box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    animation: modalIn 0.22s ease-out;
+  }
+  @keyframes modalIn { from { opacity: 0; transform: translateY(-20px) scale(0.96); } to { opacity: 1; transform: none; } }
+  .modal-close {
+    position: absolute; top: 12px; right: 14px; background: transparent; border: none;
+    font-size: 24px; cursor: pointer; color: #6B7280; line-height: 1;
+    width: 32px; height: 32px; border-radius: 6px;
+  }
+  .modal-close:hover { background: #F5F5F5; color: #171B21; }
+  .modal-box { position: relative; }
+  .modal-box .modal-tag {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase;
+    letter-spacing: .14em; margin-bottom: 10px;
+  }
+  .modal-box .modal-title { font-size: 22px; font-weight: 700; margin-bottom: 8px; line-height: 1.3; }
+  .modal-box .modal-kpi { font-size: 36px; font-weight: 800; line-height: 1; margin: 14px 0; }
+  .modal-box .modal-sub { font-size: 13px; color: #6B7280; font-weight: 400; margin-bottom: 20px; }
+  .modal-box .modal-section-title {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase;
+    letter-spacing: .1em; color: #6B7280; margin: 22px 0 8px;
+  }
+  .modal-box .modal-eli5 {
+    font-size: 15px; line-height: 1.65; color: #171B21; font-weight: 300;
+    padding: 16px; background: #F5F5F5; border-radius: 8px; border-left: 3px solid #F59E0B;
+  }
+  .modal-box .modal-technical {
+    font-size: 13px; line-height: 1.6; color: #3A3A3A; font-weight: 300;
+  }
+  .insight-card {
+    cursor: pointer; transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .insight-card:hover {
+    transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  }
+  .insight-cta {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase;
+    letter-spacing: .1em; color: #266FE0; margin-top: 12px; font-weight: 600;
+  }
+
   @media (max-width: 520px) {
     main { padding: 24px 12px 60px; }
+    .modal-box { padding: 28px 22px; }
     .dash-header { flex-direction: column; gap: 12px; }
     .dash-logo { margin-left: 0; height: 28px; }
     .dash-title { font-size: 20px; }
@@ -116,6 +177,7 @@
       <button class="tab-btn" data-tab="geografia" onclick="switchTab('geografia')">Geografía</button>
       <button class="tab-btn" data-tab="demografia" onclick="switchTab('demografia')">Demografía</button>
       <button class="tab-btn" data-tab="linkedin" onclick="switchTab('linkedin')">LinkedIn</button>
+      <button class="tab-btn" data-tab="metodologia" onclick="switchTab('metodologia')">Metodología</button>
     </nav>
   </div>
 
@@ -289,7 +351,25 @@
     <div class="section-tag">Hallazgos y cuñas</div>
     <div class="section-title">Datos interesantes</div>
     <div class="section-desc">Ángulos periodísticos construidos sobre el cruce de la nómina FSCU con datos de patrimonio (SII), perfil profesional (LinkedIn Chile) y exposición judicial (PJUD · Grupo Defensa). Cada hallazgo incluye su cifra principal y una interpretación global.</div>
+    <div style="margin-bottom:16px;padding:12px 16px;background:#FEF3C7;border-radius:8px;font-size:12px;color:#7C5700">
+      💡 <b>Tip</b>: haz click en cualquier tarjeta para ver la explicación simple ("como si fueras un niño o un golden retriever").
+    </div>
     <div id="insightGrid" style="display:grid;grid-template-columns:1fr 1fr;gap:16px"></div>
+  </div>
+
+  <!-- Modal ELI5 -->
+  <div class="modal-overlay" id="insightModal" onclick="if (event.target === this) closeInsightModal()">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeInsightModal()">✕</button>
+      <div class="modal-tag" id="modalTag">—</div>
+      <div class="modal-title" id="modalTitle">—</div>
+      <div class="modal-kpi" id="modalKpi">—</div>
+      <div class="modal-sub" id="modalSub">—</div>
+      <div class="modal-section-title">🐕 Explicación simple</div>
+      <div class="modal-eli5" id="modalEli5">—</div>
+      <div class="modal-section-title">📊 Detalle técnico</div>
+      <div class="modal-technical" id="modalTechnical">—</div>
+    </div>
   </div>
 
   <div class="tab-content" id="tab-evolucion">
@@ -439,6 +519,96 @@
     <div class="full-row"><div class="card"><div class="card-label">Top 30 empresas con más deudores</div><div class="chart-wrap xtall"><canvas id="chartEmpresa"></canvas></div><div class="card-note">Excluye categorías genéricas ("autónomo", "independiente"). Solo empresas con k ≥ 10 deudores.</div></div></div>
   </div>
 
+  <div class="tab-content" id="tab-metodologia">
+    <div class="section-tag">Transparencia técnica</div>
+    <div class="section-title">Metodología</div>
+    <div class="section-desc">Fuentes utilizadas, cruces realizados, decisiones de diseño y limitaciones del análisis. Esta sección está destinada a periodistas, académicos y cualquier persona que quiera verificar o replicar los cálculos.</div>
+
+    <div style="display:flex;flex-direction:column;gap:20px;margin-top:8px">
+
+      <div class="card">
+        <div class="card-label">Fuentes primarias</div>
+        <div style="font-size:14px;font-weight:300;color:#3A3A3A;line-height:1.7">
+          <b>1. Nóminas oficiales del CRUCH</b> (Consejo de Rectoras y Rectores de las Universidades Chilenas) correspondientes a los años tributarios 2022, 2023, 2024, 2025 y 2026, publicadas conforme al Art. 15 inciso 2° de la Ley 19.287, Art. 13 bis de la Ley 19.848 y Art. Único de la Ley 19.899. Descargadas de <a href="https://consejoderectores.cl/fondo-solidario-de-credito-universitario/" target="_blank" style="color:#266FE0">consejoderectores.cl</a>. Formatos: XLSX (2022, 2023) y PDF (2024, 2025, 2026). Cada deudor aparece con RUT, dígito verificador, nombres, apellidos, monto en UTM y universidad administradora.
+          <br><br>
+          <b>2. Enriquecimiento de patrimonio</b>: cruce con bases de datos SII (avalúo fiscal, decil, vehículos, propiedades, GSE, NSE) vía servicios internos Unholster. Cobertura: 89% de los deudores 2026.
+          <br><br>
+          <b>3. Perfil profesional (LinkedIn Chile)</b>: pipeline propietario Unholster que rutifica 5,26 millones de perfiles LinkedIn usando el stack AutoResearch + OpenSearch Audiencias. Sólo se usan matches con confianza "high" (score ≥ 0,87). Cobertura: 15,9% de los deudores FSCU.
+          <br><br>
+          <b>4. Cruce judicial (PJUD)</b>: base PJUD_Unholster (Grupo Defensa) con litigantes civiles (22,3M registros). Se filtra por <i>participante = 'DDO.'</i> (demandado directo) y procedimiento en {Ejecutivo Obligación de Dar, Ejecutivo Mínima Cuantía, Monitorio, Ley de Bancos, Procedimiento Prenda - Ley 20.190, Gestión Preparatoria Confesión de Deuda, Gestión Preparatoria Notificación Cobro de Factura}. Excluye divorcios, daños, arrendamiento y demás causas civiles no vinculadas a cobranza.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-label">Conversiones de moneda</div>
+        <div style="font-size:14px;font-weight:300;color:#3A3A3A;line-height:1.7">
+          Fecha de referencia: <b>17 de abril de 2026</b>.
+          <br>• UTM Abril 2026: <b>$69.889 CLP</b> (fuente: Servicio de Impuestos Internos, <a href="https://www.sii.cl/valores_y_fechas/utm/utm2026.htm" target="_blank" style="color:#266FE0">sii.cl</a>).
+          <br>• Dólar observado 2026-04-17: <b>$886,32 CLP/USD</b> (fuente: Banco Central de Chile vía mindicador.cl).
+          <br>• Tipo derivado: <b>1 UTM ≈ US$ 78,85</b>.
+          <br>• PIB Chile 2024 referencial: US$ 330 mil millones nominal.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-label">Privacidad y k-anonimato</div>
+        <div style="font-size:14px;font-weight:300;color:#3A3A3A;line-height:1.7">
+          Todas las cifras publicadas en el dashboard están <b>agregadas con supresión k-anónima (k ≥ 10)</b>: cualquier cruce que arroje menos de 10 personas en una celda se omite del JSON. El archivo <code>aggregates.json</code> que consume el frontend contiene exclusivamente agregados; <b>ningún dato individual (RUT, nombre, dirección, patente, empleador específico) es accesible desde esta página</b>. Los parquet intermedios con datos individuales están en <code>.gitignore</code> y nunca se suben al repositorio ni al deploy de Vercel.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-label">Clasificación de trayectorias (análisis longitudinal)</div>
+        <div style="font-size:14px;font-weight:300;color:#3A3A3A;line-height:1.7">
+          Cada RUT se clasifica en una de 7 categorías según cómo evolucionó su monto entre 2022 y 2026:
+          <br>• <b>Crónico acumulando</b>: presente los 5 años, monto 2026 &gt; monto 2022 × 1,05.
+          <br>• <b>Crónico pagando</b>: presente los 5 años, monto 2026 &lt; monto 2022 × 0,95.
+          <br>• <b>Crónico estable</b>: presente los 5 años, monto 2026 ≈ monto 2022 (±5%).
+          <br>• <b>Incorporado</b>: no estaba en 2022, sí en 2026.
+          <br>• <b>Reciente</b>: ingresó en los últimos 2 años.
+          <br>• <b>Salió</b>: estaba en 2022, no está en 2026 (pago total o condonación).
+          <br>• <b>Intermitente / Ocasional</b>: aparece y desaparece a lo largo del período.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-label">Limitaciones y qué NO dice el análisis</div>
+        <div style="font-size:14px;font-weight:300;color:#3A3A3A;line-height:1.7">
+          • Los <b>montos pagados individuales</b> no son públicos; se infieren comparando mismo RUT año a año (si en 2023 debe menos que en 2022, se asume que pagó la diferencia neta). Esto no distingue condonaciones de pagos efectivos.
+          <br>• La <b>tasa de recuperación real</b> requeriría datos de TGR (monto retenido vía devolución de impuestos), que no son públicos. Hay una solicitud de Transparencia Ley 20.285 en curso.
+          <br>• La <b>rutificación LinkedIn cubre 15,9%</b>: no es un censo del perfil profesional. Ejecutivos / gerentes pueden estar subrepresentados si no tienen perfil público.
+          <br>• Los <b>datos de patrimonio SII</b> reflejan únicamente avalúo fiscal — no ingresos ni capacidad de pago real. Alguien puede estar en decil 8-10 de avalúo (porque heredó una casa) pero tener ingresos bajos.
+          <br>• Los <b>procedimientos judiciales</b> en PJUD son causas iniciadas, no sentencias finales. Una causa no implica condena ni deuda confirmada.
+          <br>• Las <b>proyecciones 2027-2030</b> son regresión lineal simple, no modelo econométrico. Suponen continuación del trend sin cambio de política, condonaciones masivas ni recesión.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-label">Solicitudes de Transparencia (Ley 20.285) en curso</div>
+        <div style="font-size:14px;font-weight:300;color:#3A3A3A;line-height:1.7">
+          Para cerrar la serie histórica hacia atrás (2015-2021) y tener datos agregados oficiales, se están preparando solicitudes de acceso a información pública a:
+          <br>• <b>Tesorería General de la República</b>: monto total retenido por concepto de FSCU vía devolución de impuestos a la renta, por año 2015-2025.
+          <br>• <b>Subsecretaría de Educación Superior (MINEDUC)</b>: monto total condonado bajo la Ley 21.738 (2024), desagregado por universidad administradora.
+          <br>• <b>CRUCH y universidades administradoras individuales</b>: nóminas 2015-2021 (actualmente archivadas o no disponibles en el sitio).
+          <br>• <b>DIPRES</b>: Fichas de Monitoreo y Seguimiento Oferta Pública del programa FSCU para años 2015-2023 (las disponibles online no cubren todos los indicadores).
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-label">Reproducibilidad</div>
+        <div style="font-size:14px;font-weight:300;color:#3A3A3A;line-height:1.7">
+          Todo el código fuente está publicado en <a href="https://github.com/diazaraujo/deudores-fscu" target="_blank" style="color:#266FE0">github.com/diazaraujo/deudores-fscu</a> bajo licencia pública. Pipeline principal:
+          <br>• <code>parse_nominas.py</code> — parser unificado (XLSX + PDF → parquet).
+          <br>• <code>normalize_nominas.py</code> — mapa de aliases → 27 universidades canónicas.
+          <br>• <code>cross_pjud_deudas.py</code> — cruce judicial filtrado a cobranza de deuda.
+          <br>• <code>cross_demandantes.py</code> — identificación de quién demanda (DTE.) a los morosos.
+          <br>• <code>app/aggregates_v3.py</code> — consolidación + generación del JSON con k-anonimato.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <div class="dash-footer">
     Datos públicos según Art. 15 inciso 2º Ley 19.287, Art. 13 bis Ley 19.848 y Art. Único Ley 19.899.<br>
     Enriquecimiento profesional con datos LinkedIn Chile (rutificación propietaria Unholster, matching high-confidence).<br>
@@ -497,14 +667,22 @@ const kpiCard = (label, value, sub, icon, cls='') => {
 let D = null;
 const initialized = {};
 
-window.switchTab = function(name) {
+window.switchTab = function(name, skipHash) {
+  const el = document.querySelector(`[data-tab="${name}"]`);
+  if (!el) return;
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.querySelector(`[data-tab="${name}"]`).classList.add('active');
+  el.classList.add('active');
   document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
   document.getElementById('tab-' + name).classList.add('active');
   if (D && !initialized[name]) { initTab(name); initialized[name] = true; }
+  if (!skipHash) history.replaceState(null, '', '#' + name);
   setTimeout(() => document.querySelectorAll('.tab-content.active canvas').forEach(c => { const ci = Chart.getChart(c); if (ci) ci.resize(); }), 60);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 };
+window.addEventListener('hashchange', () => {
+  const h = (location.hash || '').replace('#','');
+  if (h && document.querySelector(`[data-tab="${h}"]`)) switchTab(h, true);
+});
 
 function initTab(name) {
   const r = D.resumen;
@@ -925,16 +1103,46 @@ function renderInsights() {
     education:'#F59E0B', 'judicial-uni':'#EF4444', multi:'#266FE0', ultra:'#EF4444' };
   document.getElementById('insightGrid').innerHTML = items.map((it, i) => {
     const bg = cBg[it.tipo] || '#F5F5F5', fg = cFg[it.tipo] || '#266FE0';
-    return `<div class="card" style="display:flex;gap:16px;align-items:flex-start">
+    return `<div class="card insight-card" style="display:flex;gap:16px;align-items:flex-start" onclick="openInsightModal(${i})">
       <div style="flex-shrink:0;width:44px;height:44px;border-radius:10px;background:${bg};color:${fg};display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12px">#${String(i+1).padStart(2,'0')}</div>
       <div style="flex:1">
         <div class="kpi-label">${it.titulo}</div>
         <div style="font-size:26px;font-weight:800;color:${fg};line-height:1.1;margin:6px 0 4px">${it.kpi}</div>
         <div class="kpi-sub" style="font-weight:500;font-size:12px">${it.sub}</div>
-        <div style="font-size:13px;font-weight:300;color:#3A3A3A;line-height:1.55;margin-top:12px">${it.desc}</div>
+        <div style="font-size:13px;font-weight:300;color:#3A3A3A;line-height:1.55;margin-top:12px">${it.desc.length > 160 ? it.desc.substring(0, 160) + '…' : it.desc}</div>
+        <div class="insight-cta">Ver explicación simple →</div>
       </div></div>`;
   }).join('');
 }
+
+window.openInsightModal = function(i) {
+  const it = (D.interesante || [])[i];
+  if (!it) return;
+  const cBg = { executives:'#E7F0FF', academic:'#FEF3C7', chronic:'#FEE2E2', wealth:'#D1FAE5', employer:'#E7F0FF',
+    interest:'#FEE2E2', flow:'#FEF3C7', judicial:'#FEE2E2', demographics:'#E7F0FF', economy:'#D1FAE5',
+    education:'#FEF3C7', 'judicial-uni':'#FEE2E2', multi:'#E7F0FF', ultra:'#FEE2E2' };
+  const cFg = { executives:'#266FE0', academic:'#F59E0B', chronic:'#EF4444', wealth:'#10B981', employer:'#266FE0',
+    interest:'#EF4444', flow:'#F59E0B', judicial:'#EF4444', demographics:'#266FE0', economy:'#10B981',
+    education:'#F59E0B', 'judicial-uni':'#EF4444', multi:'#266FE0', ultra:'#EF4444' };
+  const fg = cFg[it.tipo] || '#266FE0';
+  const tag = document.getElementById('modalTag');
+  tag.textContent = `Cuña #${String(i+1).padStart(2,'0')} · ${it.titulo}`;
+  tag.style.color = fg;
+  document.getElementById('modalTitle').textContent = it.titulo;
+  const kpiEl = document.getElementById('modalKpi');
+  kpiEl.textContent = it.kpi;
+  kpiEl.style.color = fg;
+  document.getElementById('modalSub').textContent = it.sub;
+  document.getElementById('modalEli5').textContent = it.eli5 || 'Sin explicación simple todavía.';
+  document.getElementById('modalTechnical').textContent = it.desc;
+  document.getElementById('insightModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+};
+window.closeInsightModal = function() {
+  document.getElementById('insightModal').classList.remove('active');
+  document.body.style.overflow = '';
+};
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeInsightModal(); });
 
 function onYearChange() {
   const y = parseInt(document.getElementById('yearSelect').value);
@@ -1070,11 +1278,17 @@ function donut(id, labels, values) {
   });
 }
 
-fetch('/static/aggregates.json?v=12').then(r => r.json()).then(d => {
+fetch('/static/aggregates.json?v=14').then(r => r.json()).then(d => {
   D = d;
   renderMain();
-  initTab('general');
-  initialized.general = true;
+  // Check URL hash for deep link
+  const h = (location.hash || '').replace('#','');
+  if (h && document.querySelector(`[data-tab="${h}"]`)) {
+    switchTab(h, true);
+  } else {
+    initTab('general');
+    initialized.general = true;
+  }
   document.getElementById('yearSelect').onchange = onYearChange;
 });
 </script>
