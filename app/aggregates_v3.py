@@ -641,6 +641,23 @@ global_stats["kpis"] = {
 out["global"] = global_stats
 
 # ═══ RANKING RECUPERACIÓN POR UNIVERSIDAD (2022 → 2026) ═══
+# Top comunas por perfil LinkedIn (ejecutivos, gerentes, académicos)
+out["comunas_ejecutivos"] = con.execute("""
+SELECT comuna, region, COUNT(*) n FROM full_t
+WHERE en_linkedin AND seniority IN ('c-level','director') AND comuna IS NOT NULL
+GROUP BY 1,2 HAVING COUNT(*) >= 10 ORDER BY 3 DESC LIMIT 20
+""").fetchdf().to_dict(orient="records")
+out["comunas_gerentes"] = con.execute("""
+SELECT comuna, region, COUNT(*) n FROM full_t
+WHERE en_linkedin AND seniority = 'manager' AND comuna IS NOT NULL
+GROUP BY 1,2 HAVING COUNT(*) >= 10 ORDER BY 3 DESC LIMIT 20
+""").fetchdf().to_dict(orient="records")
+out["comunas_academicos"] = con.execute("""
+SELECT comuna, region, COUNT(*) n FROM full_t
+WHERE en_linkedin AND seniority = 'academic' AND comuna IS NOT NULL
+GROUP BY 1,2 HAVING COUNT(*) >= 10 ORDER BY 3 DESC LIMIT 20
+""").fetchdf().to_dict(orient="records")
+
 out["ranking_recuperacion"] = con.execute("""
 WITH y22 AS (SELECT universidad_canon u, COUNT(DISTINCT rut_dv) n, SUM(monto_utm) m FROM nominas WHERE year=2022 GROUP BY 1),
      y26 AS (SELECT universidad_canon u, COUNT(DISTINCT rut_dv) n, SUM(monto_utm) m FROM nominas WHERE year=2026 GROUP BY 1)
