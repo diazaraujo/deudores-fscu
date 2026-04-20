@@ -336,6 +336,7 @@
       <button class="tab-btn active" data-tab="general" onclick="switchTab('general')">General</button>
       <button class="tab-btn" data-tab="conclusiones" onclick="switchTab('conclusiones')">Conclusiones</button>
       <button class="tab-btn" data-tab="pagadores" onclick="switchTab('pagadores')">Los que pagan</button>
+      <button class="tab-btn" data-tab="top100" onclick="switchTab('top100')">Top 100</button>
       <button class="tab-btn" data-tab="global" onclick="switchTab('global')">Política Pública</button>
       <button class="tab-btn" data-tab="interesante" onclick="switchTab('interesante')">Insights</button>
       <button class="tab-btn" data-tab="evolucion" onclick="switchTab('evolucion')">Evolución</button>
@@ -483,6 +484,40 @@
         </div>
       </div>
 
+    </div>
+  </div>
+
+  <div class="tab-content" id="tab-top100">
+    <div class="section-tag">Ranking del año tributario 2026</div>
+    <div class="section-title">Top 100 deudores FSCU por monto</div>
+    <div class="section-desc">Las 100 mayores deudas individuales del Fondo Solidario de Crédito Universitario, ordenadas de mayor a menor. Por razones de privacidad, los registros se publican <b>anonimizados</b>: se muestra la posición, monto en UTM y CLP, universidad acreedora, comuna, edad agrupada, decil de avalúo fiscal y patrimonio total declarado al SII. Se omiten el RUT y el nombre. El archivo con identificadores permanece local y sólo accesible al equipo editorial con autorización.</div>
+
+    <div class="kpi-grid cols-4 mb-sm" id="kpiTop100"></div>
+
+    <div class="card" style="padding:24px;margin-top:8px">
+      <div class="card-label" style="margin-bottom:14px">Ranking detallado</div>
+      <div style="overflow-x:auto">
+        <table id="top100Table" style="width:100%;font-family:'JetBrains Mono',monospace;font-size:11px;border-collapse:collapse;min-width:900px">
+          <thead>
+            <tr style="border-bottom:2px solid #E5E7EB;color:#6B7280;text-transform:uppercase;letter-spacing:.1em;font-size:10px">
+              <th style="padding:10px 8px;text-align:left">#</th>
+              <th style="padding:10px 8px;text-align:right">UTM</th>
+              <th style="padding:10px 8px;text-align:right">CLP</th>
+              <th style="padding:10px 8px;text-align:left">Universidad</th>
+              <th style="padding:10px 8px;text-align:left">Comuna</th>
+              <th style="padding:10px 8px;text-align:center">Edad</th>
+              <th style="padding:10px 8px;text-align:center">Sexo</th>
+              <th style="padding:10px 8px;text-align:center">Decil</th>
+              <th style="padding:10px 8px;text-align:right">Vehíc.</th>
+              <th style="padding:10px 8px;text-align:right">Propied.</th>
+              <th style="padding:10px 8px;text-align:right">Patrimonio CLP</th>
+              <th style="padding:10px 8px;text-align:left">Cargo (LinkedIn)</th>
+            </tr>
+          </thead>
+          <tbody id="top100Body"></tbody>
+        </table>
+      </div>
+      <div class="card-note" style="margin-top:16px">Decil de avalúo según SII (1=más bajo, 10=más alto). Patrimonio CLP = avalúo total de propiedades + tasación total de vehículos. Un patrimonio = 0 significa que no hay bienes registrados a nombre del deudor en SII/Registro Civil al momento del cruce. Cargo LinkedIn sólo para el subconjunto rutificado con alta confianza.</div>
     </div>
   </div>
 
@@ -1010,6 +1045,7 @@ function initTab(name) {
     if (currentYear === 2026 || currentYear === 'todos') { renderPerfiles(); renderMontoBucket('chartMontoBucket'); }
     else renderMontoBucketYear('chartMontoBucket');
   }
+  if (name === 'top100') renderTop100();
   if (name === 'pagadores') renderPagadores();
   if (name === 'global') renderGlobal();
   if (name === 'interesante') renderInsights();
@@ -1547,6 +1583,44 @@ window.convSet = function(utm) {
   i_utm.dispatchEvent(new Event('input'));
 };
 
+function renderTop100() {
+  const rows = D.top100 || [];
+  if (!rows.length) return;
+  const totalUTM = rows.reduce((s, r) => s + r.monto_utm, 0);
+  const totalPat = rows.reduce((s, r) => s + (r.patrimonio_clp || 0), 0);
+  const withPat = rows.filter(r => (r.patrimonio_clp || 0) > 0).length;
+  const cLevel = rows.filter(r => r.seniority === 'c-level' || r.seniority === 'director').length;
+  document.getElementById('kpiTop100').innerHTML =
+    kpiCard('Monto acumulado', fmtCLP(totalUTM * D.resumen.utm_clp), fmt(Math.round(totalUTM)) + ' UTM total', 'cash', 'red') +
+    kpiCard('Deuda #1', fmt(Math.round(rows[0].monto_utm)) + ' UTM', fmtCLP(rows[0].monto_clp), 'chart', 'red') +
+    kpiCard('Con patrimonio SII', withPat + '/100', 'Patrimonio total: ' + fmtCLP(totalPat), 'building') +
+    kpiCard('C-Level/Director', cLevel + '/100', 'Identificados en LinkedIn', 'users', 'amber');
+
+  const tbody = document.getElementById('top100Body');
+  tbody.innerHTML = rows.map(r => {
+    const patr = r.patrimonio_clp || 0;
+    const patrStr = patr > 0 ? fmtCLP(patr) : '—';
+    const sen = r.seniority ? r.seniority.charAt(0).toUpperCase() + r.seniority.slice(1) : '';
+    const cargo = r.en_linkedin && r.industry ? (sen + ' · ' + r.industry.substring(0, 30)) : (sen || '—');
+    const comuna = (r.comuna || '—').substring(0, 15);
+    const univ = (r.universidad || '').replace('U.', 'U. ').replace('PONTIFICIA U. CATOLICA DE ', 'PUC ').substring(0, 25);
+    return `<tr style="border-bottom:1px solid #F3F4F6">
+      <td style="padding:8px;font-weight:700;color:${r.rank <= 10 ? '#EF4444' : '#266FE0'}">#${r.rank}</td>
+      <td style="padding:8px;text-align:right;font-weight:600">${fmt(Math.round(r.monto_utm))}</td>
+      <td style="padding:8px;text-align:right;color:#6B7280">${fmtCLP(r.monto_clp).replace(' CLP','')}</td>
+      <td style="padding:8px;font-size:10px">${univ}</td>
+      <td style="padding:8px;font-size:10px">${comuna}</td>
+      <td style="padding:8px;text-align:center">${r.edad_bucket || '—'}</td>
+      <td style="padding:8px;text-align:center">${(r.sexo || '—').substring(0,1)}</td>
+      <td style="padding:8px;text-align:center;font-weight:600;color:${r.decil_avaluo >= 8 ? '#EF4444' : r.decil_avaluo >= 5 ? '#F59E0B' : '#6B7280'}">${r.decil_avaluo || '—'}</td>
+      <td style="padding:8px;text-align:right">${r.vehiculos || 0}</td>
+      <td style="padding:8px;text-align:right">${r.propiedades || 0}</td>
+      <td style="padding:8px;text-align:right;color:${patr > 0 ? '#10B981' : '#9CA3AF'}">${patrStr}</td>
+      <td style="padding:8px;font-size:10px;color:#6B7280">${cargo}</td>
+    </tr>`;
+  }).join('');
+}
+
 function renderPagadores() {
   const p = D.pagadores || {};
   document.getElementById('kpiPagadores').innerHTML =
@@ -1907,7 +1981,7 @@ function donut(id, labels, values) {
   });
 }
 
-fetch('/static/aggregates.json?v=24').then(r => r.json()).then(d => {
+fetch('/static/aggregates.json?v=25').then(r => r.json()).then(d => {
   D = d;
   renderMain();
   // Check URL hash for deep link

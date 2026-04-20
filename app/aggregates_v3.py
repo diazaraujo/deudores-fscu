@@ -539,6 +539,36 @@ WHERE t.trayectoria IN ('Crónico pagando','Salió (pago/condonación)')
 GROUP BY 1 ORDER BY 2 DESC LIMIT 15
 """).fetchdf().to_dict(orient="records")
 
+# Top 100 morosos (anonimizado)
+out["top100"] = con.execute("""
+WITH top AS (
+  SELECT rut_dv, SUM(monto_utm) AS monto_utm,
+         arg_max(universidad, monto_utm) AS universidad,
+         COUNT(DISTINCT universidad) AS n_univ
+  FROM read_parquet('/Users/antonio/deudores-fscu/data/nominas/2026.parquet')
+  GROUP BY rut_dv
+)
+SELECT ROW_NUMBER() OVER (ORDER BY t.monto_utm DESC) AS rank,
+       ROUND(t.monto_utm, 1) AS monto_utm,
+       ROUND(t.monto_utm * 69889) AS monto_clp,
+       t.universidad,
+       t.n_univ AS n_universidades,
+       e.comuna, e.region, e.sexo,
+       CASE WHEN e.edad IS NULL THEN '(s/d)'
+            WHEN e.edad < 36 THEN '26-35' WHEN e.edad < 46 THEN '36-45'
+            WHEN e.edad < 56 THEN '46-55' WHEN e.edad < 66 THEN '56-65'
+            ELSE '66+' END edad_bucket,
+       e.decil_avaluo,
+       COALESCE(e.total_vehiculos, 0) AS vehiculos,
+       COALESCE(e.total_propiedades, 0) AS propiedades,
+       ROUND((COALESCE(e.avaluo_total_propiedades, 0) + COALESCE(e.tasacion_total_vehiculos, 0))) AS patrimonio_clp,
+       e.seniority, e.industry, e.tier,
+       CASE WHEN e.en_linkedin THEN true ELSE false END en_linkedin
+FROM top t LEFT JOIN read_parquet('/Users/antonio/deudores-fscu/data/deudores_enriched.parquet') e
+  ON t.rut_dv = e.rut_dv
+ORDER BY t.monto_utm DESC LIMIT 100
+""").fetchdf().to_dict(orient="records")
+
 out["pagadores_comunas"] = con.execute("""
 SELECT e.comuna, COUNT(*) n FROM read_parquet('/Users/antonio/deudores-fscu/data/deudores_enriched.parquet') e
 INNER JOIN tray t ON e.rut_dv = t.rut_dv

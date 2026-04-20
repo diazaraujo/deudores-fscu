@@ -535,6 +535,12 @@
       "n": 1068
     },
     {
+      "comuna": "Concon",
+      "cod_comuna": 5103.0,
+      "region": "Valparaíso",
+      "n": 1057
+    },
+    {
       "comuna": "Conchali",
       "cod_comuna": 13104.0,
       "region": "Metropolitana",
@@ -544,12 +550,6 @@
       "comuna": "Puerto Varas",
       "cod_comuna": 10109.0,
       "region": "Los Lagos",
-      "n": 1057
-    },
-    {
-      "comuna": "Concon",
-      "cod_comuna": 5103.0,
-      "region": "Valparaíso",
       "n": 1057
     },
     {
@@ -1045,15 +1045,15 @@
       "n": 329
     },
     {
-      "comuna": "Quellon",
-      "cod_comuna": 10208.0,
-      "region": "Los Lagos",
-      "n": 324
-    },
-    {
       "comuna": "Mariquina",
       "cod_comuna": 14106.0,
       "region": "Los Ríos",
+      "n": 324
+    },
+    {
+      "comuna": "Quellon",
+      "cod_comuna": 10208.0,
+      "region": "Los Lagos",
       "n": 324
     },
     {
@@ -1135,15 +1135,15 @@
       "n": 289
     },
     {
-      "comuna": "Coelemu",
-      "cod_comuna": 16203.0,
-      "region": "Ñuble",
-      "n": 288
-    },
-    {
       "comuna": "Hijuelas",
       "cod_comuna": 5503.0,
       "region": "Valparaíso",
+      "n": 288
+    },
+    {
+      "comuna": "Coelemu",
+      "cod_comuna": 16203.0,
+      "region": "Ñuble",
       "n": 288
     },
     {
@@ -1273,9 +1273,9 @@
       "n": 226
     },
     {
-      "comuna": "San Pedro De Atacama",
-      "cod_comuna": 2203.0,
-      "region": "Antofagasta",
+      "comuna": "El Tabo",
+      "cod_comuna": 5605.0,
+      "region": "Valparaíso",
       "n": 224
     },
     {
@@ -1285,9 +1285,9 @@
       "n": 224
     },
     {
-      "comuna": "El Tabo",
-      "cod_comuna": 5605.0,
-      "region": "Valparaíso",
+      "comuna": "San Pedro De Atacama",
+      "cod_comuna": 2203.0,
+      "region": "Antofagasta",
       "n": 224
     },
     {
@@ -1405,14 +1405,14 @@
       "n": 180
     },
     {
-      "comuna": "Nancagua",
-      "cod_comuna": 6305.0,
+      "comuna": "Quinta De Tilcoco",
+      "cod_comuna": 6114.0,
       "region": "O’Higgins",
       "n": 176
     },
     {
-      "comuna": "Quinta De Tilcoco",
-      "cod_comuna": 6114.0,
+      "comuna": "Nancagua",
+      "cod_comuna": 6305.0,
       "region": "O’Higgins",
       "n": 176
     },
@@ -1429,15 +1429,15 @@
       "n": 172
     },
     {
-      "comuna": "Mejillones",
-      "cod_comuna": 2102.0,
-      "region": "Antofagasta",
-      "n": 169
-    },
-    {
       "comuna": "Pozo Almonte",
       "cod_comuna": 1401.0,
       "region": "Tarapacá",
+      "n": 169
+    },
+    {
+      "comuna": "Mejillones",
+      "cod_comuna": 2102.0,
+      "region": "Antofagasta",
       "n": 169
     },
     {
@@ -1477,15 +1477,15 @@
       "n": 161
     },
     {
-      "comuna": "Santa Maria",
-      "cod_comuna": 5706.0,
-      "region": "Valparaíso",
-      "n": 161
-    },
-    {
       "comuna": "Sagrada Familia",
       "cod_comuna": 7307.0,
       "region": "Maule",
+      "n": 161
+    },
+    {
+      "comuna": "Santa Maria",
+      "cod_comuna": 5706.0,
+      "region": "Valparaíso",
       "n": 161
     },
     {
@@ -1525,15 +1525,15 @@
       "n": 152
     },
     {
-      "comuna": "Santa Barbara",
-      "cod_comuna": 8311.0,
-      "region": "Biobío",
-      "n": 151
-    },
-    {
       "comuna": "Dalcahue",
       "cod_comuna": 10205.0,
       "region": "Los Lagos",
+      "n": 151
+    },
+    {
+      "comuna": "Santa Barbara",
+      "cod_comuna": 8311.0,
+      "region": "Biobío",
       "n": 151
     },
     {
@@ -1579,12 +1579,6 @@
       "n": 143
     },
     {
-      "comuna": "Hualañe",
-      "cod_comuna": 7302.0,
-      "region": "Maule",
-      "n": 142
-    },
-    {
       "comuna": "Saavedra",
       "cod_comuna": 9116.0,
       "region": "La Araucanía",
@@ -1594,6 +1588,12 @@
       "comuna": "Calle Larga",
       "cod_comuna": 5302.0,
       "region": "Valparaíso",
+      "n": 142
+    },
+    {
+      "comuna": "Hualañe",
+      "cod_comuna": 7302.0,
+      "region": "Maule",
       "n": 142
     },
     {
@@ -1705,9 +1705,9 @@
       "n": 113
     },
     {
-      "comuna": "Pelluhue",
-      "cod_comuna": 7203.0,
-      "region": "Maule",
+      "comuna": "Pica",
+      "cod_comuna": 1405.0,
+      "region": "Tarapacá",
       "n": 112
     },
     {
@@ -1717,9 +1717,9 @@
       "n": 112
     },
     {
-      "comuna": "Pica",
-      "cod_comuna": 1405.0,
-      "region": "Tarapacá",
+      "comuna": "Pelluhue",
+      "cod_comuna": 7203.0,
+      "region": "Maule",
       "n": 112
     },
     {
@@ -1867,15 +1867,15 @@
       "n": 91
     },
     {
-      "comuna": "Curarrehue",
-      "cod_comuna": 9104.0,
-      "region": "La Araucanía",
-      "n": 90
-    },
-    {
       "comuna": "Contulmo",
       "cod_comuna": 8204.0,
       "region": "Biobío",
+      "n": 90
+    },
+    {
+      "comuna": "Curarrehue",
+      "cod_comuna": 9104.0,
+      "region": "La Araucanía",
       "n": 90
     },
     {
@@ -1915,15 +1915,15 @@
       "n": 82
     },
     {
-      "comuna": "Quilleco",
-      "cod_comuna": 8309.0,
-      "region": "Biobío",
-      "n": 80
-    },
-    {
       "comuna": "Coinco",
       "cod_comuna": 6103.0,
       "region": "O’Higgins",
+      "n": 80
+    },
+    {
+      "comuna": "Quilleco",
+      "cod_comuna": 8309.0,
+      "region": "Biobío",
       "n": 80
     },
     {
@@ -1939,15 +1939,15 @@
       "n": 78
     },
     {
-      "comuna": "Ercilla",
-      "cod_comuna": 9204.0,
-      "region": "La Araucanía",
-      "n": 78
-    },
-    {
       "comuna": "Lolol",
       "cod_comuna": 6304.0,
       "region": "O’Higgins",
+      "n": 78
+    },
+    {
+      "comuna": "Ercilla",
+      "cod_comuna": 9204.0,
+      "region": "La Araucanía",
       "n": 78
     },
     {
@@ -1975,15 +1975,15 @@
       "n": 72
     },
     {
-      "comuna": "Maria Elena",
-      "cod_comuna": 2302.0,
-      "region": "Antofagasta",
-      "n": 71
-    },
-    {
       "comuna": "Chile Chico",
       "cod_comuna": 11401.0,
       "region": "Aysén",
+      "n": 71
+    },
+    {
+      "comuna": "Maria Elena",
+      "cod_comuna": 2302.0,
+      "region": "Antofagasta",
       "n": 71
     },
     {
@@ -2017,22 +2017,16 @@
       "n": 62
     },
     {
-      "comuna": "Alto Del Carmen",
-      "cod_comuna": 3302.0,
-      "region": "Atacama",
-      "n": 60
-    },
-    {
       "comuna": "Rio Hurtado",
       "cod_comuna": 4305.0,
       "region": "Coquimbo",
       "n": 60
     },
     {
-      "comuna": "Quilaco",
-      "cod_comuna": 8308.0,
-      "region": "Biobío",
-      "n": 59
+      "comuna": "Alto Del Carmen",
+      "cod_comuna": 3302.0,
+      "region": "Atacama",
+      "n": 60
     },
     {
       "comuna": "Huara",
@@ -2041,15 +2035,21 @@
       "n": 59
     },
     {
-      "comuna": "Antuco",
-      "cod_comuna": 8302.0,
+      "comuna": "Quilaco",
+      "cod_comuna": 8308.0,
       "region": "Biobío",
-      "n": 55
+      "n": 59
     },
     {
       "comuna": "La Higuera",
       "cod_comuna": 4104.0,
       "region": "Coquimbo",
+      "n": 55
+    },
+    {
+      "comuna": "Antuco",
+      "cod_comuna": 8302.0,
+      "region": "Biobío",
       "n": 55
     },
     {
@@ -2065,15 +2065,15 @@
       "n": 54
     },
     {
-      "comuna": "Rio Ibañez",
-      "cod_comuna": 11402.0,
-      "region": "Aysén",
-      "n": 53
-    },
-    {
       "comuna": "Lumaco",
       "cod_comuna": 9207.0,
       "region": "La Araucanía",
+      "n": 53
+    },
+    {
+      "comuna": "Rio Ibañez",
+      "cod_comuna": 11402.0,
+      "region": "Aysén",
       "n": 53
     },
     {
@@ -2101,15 +2101,15 @@
       "n": 40
     },
     {
-      "comuna": "Empedrado",
-      "cod_comuna": 7104.0,
-      "region": "Maule",
-      "n": 39
-    },
-    {
       "comuna": "Cabo De Hornos",
       "cod_comuna": 12201.0,
       "region": "Magallanes",
+      "n": 39
+    },
+    {
+      "comuna": "Empedrado",
+      "cod_comuna": 7104.0,
+      "region": "Maule",
       "n": 39
     },
     {
@@ -2191,14 +2191,14 @@
       "n": 16
     },
     {
-      "comuna": "Laguna Blanca",
-      "cod_comuna": 12102.0,
+      "comuna": "San Gregorio",
+      "cod_comuna": 12104.0,
       "region": "Magallanes",
       "n": 16
     },
     {
-      "comuna": "San Gregorio",
-      "cod_comuna": 12104.0,
+      "comuna": "Laguna Blanca",
+      "cod_comuna": 12102.0,
       "region": "Magallanes",
       "n": 16
     },
@@ -2207,6 +2207,12 @@
       "cod_comuna": 12303.0,
       "region": "Magallanes",
       "n": 14
+    },
+    {
+      "comuna": "O'Higgins",
+      "cod_comuna": 11302.0,
+      "region": "Aysén",
+      "n": 13
     },
     {
       "comuna": "General Lagos",
@@ -2218,12 +2224,6 @@
       "comuna": "Ollague",
       "cod_comuna": 2202.0,
       "region": "Antofagasta",
-      "n": 13
-    },
-    {
-      "comuna": "O'Higgins",
-      "cod_comuna": 11302.0,
-      "region": "Aysén",
       "n": 13
     },
     {
@@ -2295,6 +2295,21 @@
       "n": 34360
     },
     {
+      "rango_edad": "36-45",
+      "sexo": "Masculino",
+      "n": 67717
+    },
+    {
+      "rango_edad": "46-55",
+      "sexo": "Masculino",
+      "n": 31986
+    },
+    {
+      "rango_edad": "66+",
+      "sexo": "Masculino",
+      "n": 4484
+    },
+    {
       "rango_edad": "(sin dato)",
       "sexo": "(sin dato)",
       "n": 38985
@@ -2313,21 +2328,6 @@
       "rango_edad": "46-55",
       "sexo": "Femenino",
       "n": 25807
-    },
-    {
-      "rango_edad": "36-45",
-      "sexo": "Masculino",
-      "n": 67717
-    },
-    {
-      "rango_edad": "46-55",
-      "sexo": "Masculino",
-      "n": 31986
-    },
-    {
-      "rango_edad": "66+",
-      "sexo": "Masculino",
-      "n": 4484
     },
     {
       "rango_edad": "66+",
@@ -2918,19 +2918,19 @@
       "n": 94
     },
     {
-      "company": "pontificia universidad católica de valparaíso",
-      "n": 90
-    },
-    {
       "company": "junji - junta nacional de jardines infantiles",
       "n": 90
     },
     {
-      "company": "falabella",
-      "n": 89
+      "company": "pontificia universidad católica de valparaíso",
+      "n": 90
     },
     {
       "company": "deloitte",
+      "n": 89
+    },
+    {
+      "company": "falabella",
       "n": 89
     },
     {
@@ -2942,11 +2942,11 @@
       "n": 86
     },
     {
-      "company": "telefónica",
+      "company": "bancoestado",
       "n": 84
     },
     {
-      "company": "bancoestado",
+      "company": "telefónica",
       "n": 84
     },
     {
@@ -2966,6 +2966,10 @@
       "n": 76
     },
     {
+      "company": "universidad de talca",
+      "n": 75
+    },
+    {
       "company": "ministerio de obras públicas",
       "n": 75
     },
@@ -2978,15 +2982,7 @@
       "n": 75
     },
     {
-      "company": "universidad de talca",
-      "n": 75
-    },
-    {
-      "company": "achs",
-      "n": 74
-    },
-    {
-      "company": "universidad de valparaíso",
+      "company": "fundación integra, chile",
       "n": 74
     },
     {
@@ -2994,23 +2990,27 @@
       "n": 74
     },
     {
-      "company": "fundación integra, chile",
+      "company": "universidad de valparaíso",
       "n": 74
     },
     {
-      "company": "escuela",
-      "n": 72
+      "company": "achs",
+      "n": 74
     },
     {
       "company": "claro chile",
       "n": 72
     },
     {
-      "company": "instituto profesional aiep",
-      "n": 71
+      "company": "escuela",
+      "n": 72
     },
     {
       "company": "ey",
+      "n": 71
+    },
+    {
+      "company": "instituto profesional aiep",
       "n": 71
     },
     {
@@ -3030,11 +3030,11 @@
       "n": 62
     },
     {
-      "company": "farmacias cruz verde",
+      "company": "scotiabank",
       "n": 61
     },
     {
-      "company": "scotiabank",
+      "company": "farmacias cruz verde",
       "n": 61
     },
     {
@@ -3196,120 +3196,6 @@
   ],
   "evolucion_universidad": [
     {
-      "year": 2025,
-      "universidad_canon": "U. de O'Higgins",
-      "deudores": 15,
-      "utm_total": 183.0
-    },
-    {
-      "year": 2026,
-      "universidad_canon": "U. de Chile",
-      "deudores": 17327,
-      "utm_total": 3683561.0
-    },
-    {
-      "year": 2022,
-      "universidad_canon": "U. Católica de Temuco",
-      "deudores": 11531,
-      "utm_total": 1312602.0
-    },
-    {
-      "year": 2024,
-      "universidad_canon": "U. de Santiago",
-      "deudores": 24419,
-      "utm_total": 3445335.0
-    },
-    {
-      "year": 2024,
-      "universidad_canon": "U. de Magallanes",
-      "deudores": 4067,
-      "utm_total": 734084.0
-    },
-    {
-      "year": 2024,
-      "universidad_canon": "U. de Tarapacá",
-      "deudores": 13207,
-      "utm_total": 1959412.0
-    },
-    {
-      "year": 2024,
-      "universidad_canon": "U. Arturo Prat",
-      "deudores": 6263,
-      "utm_total": 1012262.0
-    },
-    {
-      "year": 2025,
-      "universidad_canon": "PUC de Chile",
-      "deudores": 5707,
-      "utm_total": 872133.0
-    },
-    {
-      "year": 2025,
-      "universidad_canon": "UTFSM",
-      "deudores": 21104,
-      "utm_total": 2411112.0
-    },
-    {
-      "year": 2025,
-      "universidad_canon": "UMCE",
-      "deudores": 10084,
-      "utm_total": 1629662.0
-    },
-    {
-      "year": 2015,
-      "universidad_canon": "U. de Santiago",
-      "deudores": 17623,
-      "utm_total": 1615485.0
-    },
-    {
-      "year": 2015,
-      "universidad_canon": "U. de Tarapacá",
-      "deudores": 8092,
-      "utm_total": 754286.0
-    },
-    {
-      "year": 2015,
-      "universidad_canon": "U. de Magallanes",
-      "deudores": 525,
-      "utm_total": 96392.0
-    },
-    {
-      "year": 2015,
-      "universidad_canon": "U. Arturo Prat",
-      "deudores": 4235,
-      "utm_total": 422562.0
-    },
-    {
-      "year": 2017,
-      "universidad_canon": "U. de Santiago",
-      "deudores": 17071,
-      "utm_total": 1745790.0
-    },
-    {
-      "year": 2017,
-      "universidad_canon": "U. de Tarapacá",
-      "deudores": 8478,
-      "utm_total": 879170.0
-    },
-    {
-      "year": 2017,
-      "universidad_canon": "U. Arturo Prat",
-      "deudores": 4724,
-      "utm_total": 513638.0
-    },
-    {
-      "year": 2017,
-      "universidad_canon": "U. de Magallanes",
-      "deudores": 420,
-      "utm_total": 84769.0
-    },
-    {
-      "year": 2022,
-      "universidad_canon": "U. de Concepción",
-      "deudores": 20680,
-      "utm_total": 2624499.0
-    },
-    {
       "year": 2022,
       "universidad_canon": "U. de Playa Ancha",
       "deudores": 14992,
@@ -3430,126 +3316,6 @@
       "utm_total": 956258.0
     },
     {
-      "year": 2025,
-      "universidad_canon": "U. de Los Lagos",
-      "deudores": 8481,
-      "utm_total": 1209343.0
-    },
-    {
-      "year": 2026,
-      "universidad_canon": "U. Católica Santísima Concepción",
-      "deudores": 11539,
-      "utm_total": 1751910.0
-    },
-    {
-      "year": 2023,
-      "universidad_canon": "U. de Antofagasta",
-      "deudores": 7268,
-      "utm_total": 1055089.0
-    },
-    {
-      "year": 2023,
-      "universidad_canon": "U. de Playa Ancha",
-      "deudores": 15768,
-      "utm_total": 1771642.0
-    },
-    {
-      "year": 2024,
-      "universidad_canon": "U. del Bío-Bío",
-      "deudores": 17930,
-      "utm_total": 2448627.0
-    },
-    {
-      "year": 2024,
-      "universidad_canon": "U. de La Frontera",
-      "deudores": 14762,
-      "utm_total": 2590739.0
-    },
-    {
-      "year": 2024,
-      "universidad_canon": "U. de Atacama",
-      "deudores": 7911,
-      "utm_total": 1643522.0
-    },
-    {
-      "year": 2024,
-      "universidad_canon": "UTEM",
-      "deudores": 15816,
-      "utm_total": 2414785.0
-    },
-    {
-      "year": 2025,
-      "universidad_canon": "U. Austral",
-      "deudores": 17039,
-      "utm_total": 2701924.0
-    },
-    {
-      "year": 2025,
-      "universidad_canon": "U. de Talca",
-      "deudores": 9300,
-      "utm_total": 1548644.0
-    },
-    {
-      "year": 2015,
-      "universidad_canon": "U. de Atacama",
-      "deudores": 7467,
-      "utm_total": 922682.0
-    },
-    {
-      "year": 2015,
-      "universidad_canon": "U. del Bío-Bío",
-      "deudores": 10685,
-      "utm_total": 993134.0
-    },
-    {
-      "year": 2015,
-      "universidad_canon": "UTEM",
-      "deudores": 11541,
-      "utm_total": 893330.0
-    },
-    {
-      "year": 2015,
-      "universidad_canon": "U. de La Frontera",
-      "deudores": 9811,
-      "utm_total": 1093857.0
-    },
-    {
-      "year": 2016,
-      "universidad_canon": "ULAGO",
-      "deudores": 1,
-      "utm_total": 115.0
-    },
-    {
-      "year": 2017,
-      "universidad_canon": "UTEM",
-      "deudores": 11322,
-      "utm_total": 1025757.0
-    },
-    {
-      "year": 2017,
-      "universidad_canon": "U. del Bío-Bío",
-      "deudores": 11913,
-      "utm_total": 1115067.0
-    },
-    {
-      "year": 2017,
-      "universidad_canon": "U. de La Frontera",
-      "deudores": 10878,
-      "utm_total": 1308590.0
-    },
-    {
-      "year": 2017,
-      "universidad_canon": "U. de Atacama",
-      "deudores": 6983,
-      "utm_total": 967780.0
-    },
-    {
-      "year": 2022,
-      "universidad_canon": "U. de La Serena",
-      "deudores": 15159,
-      "utm_total": 2443333.0
-    },
-    {
       "year": 2026,
       "universidad_canon": "U. de Concepción",
       "deudores": 24634,
@@ -3634,6 +3400,120 @@
       "utm_total": 2561036.0
     },
     {
+      "year": 2025,
+      "universidad_canon": "U. de O'Higgins",
+      "deudores": 15,
+      "utm_total": 183.0
+    },
+    {
+      "year": 2026,
+      "universidad_canon": "U. de Chile",
+      "deudores": 17327,
+      "utm_total": 3683561.0
+    },
+    {
+      "year": 2022,
+      "universidad_canon": "U. Católica de Temuco",
+      "deudores": 11531,
+      "utm_total": 1312602.0
+    },
+    {
+      "year": 2024,
+      "universidad_canon": "U. de Santiago",
+      "deudores": 24419,
+      "utm_total": 3445335.0
+    },
+    {
+      "year": 2024,
+      "universidad_canon": "U. de Magallanes",
+      "deudores": 4067,
+      "utm_total": 734084.0
+    },
+    {
+      "year": 2024,
+      "universidad_canon": "U. de Tarapacá",
+      "deudores": 13207,
+      "utm_total": 1959412.0
+    },
+    {
+      "year": 2024,
+      "universidad_canon": "U. Arturo Prat",
+      "deudores": 6263,
+      "utm_total": 1012262.0
+    },
+    {
+      "year": 2025,
+      "universidad_canon": "PUC de Chile",
+      "deudores": 5707,
+      "utm_total": 872133.0
+    },
+    {
+      "year": 2025,
+      "universidad_canon": "UTFSM",
+      "deudores": 21104,
+      "utm_total": 2411112.0
+    },
+    {
+      "year": 2025,
+      "universidad_canon": "UMCE",
+      "deudores": 10084,
+      "utm_total": 1629662.0
+    },
+    {
+      "year": 2015,
+      "universidad_canon": "U. de Santiago",
+      "deudores": 17623,
+      "utm_total": 1615485.0
+    },
+    {
+      "year": 2015,
+      "universidad_canon": "U. de Tarapacá",
+      "deudores": 8092,
+      "utm_total": 754286.0
+    },
+    {
+      "year": 2015,
+      "universidad_canon": "U. de Magallanes",
+      "deudores": 525,
+      "utm_total": 96392.0
+    },
+    {
+      "year": 2015,
+      "universidad_canon": "U. Arturo Prat",
+      "deudores": 4235,
+      "utm_total": 422562.0
+    },
+    {
+      "year": 2017,
+      "universidad_canon": "U. de Santiago",
+      "deudores": 17071,
+      "utm_total": 1745790.0
+    },
+    {
+      "year": 2017,
+      "universidad_canon": "U. de Tarapacá",
+      "deudores": 8478,
+      "utm_total": 879170.0
+    },
+    {
+      "year": 2017,
+      "universidad_canon": "U. Arturo Prat",
+      "deudores": 4724,
+      "utm_total": 513638.0
+    },
+    {
+      "year": 2017,
+      "universidad_canon": "U. de Magallanes",
+      "deudores": 420,
+      "utm_total": 84769.0
+    },
+    {
+      "year": 2022,
+      "universidad_canon": "U. de Concepción",
+      "deudores": 20680,
+      "utm_total": 2624499.0
+    },
+    {
       "year": 2023,
       "universidad_canon": "U. de Chile",
       "deudores": 15663,
@@ -3698,120 +3578,6 @@
       "universidad_canon": "U. Católica del Norte",
       "deudores": 8111,
       "utm_total": 976756.0
-    },
-    {
-      "year": 2025,
-      "universidad_canon": "U. Católica del Maule",
-      "deudores": 7224,
-      "utm_total": 890525.0
-    },
-    {
-      "year": 2026,
-      "universidad_canon": "U. de La Serena",
-      "deudores": 17452,
-      "utm_total": 3861983.0
-    },
-    {
-      "year": 2022,
-      "universidad_canon": "U. Católica Santísima Concepción",
-      "deudores": 9533,
-      "utm_total": 1148371.0
-    },
-    {
-      "year": 2016,
-      "universidad_canon": "U. de Santiago",
-      "deudores": 18446,
-      "utm_total": 1771940.0
-    },
-    {
-      "year": 2016,
-      "universidad_canon": "U. Arturo Prat",
-      "deudores": 4688,
-      "utm_total": 486530.0
-    },
-    {
-      "year": 2016,
-      "universidad_canon": "U. de Tarapacá",
-      "deudores": 8503,
-      "utm_total": 813832.0
-    },
-    {
-      "year": 2021,
-      "universidad_canon": "U. del Bío-Bío",
-      "deudores": 15746,
-      "utm_total": 1556747.0
-    },
-    {
-      "year": 2021,
-      "universidad_canon": "U. de La Frontera",
-      "deudores": 13390,
-      "utm_total": 1927710.0
-    },
-    {
-      "year": 2021,
-      "universidad_canon": "U. de Atacama",
-      "deudores": 6819,
-      "utm_total": 1161330.0
-    },
-    {
-      "year": 2021,
-      "universidad_canon": "UTEM",
-      "deudores": 13830,
-      "utm_total": 1652947.0
-    },
-    {
-      "year": 2026,
-      "universidad_canon": "U. de Santiago",
-      "deudores": 25293,
-      "utm_total": 4153524.0
-    },
-    {
-      "year": 2026,
-      "universidad_canon": "U. de Magallanes",
-      "deudores": 4257,
-      "utm_total": 883329.0
-    },
-    {
-      "year": 2026,
-      "universidad_canon": "U. de Tarapacá",
-      "deudores": 14125,
-      "utm_total": 2400572.0
-    },
-    {
-      "year": 2026,
-      "universidad_canon": "U. Arturo Prat",
-      "deudores": 6457,
-      "utm_total": 1186153.0
-    },
-    {
-      "year": 2023,
-      "universidad_canon": "U. Católica del Maule",
-      "deudores": 6298,
-      "utm_total": 636346.0
-    },
-    {
-      "year": 2024,
-      "universidad_canon": "U. de Chile",
-      "deudores": 16513,
-      "utm_total": 3048572.0
-    },
-    {
-      "year": 2016,
-      "universidad_canon": "U. de La Serena",
-      "deudores": 10557,
-      "utm_total": 1363849.0
-    },
-    {
-      "year": 2021,
-      "universidad_canon": "U. de Concepción",
-      "deudores": 17880,
-      "utm_total": 1979356.0
-    },
-    {
-      "year": 2021,
-      "universidad_canon": "UCTEMUCO",
-      "deudores": 9568,
-      "utm_total": 1120018.0
     },
     {
       "year": 2025,
@@ -3935,81 +3701,57 @@
     },
     {
       "year": 2026,
-      "universidad_canon": "U. del Bío-Bío",
-      "deudores": 19305,
-      "utm_total": 2874393.0
+      "universidad_canon": "PUC de Chile",
+      "deudores": 5939,
+      "utm_total": 985776.0
     },
     {
       "year": 2026,
-      "universidad_canon": "U. de La Frontera",
-      "deudores": 15338,
-      "utm_total": 3074233.0
+      "universidad_canon": "UTFSM",
+      "deudores": 20324,
+      "utm_total": 2568693.0
     },
     {
       "year": 2026,
-      "universidad_canon": "U. de Atacama",
-      "deudores": 7995,
-      "utm_total": 1755403.0
+      "universidad_canon": "UMCE",
+      "deudores": 10134,
+      "utm_total": 1739623.0
     },
     {
       "year": 2026,
-      "universidad_canon": "UTEM",
-      "deudores": 16546,
-      "utm_total": 2780557.0
-    },
-    {
-      "year": 2023,
-      "universidad_canon": "PUC de Valparaíso",
-      "deudores": 17112,
-      "utm_total": 2338754.0
-    },
-    {
-      "year": 2023,
-      "universidad_canon": "U. de Valparaíso",
-      "deudores": 16191,
-      "utm_total": 1925971.0
-    },
-    {
-      "year": 2024,
-      "universidad_canon": "U. Católica Santísima Concepción",
-      "deudores": 10759,
-      "utm_total": 1488418.0
+      "universidad_canon": "U. de O'Higgins",
+      "deudores": 39,
+      "utm_total": 425.0
     },
     {
       "year": 2025,
-      "universidad_canon": "U. Católica del Norte",
-      "deudores": 9567,
-      "utm_total": 1375405.0
-    },
-    {
-      "year": 2015,
-      "universidad_canon": "U. Católica Santísima Concepción",
-      "deudores": 6434,
-      "utm_total": 593505.0
-    },
-    {
-      "year": 2016,
-      "universidad_canon": "U. de Concepción",
-      "deudores": 13716,
-      "utm_total": 1414920.0
-    },
-    {
-      "year": 2016,
-      "universidad_canon": "UCTEMUCO",
-      "deudores": 8269,
-      "utm_total": 732389.0
-    },
-    {
-      "year": 2017,
-      "universidad_canon": "U. Católica Santísima Concepción",
-      "deudores": 6701,
-      "utm_total": 650103.0
+      "universidad_canon": "U. de Chile",
+      "deudores": 16910,
+      "utm_total": 3344341.0
     },
     {
       "year": 2021,
-      "universidad_canon": "U. de La Serena",
-      "deudores": 13328,
-      "utm_total": 2129276.0
+      "universidad_canon": "U. de Playa Ancha",
+      "deudores": 12955,
+      "utm_total": 1302071.0
+    },
+    {
+      "year": 2021,
+      "universidad_canon": "U. de Antofagasta",
+      "deudores": 6597,
+      "utm_total": 850595.0
+    },
+    {
+      "year": 2022,
+      "universidad_canon": "PUC de Valparaíso",
+      "deudores": 16081,
+      "utm_total": 2088884.0
+    },
+    {
+      "year": 2022,
+      "universidad_canon": "U. de Valparaíso",
+      "deudores": 14926,
+      "utm_total": 1734673.0
     },
     {
       "year": 2026,
@@ -4102,64 +3844,304 @@
       "utm_total": 499014.0
     },
     {
+      "year": 2025,
+      "universidad_canon": "U. Católica Santísima Concepción",
+      "deudores": 11280,
+      "utm_total": 1597703.0
+    },
+    {
       "year": 2026,
-      "universidad_canon": "U. Católica del Maule",
-      "deudores": 7387,
-      "utm_total": 996189.0
+      "universidad_canon": "U. Austral",
+      "deudores": 14117,
+      "utm_total": 2344112.0
     },
     {
-      "year": 2022,
+      "year": 2026,
       "universidad_canon": "U. de Talca",
-      "deudores": 8269,
-      "utm_total": 1078920.0
+      "deudores": 9428,
+      "utm_total": 1689868.0
+    },
+    {
+      "year": 2026,
+      "universidad_canon": "U. de Los Lagos",
+      "deudores": 8583,
+      "utm_total": 1314048.0
     },
     {
       "year": 2022,
-      "universidad_canon": "U. de Los Lagos",
-      "deudores": 7848,
-      "utm_total": 923953.0
+      "universidad_canon": "U. Católica del Maule",
+      "deudores": 5919,
+      "utm_total": 553928.0
     },
     {
-      "year": 2023,
-      "universidad_canon": "U. de Santiago",
-      "deudores": 22829,
-      "utm_total": 2889677.0
+      "year": 2024,
+      "universidad_canon": "U. Católica del Norte",
+      "deudores": 9096,
+      "utm_total": 1282388.0
     },
     {
-      "year": 2023,
-      "universidad_canon": "U. de Magallanes",
-      "deudores": 3946,
-      "utm_total": 639408.0
+      "year": 2015,
+      "universidad_canon": "U. Católica del Norte",
+      "deudores": 6241,
+      "utm_total": 553653.0
     },
     {
-      "year": 2023,
-      "universidad_canon": "U. de Tarapacá",
-      "deudores": 12766,
-      "utm_total": 1691016.0
+      "year": 2015,
+      "universidad_canon": "AVALOS",
+      "deudores": 1,
+      "utm_total": 426.0
     },
     {
-      "year": 2023,
-      "universidad_canon": "U. Arturo Prat",
-      "deudores": 6200,
-      "utm_total": 901841.0
+      "year": 2016,
+      "universidad_canon": "U. de Playa Ancha",
+      "deudores": 11843,
+      "utm_total": 823255.0
+    },
+    {
+      "year": 2016,
+      "universidad_canon": "U. de Antofagasta",
+      "deudores": 5735,
+      "utm_total": 595906.0
+    },
+    {
+      "year": 2017,
+      "universidad_canon": "U. Católica del Norte",
+      "deudores": 6574,
+      "utm_total": 628420.0
     },
     {
       "year": 2025,
-      "universidad_canon": "U. de La Serena",
-      "deudores": 17127,
-      "utm_total": 3561687.0
+      "universidad_canon": "U. de Los Lagos",
+      "deudores": 8481,
+      "utm_total": 1209343.0
     },
     {
-      "year": 2021,
-      "universidad_canon": "U. Católica del Norte",
-      "deudores": 7626,
-      "utm_total": 870563.0
+      "year": 2026,
+      "universidad_canon": "U. Católica Santísima Concepción",
+      "deudores": 11539,
+      "utm_total": 1751910.0
+    },
+    {
+      "year": 2023,
+      "universidad_canon": "U. de Antofagasta",
+      "deudores": 7268,
+      "utm_total": 1055089.0
+    },
+    {
+      "year": 2023,
+      "universidad_canon": "U. de Playa Ancha",
+      "deudores": 15768,
+      "utm_total": 1771642.0
+    },
+    {
+      "year": 2024,
+      "universidad_canon": "U. del Bío-Bío",
+      "deudores": 17930,
+      "utm_total": 2448627.0
+    },
+    {
+      "year": 2024,
+      "universidad_canon": "U. de La Frontera",
+      "deudores": 14762,
+      "utm_total": 2590739.0
+    },
+    {
+      "year": 2024,
+      "universidad_canon": "U. de Atacama",
+      "deudores": 7911,
+      "utm_total": 1643522.0
+    },
+    {
+      "year": 2024,
+      "universidad_canon": "UTEM",
+      "deudores": 15816,
+      "utm_total": 2414785.0
+    },
+    {
+      "year": 2025,
+      "universidad_canon": "U. Austral",
+      "deudores": 17039,
+      "utm_total": 2701924.0
+    },
+    {
+      "year": 2025,
+      "universidad_canon": "U. de Talca",
+      "deudores": 9300,
+      "utm_total": 1548644.0
+    },
+    {
+      "year": 2015,
+      "universidad_canon": "U. de Atacama",
+      "deudores": 7467,
+      "utm_total": 922682.0
+    },
+    {
+      "year": 2015,
+      "universidad_canon": "U. del Bío-Bío",
+      "deudores": 10685,
+      "utm_total": 993134.0
+    },
+    {
+      "year": 2015,
+      "universidad_canon": "UTEM",
+      "deudores": 11541,
+      "utm_total": 893330.0
+    },
+    {
+      "year": 2015,
+      "universidad_canon": "U. de La Frontera",
+      "deudores": 9811,
+      "utm_total": 1093857.0
+    },
+    {
+      "year": 2016,
+      "universidad_canon": "ULAGO",
+      "deudores": 1,
+      "utm_total": 115.0
+    },
+    {
+      "year": 2017,
+      "universidad_canon": "UTEM",
+      "deudores": 11322,
+      "utm_total": 1025757.0
+    },
+    {
+      "year": 2017,
+      "universidad_canon": "U. del Bío-Bío",
+      "deudores": 11913,
+      "utm_total": 1115067.0
+    },
+    {
+      "year": 2017,
+      "universidad_canon": "U. de La Frontera",
+      "deudores": 10878,
+      "utm_total": 1308590.0
+    },
+    {
+      "year": 2017,
+      "universidad_canon": "U. de Atacama",
+      "deudores": 6983,
+      "utm_total": 967780.0
     },
     {
       "year": 2022,
-      "universidad_canon": "U. Austral",
-      "deudores": 14957,
-      "utm_total": 1963827.0
+      "universidad_canon": "U. de La Serena",
+      "deudores": 15159,
+      "utm_total": 2443333.0
+    },
+    {
+      "year": 2025,
+      "universidad_canon": "U. Católica del Maule",
+      "deudores": 7224,
+      "utm_total": 890525.0
+    },
+    {
+      "year": 2026,
+      "universidad_canon": "U. de La Serena",
+      "deudores": 17452,
+      "utm_total": 3861983.0
+    },
+    {
+      "year": 2022,
+      "universidad_canon": "U. Católica Santísima Concepción",
+      "deudores": 9533,
+      "utm_total": 1148371.0
+    },
+    {
+      "year": 2016,
+      "universidad_canon": "U. de Santiago",
+      "deudores": 18446,
+      "utm_total": 1771940.0
+    },
+    {
+      "year": 2016,
+      "universidad_canon": "U. Arturo Prat",
+      "deudores": 4688,
+      "utm_total": 486530.0
+    },
+    {
+      "year": 2016,
+      "universidad_canon": "U. de Tarapacá",
+      "deudores": 8503,
+      "utm_total": 813832.0
+    },
+    {
+      "year": 2021,
+      "universidad_canon": "U. del Bío-Bío",
+      "deudores": 15746,
+      "utm_total": 1556747.0
+    },
+    {
+      "year": 2021,
+      "universidad_canon": "U. de La Frontera",
+      "deudores": 13390,
+      "utm_total": 1927710.0
+    },
+    {
+      "year": 2021,
+      "universidad_canon": "U. de Atacama",
+      "deudores": 6819,
+      "utm_total": 1161330.0
+    },
+    {
+      "year": 2021,
+      "universidad_canon": "UTEM",
+      "deudores": 13830,
+      "utm_total": 1652947.0
+    },
+    {
+      "year": 2026,
+      "universidad_canon": "U. de Santiago",
+      "deudores": 25293,
+      "utm_total": 4153524.0
+    },
+    {
+      "year": 2026,
+      "universidad_canon": "U. de Magallanes",
+      "deudores": 4257,
+      "utm_total": 883329.0
+    },
+    {
+      "year": 2026,
+      "universidad_canon": "U. de Tarapacá",
+      "deudores": 14125,
+      "utm_total": 2400572.0
+    },
+    {
+      "year": 2026,
+      "universidad_canon": "U. Arturo Prat",
+      "deudores": 6457,
+      "utm_total": 1186153.0
+    },
+    {
+      "year": 2023,
+      "universidad_canon": "U. Católica del Maule",
+      "deudores": 6298,
+      "utm_total": 636346.0
+    },
+    {
+      "year": 2024,
+      "universidad_canon": "U. de Chile",
+      "deudores": 16513,
+      "utm_total": 3048572.0
+    },
+    {
+      "year": 2016,
+      "universidad_canon": "U. de La Serena",
+      "deudores": 10557,
+      "utm_total": 1363849.0
+    },
+    {
+      "year": 2021,
+      "universidad_canon": "U. de Concepción",
+      "deudores": 17880,
+      "utm_total": 1979356.0
+    },
+    {
+      "year": 2021,
+      "universidad_canon": "UCTEMUCO",
+      "deudores": 9568,
+      "utm_total": 1120018.0
     },
     {
       "year": 2025,
@@ -4258,70 +4240,82 @@
       "utm_total": 2315855.0
     },
     {
-      "year": 2025,
-      "universidad_canon": "U. Católica Santísima Concepción",
-      "deudores": 11280,
-      "utm_total": 1597703.0
+      "year": 2026,
+      "universidad_canon": "U. del Bío-Bío",
+      "deudores": 19305,
+      "utm_total": 2874393.0
     },
     {
       "year": 2026,
-      "universidad_canon": "U. Austral",
-      "deudores": 14117,
-      "utm_total": 2344112.0
+      "universidad_canon": "U. de La Frontera",
+      "deudores": 15338,
+      "utm_total": 3074233.0
     },
     {
       "year": 2026,
-      "universidad_canon": "U. de Talca",
-      "deudores": 9428,
-      "utm_total": 1689868.0
+      "universidad_canon": "U. de Atacama",
+      "deudores": 7995,
+      "utm_total": 1755403.0
     },
     {
       "year": 2026,
-      "universidad_canon": "U. de Los Lagos",
-      "deudores": 8583,
-      "utm_total": 1314048.0
+      "universidad_canon": "UTEM",
+      "deudores": 16546,
+      "utm_total": 2780557.0
     },
     {
-      "year": 2022,
-      "universidad_canon": "U. Católica del Maule",
-      "deudores": 5919,
-      "utm_total": 553928.0
+      "year": 2023,
+      "universidad_canon": "PUC de Valparaíso",
+      "deudores": 17112,
+      "utm_total": 2338754.0
+    },
+    {
+      "year": 2023,
+      "universidad_canon": "U. de Valparaíso",
+      "deudores": 16191,
+      "utm_total": 1925971.0
     },
     {
       "year": 2024,
+      "universidad_canon": "U. Católica Santísima Concepción",
+      "deudores": 10759,
+      "utm_total": 1488418.0
+    },
+    {
+      "year": 2025,
       "universidad_canon": "U. Católica del Norte",
-      "deudores": 9096,
-      "utm_total": 1282388.0
+      "deudores": 9567,
+      "utm_total": 1375405.0
     },
     {
       "year": 2015,
-      "universidad_canon": "U. Católica del Norte",
-      "deudores": 6241,
-      "utm_total": 553653.0
-    },
-    {
-      "year": 2015,
-      "universidad_canon": "AVALOS",
-      "deudores": 1,
-      "utm_total": 426.0
+      "universidad_canon": "U. Católica Santísima Concepción",
+      "deudores": 6434,
+      "utm_total": 593505.0
     },
     {
       "year": 2016,
-      "universidad_canon": "U. de Playa Ancha",
-      "deudores": 11843,
-      "utm_total": 823255.0
+      "universidad_canon": "U. de Concepción",
+      "deudores": 13716,
+      "utm_total": 1414920.0
     },
     {
       "year": 2016,
-      "universidad_canon": "U. de Antofagasta",
-      "deudores": 5735,
-      "utm_total": 595906.0
+      "universidad_canon": "UCTEMUCO",
+      "deudores": 8269,
+      "utm_total": 732389.0
     },
     {
       "year": 2017,
-      "universidad_canon": "U. Católica del Norte",
-      "deudores": 6574,
-      "utm_total": 628420.0
+      "universidad_canon": "U. Católica Santísima Concepción",
+      "deudores": 6701,
+      "utm_total": 650103.0
+    },
+    {
+      "year": 2021,
+      "universidad_canon": "U. de La Serena",
+      "deudores": 13328,
+      "utm_total": 2129276.0
     },
     {
       "year": 2022,
@@ -4511,57 +4505,63 @@
     },
     {
       "year": 2026,
-      "universidad_canon": "PUC de Chile",
-      "deudores": 5939,
-      "utm_total": 985776.0
+      "universidad_canon": "U. Católica del Maule",
+      "deudores": 7387,
+      "utm_total": 996189.0
     },
     {
-      "year": 2026,
-      "universidad_canon": "UTFSM",
-      "deudores": 20324,
-      "utm_total": 2568693.0
+      "year": 2022,
+      "universidad_canon": "U. de Talca",
+      "deudores": 8269,
+      "utm_total": 1078920.0
     },
     {
-      "year": 2026,
-      "universidad_canon": "UMCE",
-      "deudores": 10134,
-      "utm_total": 1739623.0
+      "year": 2022,
+      "universidad_canon": "U. de Los Lagos",
+      "deudores": 7848,
+      "utm_total": 923953.0
     },
     {
-      "year": 2026,
-      "universidad_canon": "U. de O'Higgins",
-      "deudores": 39,
-      "utm_total": 425.0
+      "year": 2023,
+      "universidad_canon": "U. de Santiago",
+      "deudores": 22829,
+      "utm_total": 2889677.0
+    },
+    {
+      "year": 2023,
+      "universidad_canon": "U. de Magallanes",
+      "deudores": 3946,
+      "utm_total": 639408.0
+    },
+    {
+      "year": 2023,
+      "universidad_canon": "U. de Tarapacá",
+      "deudores": 12766,
+      "utm_total": 1691016.0
+    },
+    {
+      "year": 2023,
+      "universidad_canon": "U. Arturo Prat",
+      "deudores": 6200,
+      "utm_total": 901841.0
     },
     {
       "year": 2025,
-      "universidad_canon": "U. de Chile",
-      "deudores": 16910,
-      "utm_total": 3344341.0
+      "universidad_canon": "U. de La Serena",
+      "deudores": 17127,
+      "utm_total": 3561687.0
     },
     {
       "year": 2021,
-      "universidad_canon": "U. de Playa Ancha",
-      "deudores": 12955,
-      "utm_total": 1302071.0
-    },
-    {
-      "year": 2021,
-      "universidad_canon": "U. de Antofagasta",
-      "deudores": 6597,
-      "utm_total": 850595.0
+      "universidad_canon": "U. Católica del Norte",
+      "deudores": 7626,
+      "utm_total": 870563.0
     },
     {
       "year": 2022,
-      "universidad_canon": "PUC de Valparaíso",
-      "deudores": 16081,
-      "utm_total": 2088884.0
-    },
-    {
-      "year": 2022,
-      "universidad_canon": "U. de Valparaíso",
-      "deudores": 14926,
-      "utm_total": 1734673.0
+      "universidad_canon": "U. Austral",
+      "deudores": 14957,
+      "utm_total": 1963827.0
     }
   ],
   "flujos": [
@@ -4778,15 +4778,15 @@
       "pct_salio": 5.5
     },
     {
-      "universidad": "U. Católica de Temuco",
-      "total": 15302,
-      "salieron": 811.0,
-      "pct_salio": 5.3
-    },
-    {
       "universidad": "U. de Concepción",
       "total": 30786,
       "salieron": 1630.0,
+      "pct_salio": 5.3
+    },
+    {
+      "universidad": "U. Católica de Temuco",
+      "total": 15302,
+      "salieron": 811.0,
       "pct_salio": 5.3
     },
     {
@@ -4856,15 +4856,15 @@
       "pct_salio": 3.5
     },
     {
-      "universidad": "U. Católica del Norte",
-      "total": 11566,
-      "salieron": 361.0,
-      "pct_salio": 3.1
-    },
-    {
       "universidad": "PUC de Valparaíso",
       "total": 21879,
       "salieron": 680.0,
+      "pct_salio": 3.1
+    },
+    {
+      "universidad": "U. Católica del Norte",
+      "total": 11566,
+      "salieron": 361.0,
       "pct_salio": 3.1
     },
     {
@@ -4976,6 +4976,1908 @@
       "n": 110
     }
   ],
+  "top100": [
+    {
+      "rank": 1,
+      "monto_utm": 2671.9,
+      "monto_clp": 186737258.0,
+      "universidad": "PONTIFICIA U. CATOLICA DE VALPARAISO",
+      "n_universidades": 2,
+      "comuna": "La Granja",
+      "region": "Metropolitana",
+      "sexo": "Masculino",
+      "edad_bucket": "66+",
+      "decil_avaluo": 6.0,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 2,
+      "monto_utm": 2361.7,
+      "monto_clp": 165058249.0,
+      "universidad": "PONTIFICIA U. CATOLICA DE CHILE",
+      "n_universidades": 1,
+      "comuna": "La Pintana",
+      "region": "Metropolitana",
+      "sexo": "Masculino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 4.0,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 3,
+      "monto_utm": 2315.3,
+      "monto_clp": 161811206.0,
+      "universidad": "U.DE CHILE",
+      "n_universidades": 1,
+      "comuna": "Las Condes",
+      "region": "Metropolitana",
+      "sexo": "Masculino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 8.0,
+      "vehiculos": 1.0,
+      "propiedades": 2.0,
+      "patrimonio_clp": 80140720.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 4,
+      "monto_utm": 2266.1,
+      "monto_clp": 158373352.0,
+      "universidad": "U.DE LA SERENA",
+      "n_universidades": 2,
+      "comuna": "Providencia",
+      "region": "Metropolitana",
+      "sexo": "Masculino",
+      "edad_bucket": "46-55",
+      "decil_avaluo": 8.0,
+      "vehiculos": 13.0,
+      "propiedades": 2.0,
+      "patrimonio_clp": 84474733.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 5,
+      "monto_utm": 2188.0,
+      "monto_clp": 152918718.0,
+      "universidad": "U.TECNOLOGICA METROPOLITANA",
+      "n_universidades": 1,
+      "comuna": "Maipu",
+      "region": "Metropolitana",
+      "sexo": "Masculino",
+      "edad_bucket": "46-55",
+      "decil_avaluo": 9.0,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 6,
+      "monto_utm": 2164.3,
+      "monto_clp": 151258666.0,
+      "universidad": "U.DE CHILE",
+      "n_universidades": 1,
+      "comuna": "Ñuñoa",
+      "region": "Metropolitana",
+      "sexo": "Masculino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 10.0,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 7,
+      "monto_utm": 2056.4,
+      "monto_clp": 143721822.0,
+      "universidad": "U.CATOLICA DE LA SS.CONCEPCION",
+      "n_universidades": 2,
+      "comuna": "Providencia",
+      "region": "Metropolitana",
+      "sexo": "Masculino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 7.0,
+      "vehiculos": 0.0,
+      "propiedades": 1.0,
+      "patrimonio_clp": 48420791.0,
+      "seniority": "c-level",
+      "industry": "retail",
+      "tier": "unknown",
+      "en_linkedin": true
+    },
+    {
+      "rank": 8,
+      "monto_utm": 2007.0,
+      "monto_clp": 140267922.0,
+      "universidad": "U.DE CHILE",
+      "n_universidades": 1,
+      "comuna": null,
+      "region": null,
+      "sexo": null,
+      "edad_bucket": "(s/d)",
+      "decil_avaluo": NaN,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 9,
+      "monto_utm": 1918.5,
+      "monto_clp": 134079321.0,
+      "universidad": "U.DE CHILE",
+      "n_universidades": 3,
+      "comuna": "Temuco",
+      "region": "La Araucanía",
+      "sexo": "Masculino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 10.0,
+      "vehiculos": 1.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 3189045.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 10,
+      "monto_utm": 1908.7,
+      "monto_clp": 133393640.0,
+      "universidad": "U.DE LA FRONTERA",
+      "n_universidades": 1,
+      "comuna": "Temuco",
+      "region": "La Araucanía",
+      "sexo": "Masculino",
+      "edad_bucket": "36-45",
+      "decil_avaluo": 6.0,
+      "vehiculos": 1.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 3284040.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 11,
+      "monto_utm": 1906.1,
+      "monto_clp": 133216122.0,
+      "universidad": "U.DE CHILE",
+      "n_universidades": 2,
+      "comuna": "Estacion Central",
+      "region": "Metropolitana",
+      "sexo": "Masculino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 10.0,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 12,
+      "monto_utm": 1887.2,
+      "monto_clp": 131893822.0,
+      "universidad": "U.DE CHILE",
+      "n_universidades": 1,
+      "comuna": null,
+      "region": null,
+      "sexo": null,
+      "edad_bucket": "(s/d)",
+      "decil_avaluo": NaN,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 13,
+      "monto_utm": 1878.9,
+      "monto_clp": 131313051.0,
+      "universidad": "U.DE CHILE",
+      "n_universidades": 2,
+      "comuna": "Santiago",
+      "region": "Metropolitana",
+      "sexo": "Masculino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 8.0,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 14,
+      "monto_utm": 1878.7,
+      "monto_clp": 131299765.0,
+      "universidad": "PONTIFICIA U. CATOLICA DE VALPARAISO",
+      "n_universidades": 1,
+      "comuna": "Valparaiso",
+      "region": "Valparaíso",
+      "sexo": "Masculino",
+      "edad_bucket": "66+",
+      "decil_avaluo": 6.0,
+      "vehiculos": 4.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 1401155.0,
+      "seniority": "professional",
+      "industry": "farming",
+      "tier": "unknown",
+      "en_linkedin": true
+    },
+    {
+      "rank": 15,
+      "monto_utm": 1871.8,
+      "monto_clp": 130818230.0,
+      "universidad": "U.DE CHILE",
+      "n_universidades": 1,
+      "comuna": "Talca",
+      "region": "Maule",
+      "sexo": "Masculino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 6.0,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 16,
+      "monto_utm": 1862.9,
+      "monto_clp": 130198678.0,
+      "universidad": "PONTIFICIA U. CATOLICA DE VALPARAISO",
+      "n_universidades": 2,
+      "comuna": "Villa Alemana",
+      "region": "Valparaíso",
+      "sexo": "Masculino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 7.0,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 17,
+      "monto_utm": 1852.0,
+      "monto_clp": 129436035.0,
+      "universidad": "PONTIFICIA U. CATOLICA DE VALPARAISO",
+      "n_universidades": 2,
+      "comuna": "Calera",
+      "region": "Valparaíso",
+      "sexo": "Masculino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 5.0,
+      "vehiculos": 2.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 13408850.0,
+      "seniority": "academic",
+      "industry": "mechanical or industrial engineering",
+      "tier": "small",
+      "en_linkedin": true
+    },
+    {
+      "rank": 18,
+      "monto_utm": 1848.0,
+      "monto_clp": 129154718.0,
+      "universidad": "U.DE LA SERENA",
+      "n_universidades": 1,
+      "comuna": "La Serena",
+      "region": "Coquimbo",
+      "sexo": "Femenino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 9.0,
+      "vehiculos": 1.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 1845696.0,
+      "seniority": "unclassified",
+      "industry": null,
+      "tier": "unknown",
+      "en_linkedin": true
+    },
+    {
+      "rank": 19,
+      "monto_utm": 1842.5,
+      "monto_clp": 128773460.0,
+      "universidad": "U.DE CONCEPCION",
+      "n_universidades": 3,
+      "comuna": null,
+      "region": null,
+      "sexo": null,
+      "edad_bucket": "(s/d)",
+      "decil_avaluo": NaN,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 20,
+      "monto_utm": 1832.7,
+      "monto_clp": 128088254.0,
+      "universidad": "U.FEDERICO SANTA MARIA",
+      "n_universidades": 1,
+      "comuna": "Puchuncavi",
+      "region": "Valparaíso",
+      "sexo": "Masculino",
+      "edad_bucket": "46-55",
+      "decil_avaluo": 5.0,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 21,
+      "monto_utm": 1820.1,
+      "monto_clp": 127205668.0,
+      "universidad": "U.DE ANTOFAGASTA",
+      "n_universidades": 1,
+      "comuna": "Valdivia",
+      "region": "Los Ríos",
+      "sexo": "Masculino",
+      "edad_bucket": "46-55",
+      "decil_avaluo": 9.0,
+      "vehiculos": 1.0,
+      "propiedades": 1.0,
+      "patrimonio_clp": 112578231.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 22,
+      "monto_utm": 1770.6,
+      "monto_clp": 123742304.0,
+      "universidad": "U.DE LA SERENA",
+      "n_universidades": 1,
+      "comuna": "Cisnes",
+      "region": "Aysén",
+      "sexo": "Masculino",
+      "edad_bucket": "46-55",
+      "decil_avaluo": 8.0,
+      "vehiculos": 1.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 23,
+      "monto_utm": 1768.8,
+      "monto_clp": 123621970.0,
+      "universidad": "U.DE VALPARAISO",
+      "n_universidades": 4,
+      "comuna": null,
+      "region": null,
+      "sexo": null,
+      "edad_bucket": "(s/d)",
+      "decil_avaluo": NaN,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 24,
+      "monto_utm": 1759.4,
+      "monto_clp": 122962399.0,
+      "universidad": "U.DE VALPARAISO",
+      "n_universidades": 1,
+      "comuna": "Valparaiso",
+      "region": "Valparaíso",
+      "sexo": "Masculino",
+      "edad_bucket": "46-55",
+      "decil_avaluo": 8.0,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 25,
+      "monto_utm": 1759.1,
+      "monto_clp": 122938784.0,
+      "universidad": "U.DE TARAPACA",
+      "n_universidades": 3,
+      "comuna": null,
+      "region": null,
+      "sexo": null,
+      "edad_bucket": "(s/d)",
+      "decil_avaluo": NaN,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 26,
+      "monto_utm": 1756.2,
+      "monto_clp": 122737454.0,
+      "universidad": "PONTIFICIA U. CATOLICA DE VALPARAISO",
+      "n_universidades": 2,
+      "comuna": "Viña Del Mar",
+      "region": "Valparaíso",
+      "sexo": "Masculino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 8.0,
+      "vehiculos": 2.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 7703470.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 27,
+      "monto_utm": 1753.0,
+      "monto_clp": 122517514.0,
+      "universidad": "U.DE CHILE",
+      "n_universidades": 1,
+      "comuna": "Ñuñoa",
+      "region": "Metropolitana",
+      "sexo": "Masculino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 7.0,
+      "vehiculos": 1.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 9742388.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 28,
+      "monto_utm": 1746.0,
+      "monto_clp": 122027592.0,
+      "universidad": "U.DE CONCEPCION",
+      "n_universidades": 1,
+      "comuna": null,
+      "region": null,
+      "sexo": null,
+      "edad_bucket": "(s/d)",
+      "decil_avaluo": NaN,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 29,
+      "monto_utm": 1742.8,
+      "monto_clp": 121801850.0,
+      "universidad": "U.DE CHILE",
+      "n_universidades": 1,
+      "comuna": "Doñihue",
+      "region": "O’Higgins",
+      "sexo": "Masculino",
+      "edad_bucket": "46-55",
+      "decil_avaluo": NaN,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 30,
+      "monto_utm": 1723.2,
+      "monto_clp": 120433424.0,
+      "universidad": "U.DE LA FRONTERA",
+      "n_universidades": 1,
+      "comuna": "Temuco",
+      "region": "La Araucanía",
+      "sexo": "Masculino",
+      "edad_bucket": "46-55",
+      "decil_avaluo": 8.0,
+      "vehiculos": 2.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 28885529.0,
+      "seniority": "unclassified",
+      "industry": "medical devices",
+      "tier": "unknown",
+      "en_linkedin": true
+    },
+    {
+      "rank": 31,
+      "monto_utm": 1721.6,
+      "monto_clp": 120323978.0,
+      "universidad": "U.DE CONCEPCION",
+      "n_universidades": 1,
+      "comuna": "San Pedro De La Paz",
+      "region": "Biobío",
+      "sexo": "Masculino",
+      "edad_bucket": "46-55",
+      "decil_avaluo": 9.0,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 32,
+      "monto_utm": 1720.9,
+      "monto_clp": 120275153.0,
+      "universidad": "U.FEDERICO SANTA MARIA",
+      "n_universidades": 3,
+      "comuna": "Quilpue",
+      "region": "Valparaíso",
+      "sexo": "Masculino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 4.0,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 33,
+      "monto_utm": 1714.1,
+      "monto_clp": 119798846.0,
+      "universidad": "U.DE CHILE",
+      "n_universidades": 2,
+      "comuna": "Curico",
+      "region": "Maule",
+      "sexo": "Masculino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 4.0,
+      "vehiculos": 1.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 902102.0,
+      "seniority": "manager",
+      "industry": "judiciary",
+      "tier": "unknown",
+      "en_linkedin": true
+    },
+    {
+      "rank": 34,
+      "monto_utm": 1710.4,
+      "monto_clp": 119541479.0,
+      "universidad": "U.DE LA SERENA",
+      "n_universidades": 4,
+      "comuna": "La Serena",
+      "region": "Coquimbo",
+      "sexo": "Masculino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 9.0,
+      "vehiculos": 0.0,
+      "propiedades": 1.0,
+      "patrimonio_clp": 103287601.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 35,
+      "monto_utm": 1702.5,
+      "monto_clp": 118988818.0,
+      "universidad": "PONTIFICIA U. CATOLICA DE VALPARAISO",
+      "n_universidades": 1,
+      "comuna": "La Florida",
+      "region": "Metropolitana",
+      "sexo": "Masculino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 10.0,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 36,
+      "monto_utm": 1702.2,
+      "monto_clp": 118967152.0,
+      "universidad": "PONTIFICIA U. CATOLICA DE CHILE",
+      "n_universidades": 1,
+      "comuna": "Temuco",
+      "region": "La Araucanía",
+      "sexo": "Femenino",
+      "edad_bucket": "46-55",
+      "decil_avaluo": NaN,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 37,
+      "monto_utm": 1696.1,
+      "monto_clp": 118540830.0,
+      "universidad": "U.DE CHILE",
+      "n_universidades": 1,
+      "comuna": "Limache",
+      "region": "Valparaíso",
+      "sexo": "Masculino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 9.0,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 38,
+      "monto_utm": 1688.8,
+      "monto_clp": 118031688.0,
+      "universidad": "U.DE LA SERENA",
+      "n_universidades": 1,
+      "comuna": "La Serena",
+      "region": "Coquimbo",
+      "sexo": "Masculino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 7.0,
+      "vehiculos": 1.0,
+      "propiedades": 1.0,
+      "patrimonio_clp": 46377442.0,
+      "seniority": "manager",
+      "industry": "mining & metals",
+      "tier": "unknown",
+      "en_linkedin": true
+    },
+    {
+      "rank": 39,
+      "monto_utm": 1685.5,
+      "monto_clp": 117796512.0,
+      "universidad": "PONTIFICIA U. CATOLICA DE VALPARAISO",
+      "n_universidades": 1,
+      "comuna": null,
+      "region": null,
+      "sexo": null,
+      "edad_bucket": "(s/d)",
+      "decil_avaluo": NaN,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 40,
+      "monto_utm": 1684.3,
+      "monto_clp": 117717048.0,
+      "universidad": "U.DE CONCEPCION",
+      "n_universidades": 1,
+      "comuna": "Chillan",
+      "region": "Ñuble",
+      "sexo": "Femenino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 4.0,
+      "vehiculos": 4.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 10225962.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 41,
+      "monto_utm": 1679.9,
+      "monto_clp": 117408628.0,
+      "universidad": "U.DE CHILE",
+      "n_universidades": 1,
+      "comuna": "Quilpue",
+      "region": "Valparaíso",
+      "sexo": "Masculino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 4.0,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 42,
+      "monto_utm": 1678.6,
+      "monto_clp": 117315263.0,
+      "universidad": "U.DE CONCEPCION",
+      "n_universidades": 1,
+      "comuna": "Chillan",
+      "region": "Ñuble",
+      "sexo": "Masculino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 5.0,
+      "vehiculos": 3.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 3755331.0,
+      "seniority": "manager",
+      "industry": "government administration",
+      "tier": "unknown",
+      "en_linkedin": true
+    },
+    {
+      "rank": 43,
+      "monto_utm": 1667.6,
+      "monto_clp": 116544800.0,
+      "universidad": "U.DE CHILE",
+      "n_universidades": 1,
+      "comuna": "Lo Prado",
+      "region": "Metropolitana",
+      "sexo": "Masculino",
+      "edad_bucket": "46-55",
+      "decil_avaluo": 7.0,
+      "vehiculos": 1.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 3532211.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 44,
+      "monto_utm": 1667.0,
+      "monto_clp": 116501469.0,
+      "universidad": "U.DE CHILE",
+      "n_universidades": 1,
+      "comuna": "El Bosque",
+      "region": "Metropolitana",
+      "sexo": "Masculino",
+      "edad_bucket": "66+",
+      "decil_avaluo": 6.0,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 45,
+      "monto_utm": 1665.3,
+      "monto_clp": 116387549.0,
+      "universidad": "U.DE CHILE",
+      "n_universidades": 1,
+      "comuna": "Cerrillos",
+      "region": "Metropolitana",
+      "sexo": "Masculino",
+      "edad_bucket": "46-55",
+      "decil_avaluo": 5.0,
+      "vehiculos": 1.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 2764130.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 46,
+      "monto_utm": 1662.5,
+      "monto_clp": 116188834.0,
+      "universidad": "U.DE TALCA",
+      "n_universidades": 1,
+      "comuna": "Talca",
+      "region": "Maule",
+      "sexo": "Masculino",
+      "edad_bucket": "46-55",
+      "decil_avaluo": 9.0,
+      "vehiculos": 1.0,
+      "propiedades": 2.0,
+      "patrimonio_clp": 150588357.0,
+      "seniority": "unclassified",
+      "industry": "utilities",
+      "tier": "large",
+      "en_linkedin": true
+    },
+    {
+      "rank": 47,
+      "monto_utm": 1660.0,
+      "monto_clp": 116014342.0,
+      "universidad": "U.DE CHILE",
+      "n_universidades": 1,
+      "comuna": "Viña Del Mar",
+      "region": "Valparaíso",
+      "sexo": "Femenino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 10.0,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 48,
+      "monto_utm": 1658.7,
+      "monto_clp": 115926981.0,
+      "universidad": "U.DE CHILE",
+      "n_universidades": 2,
+      "comuna": "El Quisco",
+      "region": "Valparaíso",
+      "sexo": "Masculino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 5.0,
+      "vehiculos": 5.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 5798562.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 49,
+      "monto_utm": 1654.5,
+      "monto_clp": 115630854.0,
+      "universidad": "U.DE LA SERENA",
+      "n_universidades": 1,
+      "comuna": "La Serena",
+      "region": "Coquimbo",
+      "sexo": "Masculino",
+      "edad_bucket": "46-55",
+      "decil_avaluo": 7.0,
+      "vehiculos": 1.0,
+      "propiedades": 1.0,
+      "patrimonio_clp": 78077342.0,
+      "seniority": "unclassified",
+      "industry": null,
+      "tier": "mid-market",
+      "en_linkedin": true
+    },
+    {
+      "rank": 50,
+      "monto_utm": 1652.8,
+      "monto_clp": 115513937.0,
+      "universidad": "U.DE CHILE",
+      "n_universidades": 1,
+      "comuna": "Santiago",
+      "region": "Metropolitana",
+      "sexo": "Masculino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 10.0,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": "unclassified",
+      "industry": "law practice",
+      "tier": "unknown",
+      "en_linkedin": true
+    },
+    {
+      "rank": 51,
+      "monto_utm": 1650.6,
+      "monto_clp": 115357386.0,
+      "universidad": "U.DE CHILE",
+      "n_universidades": 1,
+      "comuna": "La Reina",
+      "region": "Metropolitana",
+      "sexo": "Femenino",
+      "edad_bucket": "46-55",
+      "decil_avaluo": 9.0,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 52,
+      "monto_utm": 1645.0,
+      "monto_clp": 114964609.0,
+      "universidad": "U.DE CHILE",
+      "n_universidades": 1,
+      "comuna": "San Joaquin",
+      "region": "Metropolitana",
+      "sexo": "Masculino",
+      "edad_bucket": "46-55",
+      "decil_avaluo": 7.0,
+      "vehiculos": 1.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 309088.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 53,
+      "monto_utm": 1642.6,
+      "monto_clp": 114796596.0,
+      "universidad": "U.FEDERICO SANTA MARIA",
+      "n_universidades": 1,
+      "comuna": "Santiago",
+      "region": "Metropolitana",
+      "sexo": "Masculino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 8.0,
+      "vehiculos": 1.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 1630242.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 54,
+      "monto_utm": 1641.9,
+      "monto_clp": 114750050.0,
+      "universidad": "U.DE CHILE",
+      "n_universidades": 1,
+      "comuna": "La Cisterna",
+      "region": "Metropolitana",
+      "sexo": "Masculino",
+      "edad_bucket": "46-55",
+      "decil_avaluo": 8.0,
+      "vehiculos": 0.0,
+      "propiedades": 1.0,
+      "patrimonio_clp": 56962559.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 55,
+      "monto_utm": 1634.5,
+      "monto_clp": 114230768.0,
+      "universidad": "U.DE LA SERENA",
+      "n_universidades": 1,
+      "comuna": "Paiguano",
+      "region": "Coquimbo",
+      "sexo": "Masculino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 1.0,
+      "vehiculos": 1.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 450385.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 56,
+      "monto_utm": 1631.2,
+      "monto_clp": 114004335.0,
+      "universidad": "U.DE ANTOFAGASTA",
+      "n_universidades": 1,
+      "comuna": "Antofagasta",
+      "region": "Antofagasta",
+      "sexo": "Masculino",
+      "edad_bucket": "66+",
+      "decil_avaluo": 2.0,
+      "vehiculos": 0.0,
+      "propiedades": 1.0,
+      "patrimonio_clp": 17288474.0,
+      "seniority": "academic",
+      "industry": "primary/secondary education",
+      "tier": "small",
+      "en_linkedin": true
+    },
+    {
+      "rank": 57,
+      "monto_utm": 1626.5,
+      "monto_clp": 113674256.0,
+      "universidad": "U.DE SANTIAGO",
+      "n_universidades": 2,
+      "comuna": "San Bernardo",
+      "region": "Metropolitana",
+      "sexo": "Masculino",
+      "edad_bucket": "66+",
+      "decil_avaluo": 1.0,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 58,
+      "monto_utm": 1622.3,
+      "monto_clp": 113379527.0,
+      "universidad": "U.DE CHILE",
+      "n_universidades": 1,
+      "comuna": "Vitacura",
+      "region": "Metropolitana",
+      "sexo": "Masculino",
+      "edad_bucket": "46-55",
+      "decil_avaluo": 10.0,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 59,
+      "monto_utm": 1616.1,
+      "monto_clp": 112949710.0,
+      "universidad": "PONTIFICIA U. CATOLICA DE VALPARAISO",
+      "n_universidades": 1,
+      "comuna": "Ñuñoa",
+      "region": "Metropolitana",
+      "sexo": "Femenino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 7.0,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 60,
+      "monto_utm": 1615.4,
+      "monto_clp": 112897887.0,
+      "universidad": "U.DE LA SERENA",
+      "n_universidades": 1,
+      "comuna": "Machali",
+      "region": "O’Higgins",
+      "sexo": "Masculino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 4.0,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 61,
+      "monto_utm": 1615.1,
+      "monto_clp": 112878423.0,
+      "universidad": "PONTIFICIA U. CATOLICA DE CHILE",
+      "n_universidades": 1,
+      "comuna": "Lampa",
+      "region": "Metropolitana",
+      "sexo": "Femenino",
+      "edad_bucket": "46-55",
+      "decil_avaluo": 4.0,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 62,
+      "monto_utm": 1613.9,
+      "monto_clp": 112792459.0,
+      "universidad": "U.DE CHILE",
+      "n_universidades": 1,
+      "comuna": "Santa Cruz",
+      "region": "O’Higgins",
+      "sexo": "Masculino",
+      "edad_bucket": "46-55",
+      "decil_avaluo": 9.0,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 63,
+      "monto_utm": 1613.6,
+      "monto_clp": 112772890.0,
+      "universidad": "U.DE CHILE",
+      "n_universidades": 1,
+      "comuna": "La Florida",
+      "region": "Metropolitana",
+      "sexo": "Masculino",
+      "edad_bucket": "46-55",
+      "decil_avaluo": 6.0,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 64,
+      "monto_utm": 1612.1,
+      "monto_clp": 112667484.0,
+      "universidad": "U.DE LA SERENA",
+      "n_universidades": 1,
+      "comuna": "La Serena",
+      "region": "Coquimbo",
+      "sexo": "Masculino",
+      "edad_bucket": "46-55",
+      "decil_avaluo": 10.0,
+      "vehiculos": 0.0,
+      "propiedades": 2.0,
+      "patrimonio_clp": 87822125.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 65,
+      "monto_utm": 1611.0,
+      "monto_clp": 112591179.0,
+      "universidad": "U.DE CHILE",
+      "n_universidades": 1,
+      "comuna": "Santiago",
+      "region": "Metropolitana",
+      "sexo": "Masculino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 6.0,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 66,
+      "monto_utm": 1610.9,
+      "monto_clp": 112584190.0,
+      "universidad": "U.DE CHILE",
+      "n_universidades": 2,
+      "comuna": "Castro",
+      "region": "Los Lagos",
+      "sexo": "Masculino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 7.0,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": "manager",
+      "industry": "higher education",
+      "tier": "large",
+      "en_linkedin": true
+    },
+    {
+      "rank": 67,
+      "monto_utm": 1600.3,
+      "monto_clp": 111845463.0,
+      "universidad": "U.DE CHILE",
+      "n_universidades": 1,
+      "comuna": "La Reina",
+      "region": "Metropolitana",
+      "sexo": "Femenino",
+      "edad_bucket": "46-55",
+      "decil_avaluo": 10.0,
+      "vehiculos": 1.0,
+      "propiedades": 2.0,
+      "patrimonio_clp": 144050563.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 68,
+      "monto_utm": 1599.7,
+      "monto_clp": 111797939.0,
+      "universidad": "U.DE CHILE",
+      "n_universidades": 1,
+      "comuna": "Valparaiso",
+      "region": "Valparaíso",
+      "sexo": "Masculino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 6.0,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": "c-level",
+      "industry": "construction",
+      "tier": "unknown",
+      "en_linkedin": true
+    },
+    {
+      "rank": 69,
+      "monto_utm": 1597.4,
+      "monto_clp": 111637292.0,
+      "universidad": "U.AUSTRAL DE CHILE",
+      "n_universidades": 1,
+      "comuna": "Valdivia",
+      "region": "Los Ríos",
+      "sexo": "Masculino",
+      "edad_bucket": "36-45",
+      "decil_avaluo": 2.0,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 70,
+      "monto_utm": 1594.4,
+      "monto_clp": 111430504.0,
+      "universidad": "U.DE LA SERENA",
+      "n_universidades": 1,
+      "comuna": "Isla De Maipo",
+      "region": "Metropolitana",
+      "sexo": "Femenino",
+      "edad_bucket": "46-55",
+      "decil_avaluo": 9.0,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 71,
+      "monto_utm": 1588.3,
+      "monto_clp": 111001204.0,
+      "universidad": "PONTIFICIA U. CATOLICA DE VALPARAISO",
+      "n_universidades": 1,
+      "comuna": "Providencia",
+      "region": "Metropolitana",
+      "sexo": "Masculino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 8.0,
+      "vehiculos": 2.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 12640361.0,
+      "seniority": "manager",
+      "industry": "investment banking",
+      "tier": "mid-market",
+      "en_linkedin": true
+    },
+    {
+      "rank": 72,
+      "monto_utm": 1587.5,
+      "monto_clp": 110950185.0,
+      "universidad": "PONTIFICIA U. CATOLICA DE VALPARAISO",
+      "n_universidades": 1,
+      "comuna": "Iquique",
+      "region": "Tarapacá",
+      "sexo": "Femenino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 10.0,
+      "vehiculos": 1.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 73,
+      "monto_utm": 1587.5,
+      "monto_clp": 110946691.0,
+      "universidad": "PONTIFICIA U. CATOLICA DE VALPARAISO",
+      "n_universidades": 1,
+      "comuna": "Collipulli",
+      "region": "La Araucanía",
+      "sexo": "Femenino",
+      "edad_bucket": "46-55",
+      "decil_avaluo": 1.0,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 74,
+      "monto_utm": 1582.7,
+      "monto_clp": 110614718.0,
+      "universidad": "U.DE CHILE",
+      "n_universidades": 1,
+      "comuna": "Coquimbo",
+      "region": "Coquimbo",
+      "sexo": "Masculino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 10.0,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 75,
+      "monto_utm": 1580.9,
+      "monto_clp": 110489505.0,
+      "universidad": "U.DE LA SERENA",
+      "n_universidades": 1,
+      "comuna": "Coquimbo",
+      "region": "Coquimbo",
+      "sexo": "Masculino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 8.0,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 76,
+      "monto_utm": 1578.3,
+      "monto_clp": 110307206.0,
+      "universidad": "U.DE CHILE",
+      "n_universidades": 1,
+      "comuna": "Talca",
+      "region": "Maule",
+      "sexo": "Masculino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 8.0,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 77,
+      "monto_utm": 1572.9,
+      "monto_clp": 109925613.0,
+      "universidad": "PONTIFICIA U. CATOLICA DE VALPARAISO",
+      "n_universidades": 1,
+      "comuna": "Puente Alto",
+      "region": "Metropolitana",
+      "sexo": "Masculino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 8.0,
+      "vehiculos": 2.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 4346165.0,
+      "seniority": "senior",
+      "industry": "information technology and services",
+      "tier": "unknown",
+      "en_linkedin": true
+    },
+    {
+      "rank": 78,
+      "monto_utm": 1569.7,
+      "monto_clp": 109703086.0,
+      "universidad": "U.DE CONCEPCION",
+      "n_universidades": 1,
+      "comuna": "Concepcion",
+      "region": "Biobío",
+      "sexo": "Masculino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 10.0,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 79,
+      "monto_utm": 1565.5,
+      "monto_clp": 109409832.0,
+      "universidad": "U.DE LA FRONTERA",
+      "n_universidades": 1,
+      "comuna": "Padre Las Casas",
+      "region": "La Araucanía",
+      "sexo": "Masculino",
+      "edad_bucket": "46-55",
+      "decil_avaluo": 6.0,
+      "vehiculos": 1.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 7311528.0,
+      "seniority": "professional",
+      "industry": "utilities",
+      "tier": "small",
+      "en_linkedin": true
+    },
+    {
+      "rank": 80,
+      "monto_utm": 1564.1,
+      "monto_clp": 109312686.0,
+      "universidad": "U.DE CONCEPCION",
+      "n_universidades": 2,
+      "comuna": "Pucon",
+      "region": "La Araucanía",
+      "sexo": "Masculino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 1.0,
+      "vehiculos": 1.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 6551670.0,
+      "seniority": "unclassified",
+      "industry": null,
+      "tier": "mid-market",
+      "en_linkedin": true
+    },
+    {
+      "rank": 81,
+      "monto_utm": 1564.0,
+      "monto_clp": 109304020.0,
+      "universidad": "U.DE CONCEPCION",
+      "n_universidades": 1,
+      "comuna": "San Pedro De Atacama",
+      "region": "Antofagasta",
+      "sexo": "Femenino",
+      "edad_bucket": "46-55",
+      "decil_avaluo": 7.0,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 82,
+      "monto_utm": 1563.6,
+      "monto_clp": 109276344.0,
+      "universidad": "U.DE CHILE",
+      "n_universidades": 1,
+      "comuna": "Peñalolen",
+      "region": "Metropolitana",
+      "sexo": "Masculino",
+      "edad_bucket": "66+",
+      "decil_avaluo": 7.0,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 83,
+      "monto_utm": 1563.4,
+      "monto_clp": 109262156.0,
+      "universidad": "PONTIFICIA U. CATOLICA DE VALPARAISO",
+      "n_universidades": 2,
+      "comuna": "Copiapo",
+      "region": "Atacama",
+      "sexo": "Masculino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 4.0,
+      "vehiculos": 2.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 5470254.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 84,
+      "monto_utm": 1561.1,
+      "monto_clp": 109103019.0,
+      "universidad": "U.DE CHILE",
+      "n_universidades": 1,
+      "comuna": "Chillan",
+      "region": "Ñuble",
+      "sexo": "Masculino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 8.0,
+      "vehiculos": 1.0,
+      "propiedades": 1.0,
+      "patrimonio_clp": 39356669.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 85,
+      "monto_utm": 1555.3,
+      "monto_clp": 108700151.0,
+      "universidad": "U.DE CONCEPCION",
+      "n_universidades": 2,
+      "comuna": "Concepcion",
+      "region": "Biobío",
+      "sexo": "Masculino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 8.0,
+      "vehiculos": 3.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 17003944.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 86,
+      "monto_utm": 1554.3,
+      "monto_clp": 108629870.0,
+      "universidad": "U.DE CHILE",
+      "n_universidades": 1,
+      "comuna": "La Granja",
+      "region": "Metropolitana",
+      "sexo": "Masculino",
+      "edad_bucket": "46-55",
+      "decil_avaluo": 6.0,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 87,
+      "monto_utm": 1553.9,
+      "monto_clp": 108599818.0,
+      "universidad": "U.DE LA FRONTERA",
+      "n_universidades": 1,
+      "comuna": "Valdivia",
+      "region": "Los Ríos",
+      "sexo": "Masculino",
+      "edad_bucket": "46-55",
+      "decil_avaluo": 7.0,
+      "vehiculos": 1.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 8009539.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 88,
+      "monto_utm": 1551.7,
+      "monto_clp": 108446251.0,
+      "universidad": "U.DE LA FRONTERA",
+      "n_universidades": 2,
+      "comuna": "San Fernando",
+      "region": "O’Higgins",
+      "sexo": "Femenino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 7.0,
+      "vehiculos": 1.0,
+      "propiedades": 1.0,
+      "patrimonio_clp": 45724019.0,
+      "seniority": "unclassified",
+      "industry": "medical practice",
+      "tier": "unknown",
+      "en_linkedin": true
+    },
+    {
+      "rank": 89,
+      "monto_utm": 1549.3,
+      "monto_clp": 108280188.0,
+      "universidad": "U.DE SANTIAGO",
+      "n_universidades": 2,
+      "comuna": "Lo Barnechea",
+      "region": "Metropolitana",
+      "sexo": "Masculino",
+      "edad_bucket": "66+",
+      "decil_avaluo": 8.0,
+      "vehiculos": 2.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 3771050.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 90,
+      "monto_utm": 1548.3,
+      "monto_clp": 108211235.0,
+      "universidad": "U.DE LA FRONTERA",
+      "n_universidades": 1,
+      "comuna": "Cañete",
+      "region": "Biobío",
+      "sexo": "Masculino",
+      "edad_bucket": "46-55",
+      "decil_avaluo": 1.0,
+      "vehiculos": 1.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 2653741.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 91,
+      "monto_utm": 1546.8,
+      "monto_clp": 108106402.0,
+      "universidad": "U.DE ANTOFAGASTA",
+      "n_universidades": 1,
+      "comuna": "Tocopilla",
+      "region": "Antofagasta",
+      "sexo": "Masculino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 6.0,
+      "vehiculos": 2.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 512203.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 92,
+      "monto_utm": 1546.6,
+      "monto_clp": 108090537.0,
+      "universidad": "U.DE CONCEPCION",
+      "n_universidades": 1,
+      "comuna": "Concepcion",
+      "region": "Biobío",
+      "sexo": "Masculino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 5.0,
+      "vehiculos": 1.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 2850046.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 93,
+      "monto_utm": 1543.9,
+      "monto_clp": 107900558.0,
+      "universidad": "U.FEDERICO SANTA MARIA",
+      "n_universidades": 1,
+      "comuna": null,
+      "region": null,
+      "sexo": null,
+      "edad_bucket": "(s/d)",
+      "decil_avaluo": NaN,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 94,
+      "monto_utm": 1542.4,
+      "monto_clp": 107793299.0,
+      "universidad": "U.DE LA FRONTERA",
+      "n_universidades": 1,
+      "comuna": "Temuco",
+      "region": "La Araucanía",
+      "sexo": "Femenino",
+      "edad_bucket": "46-55",
+      "decil_avaluo": 6.0,
+      "vehiculos": 0.0,
+      "propiedades": 3.0,
+      "patrimonio_clp": 100027933.0,
+      "seniority": "professional",
+      "industry": "hospital & health care",
+      "tier": "unknown",
+      "en_linkedin": true
+    },
+    {
+      "rank": 95,
+      "monto_utm": 1541.9,
+      "monto_clp": 107760864.0,
+      "universidad": "U.DE CONCEPCION",
+      "n_universidades": 1,
+      "comuna": "Chillan",
+      "region": "Ñuble",
+      "sexo": "Masculino",
+      "edad_bucket": "46-55",
+      "decil_avaluo": 6.0,
+      "vehiculos": 0.0,
+      "propiedades": 1.0,
+      "patrimonio_clp": 5533493.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 96,
+      "monto_utm": 1541.7,
+      "monto_clp": 107746606.0,
+      "universidad": "U.DE SANTIAGO",
+      "n_universidades": 2,
+      "comuna": null,
+      "region": null,
+      "sexo": null,
+      "edad_bucket": "(s/d)",
+      "decil_avaluo": NaN,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 97,
+      "monto_utm": 1540.4,
+      "monto_clp": 107660175.0,
+      "universidad": "U.DE VALPARAISO",
+      "n_universidades": 1,
+      "comuna": "Frutillar",
+      "region": "Los Lagos",
+      "sexo": "Masculino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 3.0,
+      "vehiculos": 1.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 19683794.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    },
+    {
+      "rank": 98,
+      "monto_utm": 1539.9,
+      "monto_clp": 107619849.0,
+      "universidad": "PONTIFICIA U. CATOLICA DE VALPARAISO",
+      "n_universidades": 2,
+      "comuna": "Viña Del Mar",
+      "region": "Valparaíso",
+      "sexo": "Masculino",
+      "edad_bucket": "56-65",
+      "decil_avaluo": 10.0,
+      "vehiculos": 0.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 0.0,
+      "seniority": "director",
+      "industry": "internet",
+      "tier": "unknown",
+      "en_linkedin": true
+    },
+    {
+      "rank": 99,
+      "monto_utm": 1535.4,
+      "monto_clp": 107308626.0,
+      "universidad": "U.DE LA SERENA",
+      "n_universidades": 1,
+      "comuna": "La Serena",
+      "region": "Coquimbo",
+      "sexo": "Femenino",
+      "edad_bucket": "46-55",
+      "decil_avaluo": 8.0,
+      "vehiculos": 1.0,
+      "propiedades": 0.0,
+      "patrimonio_clp": 285358.0,
+      "seniority": "professional",
+      "industry": "marketing and advertising",
+      "tier": "unknown",
+      "en_linkedin": true
+    },
+    {
+      "rank": 100,
+      "monto_utm": 1535.3,
+      "monto_clp": 107297367.0,
+      "universidad": "U.DE CONCEPCION",
+      "n_universidades": 1,
+      "comuna": "Yumbel",
+      "region": "Biobío",
+      "sexo": "Femenino",
+      "edad_bucket": "46-55",
+      "decil_avaluo": 1.0,
+      "vehiculos": 0.0,
+      "propiedades": 1.0,
+      "patrimonio_clp": 2293172.0,
+      "seniority": null,
+      "industry": null,
+      "tier": null,
+      "en_linkedin": false
+    }
+  ],
   "pagadores_comunas": [
     {
       "comuna": "Valdivia",
@@ -5002,11 +6904,11 @@
       "n": 530
     },
     {
-      "comuna": "Puerto Montt",
+      "comuna": "Viña Del Mar",
       "n": 517
     },
     {
-      "comuna": "Viña Del Mar",
+      "comuna": "Puerto Montt",
       "n": 517
     },
     {
@@ -7211,14 +9113,14 @@
       "n_causas": 23.0
     },
     {
-      "dte_rut": "81698900-0",
-      "dte_nombre": "PONTIFICIA UNIVERSIDAD CATÓLICA DE CHILE",
+      "dte_rut": "71236700-8",
+      "dte_nombre": "UNIVERSIDAD DE ATACAMA",
       "n_deudores": 20,
       "n_causas": 21.0
     },
     {
-      "dte_rut": "71236700-8",
-      "dte_nombre": "UNIVERSIDAD DE ATACAMA",
+      "dte_rut": "81698900-0",
+      "dte_nombre": "PONTIFICIA UNIVERSIDAD CATÓLICA DE CHILE",
       "n_deudores": 20,
       "n_causas": 21.0
     },
@@ -7229,14 +9131,14 @@
       "n_causas": 17.0
     },
     {
-      "dte_rut": "71540100-2",
-      "dte_nombre": "UNIVERSIDAD NACIONAL ANDRÉS BELLO",
+      "dte_rut": "81698900-0",
+      "dte_nombre": "PONTIFICIA U. CATOLICA DE CHILE",
       "n_deudores": 16,
       "n_causas": 16.0
     },
     {
-      "dte_rut": "81698900-0",
-      "dte_nombre": "PONTIFICIA U. CATOLICA DE CHILE",
+      "dte_rut": "71540100-2",
+      "dte_nombre": "UNIVERSIDAD NACIONAL ANDRÉS BELLO",
       "n_deudores": 16,
       "n_causas": 16.0
     },
@@ -7762,8 +9664,8 @@
       "n": 74
     },
     {
-      "comuna": "Valdivia",
-      "region": "Los Ríos",
+      "comuna": "Talca",
+      "region": "Maule",
       "n": 66
     },
     {
@@ -7772,8 +9674,8 @@
       "n": 66
     },
     {
-      "comuna": "Talca",
-      "region": "Maule",
+      "comuna": "Valdivia",
+      "region": "Los Ríos",
       "n": 66
     },
     {
@@ -7787,13 +9689,13 @@
       "n": 56
     },
     {
-      "comuna": "Coquimbo",
-      "region": "Coquimbo",
+      "comuna": "Iquique",
+      "region": "Tarapacá",
       "n": 55
     },
     {
-      "comuna": "Iquique",
-      "region": "Tarapacá",
+      "comuna": "Coquimbo",
+      "region": "Coquimbo",
       "n": 55
     },
     {
@@ -7951,13 +9853,13 @@
       "n": 149
     },
     {
-      "comuna": "Ñuñoa",
-      "region": "Metropolitana",
+      "comuna": "Coquimbo",
+      "region": "Coquimbo",
       "n": 144
     },
     {
-      "comuna": "Coquimbo",
-      "region": "Coquimbo",
+      "comuna": "Ñuñoa",
+      "region": "Metropolitana",
       "n": 144
     },
     {
@@ -8282,24 +10184,24 @@
   },
   "justicia_por_causa": [
     {
-      "bucket": "1 causa",
-      "n": 43267
-    },
-    {
       "bucket": "10+ causas",
       "n": 476
+    },
+    {
+      "bucket": "1 causa",
+      "n": 43267
     },
     {
       "bucket": "2-3 causas",
       "n": 20329
     },
     {
-      "bucket": "Sin causas por deuda",
-      "n": 263138
-    },
-    {
       "bucket": "4-10 causas",
       "n": 7942
+    },
+    {
+      "bucket": "Sin causas por deuda",
+      "n": 263138
     }
   ],
   "justicia_por_region": [
@@ -8745,15 +10647,15 @@
           "n": 18
         },
         {
+          "region": "Magallanes",
+          "n": 12
+        },
+        {
           "region": "Atacama",
           "n": 12
         },
         {
           "region": "Arica Y Parinacota",
-          "n": 12
-        },
-        {
-          "region": "Magallanes",
           "n": 12
         }
       ],
@@ -10417,11 +12319,11 @@
           "n": 27
         },
         {
-          "region": "Los Ríos",
+          "region": "Magallanes",
           "n": 18
         },
         {
-          "region": "Magallanes",
+          "region": "Los Ríos",
           "n": 18
         },
         {
@@ -12091,19 +13993,19 @@
           "n": 62
         },
         {
-          "region": "Magallanes",
-          "n": 61
-        },
-        {
           "region": "Ñuble",
           "n": 61
         },
         {
-          "region": "Tarapacá",
-          "n": 26
+          "region": "Magallanes",
+          "n": 61
         },
         {
           "region": "Antofagasta",
+          "n": 26
+        },
+        {
+          "region": "Tarapacá",
           "n": 26
         },
         {
