@@ -1082,8 +1082,20 @@ for u in univs:
 out["xray_universidades"] = xray
 
 # ═══ WRITE ═══
+import math
+def _clean(obj):
+    """Reemplaza NaN/Infinity por None recursivamente (JSON válido)."""
+    if isinstance(obj, float) and (math.isnan(obj) or math.isinf(obj)):
+        return None
+    if isinstance(obj, dict):
+        return {k: _clean(v) for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [_clean(x) for x in obj]
+    return obj
+out = _clean(out)
+
 with open(OUT, "w") as f:
-    json.dump(out, f, ensure_ascii=False, indent=2, default=str)
+    json.dump(out, f, ensure_ascii=False, indent=2, default=str, allow_nan=False)
 print(f"\nEscrito {OUT} ({OUT.stat().st_size/1024:.1f} KB)")
 print(f"Claves: {list(out.keys())}")
 print(f"Universidades Xray: {len(xray)}")
