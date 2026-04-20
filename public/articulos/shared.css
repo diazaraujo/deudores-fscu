@@ -1,0 +1,26 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Hanken Grotesk', Arial, sans-serif; background: #F5F5F5; color: #171B21; line-height: 1.7; }
+.article { max-width: 720px; margin: 0 auto; padding: 60px 28px 100px; }
+.crumb { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em; color: #266FE0; margin-bottom: 14px; }
+.crumb a { color: #266FE0; text-decoration: none; }
+.kicker { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em; color: #EF4444; margin-bottom: 6px; }
+h1 { font-size: 36px; font-weight: 800; line-height: 1.15; margin-bottom: 14px; letter-spacing: -0.5px; }
+h2 { font-size: 22px; font-weight: 700; margin: 40px 0 14px; letter-spacing: -0.2px; }
+h3 { font-size: 16px; font-weight: 700; margin: 24px 0 8px; color: #266FE0; }
+.lead { font-size: 19px; font-weight: 300; color: #3A3A3A; margin-bottom: 28px; line-height: 1.55; }
+p { font-size: 16px; font-weight: 300; margin-bottom: 16px; color: #171B21; }
+p b, p strong { font-weight: 700; color: #171B21; }
+.meta { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6B7280; margin-top: 28px; padding-top: 20px; border-top: 1px solid #E5E7EB; }
+.big-number { background: #fff; border: 1px solid #E5E7EB; border-radius: 10px; padding: 22px 26px; margin: 18px 0; display: flex; gap: 18px; align-items: center; }
+.big-number .num { font-size: 40px; font-weight: 800; color: #EF4444; line-height: 1; }
+.big-number .ctx { font-size: 13px; color: #6B7280; }
+.callout { background: #fff; border-left: 4px solid #266FE0; padding: 18px 22px; margin: 22px 0; border-radius: 4px; font-size: 15px; }
+.callout.red { border-left-color: #EF4444; }
+.callout.green { border-left-color: #10B981; }
+.callout.amber { border-left-color: #F59E0B; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 18px 0; font-family: 'JetBrains Mono', monospace; }
+thead th { text-align: left; padding: 10px 8px; font-size: 10px; text-transform: uppercase; letter-spacing: .1em; color: #6B7280; border-bottom: 2px solid #E5E7EB; }
+tbody td { padding: 10px 8px; border-bottom: 1px solid #F3F4F6; }
+.footer { margin-top: 60px; padding-top: 28px; border-top: 1px solid #E5E7EB; font-size: 12px; color: #6B7280; }
+.footer a { color: #266FE0; }
+@media (max-width: 600px) { h1 { font-size: 28px; } .article { padding: 40px 18px 80px; } .big-number .num { font-size: 30px; } }

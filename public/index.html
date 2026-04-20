@@ -313,6 +313,7 @@
       </div>
       <div class="dash-desc" style="margin-top: 8px;">Fuentes: CRUCH · Datos calculados por Unholster</div>
       <div style="margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap;">
+        <a href="/articulos/" style="font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.1em;padding:6px 12px;border:1px solid #266FE0;border-radius:6px;background:#266FE0;color:#fff;font-weight:600;text-decoration:none">📄 Artículos</a>
         <button onclick="downloadJSON()" style="font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.1em;padding:6px 12px;border:1px solid #E5E7EB;border-radius:6px;background:#fff;cursor:pointer;color:#266FE0;font-weight:600">⬇ Descargar JSON</button>
         <a href="https://github.com/diazaraujo/deudores-fscu" target="_blank" style="font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.1em;padding:6px 12px;border:1px solid #E5E7EB;border-radius:6px;background:#fff;color:#266FE0;font-weight:600;text-decoration:none">⎘ GitHub</a>
       </div>
@@ -985,6 +986,55 @@ const axisMono = { font: { ...monoFont, size:10 }, color: C.gray500 };
 const axisSans = { font: { ...defaultFont, size:12, weight:300 }, color: C.gray900 };
 
 const fmt = n => (n ?? 0).toLocaleString('es-CL');
+
+/* Traducciones EN → ES para cargos/industrias que vienen de LinkedIn */
+const T_SENIORITY = {
+  'c-level': 'Alta dirección', 'director': 'Director', 'manager': 'Gerente',
+  'senior': 'Profesional senior', 'professional': 'Profesional',
+  'academic': 'Académico', 'operational': 'Operativo',
+  'unclassified': 'Sin clasificar', '(sin dato)': '(sin dato)',
+};
+const T_TIER = {
+  'large': 'Grande', 'enterprise': 'Corporación', 'mid-market': 'Mediana',
+  'small': 'Pequeña', 'micro': 'Micro', 'unknown': 'Sin dato',
+  '(sin dato)': '(sin dato)',
+};
+const T_INDUSTRY = {
+  'primary/secondary education': 'Educación escolar',
+  'higher education': 'Educación superior',
+  'construction': 'Construcción',
+  'mining & metals': 'Minería y metales',
+  'food production': 'Producción alimentos',
+  'utilities': 'Utilities/Servicios básicos',
+  'civil engineering': 'Ingeniería civil',
+  'mechanical or industrial engineering': 'Ingeniería mecánica/industrial',
+  'government administration': 'Administración pública',
+  'information technology and services': 'Tecnologías de la información',
+  'hospital & health care': 'Salud/Hospitales',
+  'banking': 'Banca',
+  'farming': 'Agricultura',
+  'telecommunications': 'Telecomunicaciones',
+  'accounting': 'Contabilidad',
+  'research': 'Investigación',
+  'retail': 'Retail',
+  'law practice': 'Abogacía',
+  'financial services': 'Servicios financieros',
+  'health, wellness and fitness': 'Salud y bienestar',
+  'management consulting': 'Consultoría',
+  'marketing and advertising': 'Marketing y publicidad',
+  'real estate': 'Bienes raíces',
+  'insurance': 'Seguros',
+  'automotive': 'Automotriz',
+  'pharmaceuticals': 'Farmacéutica',
+  'logistics and supply chain': 'Logística y supply chain',
+  'oil & energy': 'Petróleo y energía',
+  'mental health care': 'Salud mental',
+  'architecture & planning': 'Arquitectura y planificación',
+};
+const tr = (map, v) => map[v] || (v ? v.charAt(0).toUpperCase() + v.slice(1) : '—');
+const trSen = v => tr(T_SENIORITY, v);
+const trTier = v => tr(T_TIER, v);
+const trInd = v => tr(T_INDUSTRY, v);
 const fmtCLP = n => {
   if (n == null) return '—';
   if (n >= 1e12) return '$' + (n/1e12).toFixed(2) + ' bln CLP';
@@ -1306,7 +1356,7 @@ function renderXray(uname) {
   xrayCharts.sexo = makeDonut('xraySexo', (u.por_sexo||[]).map(x=>x.sexo), (u.por_sexo||[]).map(x=>x.n));
   xrayCharts.region = makeHbar('xrayRegion', (u.por_region||[]).slice(0,10).map(x=>x.region), (u.por_region||[]).slice(0,10).map(x=>x.n), C.blueDark);
   xrayCharts.monto = makeVbar('xrayMonto', (u.por_monto_bucket||[]).map(x=>x.bucket), (u.por_monto_bucket||[]).map(x=>x.n), C.amber);
-  xrayCharts.seniority = makeHbar('xraySeniority', (u.por_seniority||[]).map(x=>x.seniority), (u.por_seniority||[]).map(x=>x.n), C.violet);
+  xrayCharts.seniority = makeHbar('xraySeniority', (u.por_seniority||[]).map(x=>trSen(x.seniority)), (u.por_seniority||[]).map(x=>x.n), C.violet);
 
   const j = u.justicia;
   const jc = document.getElementById('xrayJusticiaCard');
@@ -1600,8 +1650,8 @@ function renderTop100() {
   tbody.innerHTML = rows.map(r => {
     const patr = r.patrimonio_clp || 0;
     const patrStr = patr > 0 ? fmtCLP(patr) : '—';
-    const sen = r.seniority ? r.seniority.charAt(0).toUpperCase() + r.seniority.slice(1) : '';
-    const cargo = r.en_linkedin && r.industry ? (sen + ' · ' + r.industry.substring(0, 30)) : (sen || '—');
+    const sen = r.seniority ? trSen(r.seniority) : '';
+    const cargo = r.en_linkedin && r.industry ? (sen + ' · ' + trInd(r.industry).substring(0, 30)) : (sen || '—');
     const comuna = (r.comuna || '—').substring(0, 15);
     const univ = (r.universidad || '').replace('U.', 'U. ').replace('PONTIFICIA U. CATOLICA DE ', 'PUC ').substring(0, 25);
     return `<tr style="border-bottom:1px solid #F3F4F6">
@@ -1642,9 +1692,9 @@ function renderPagadores() {
   });
 
   const pi = D.pagadores_por_industria || [];
-  makeHbar('chartPagIndustria', pi.map(x => x.industry), pi.map(x => x.n), C.green);
+  makeHbar('chartPagIndustria', pi.map(x => trInd(x.industry)), pi.map(x => x.n), C.green);
   const ps = D.pagadores_por_seniority || [];
-  makeHbar('chartPagSeniority', ps.map(x => x.seniority), ps.map(x => x.n), C.blue);
+  makeHbar('chartPagSeniority', ps.map(x => trSen(x.seniority)), ps.map(x => x.n), C.blue);
   const pc = D.pagadores_comunas || [];
   makeHbar('chartPagComunas', pc.map(x => x.comuna), pc.map(x => x.n), C.violet);
 }
@@ -1933,16 +1983,16 @@ function renderDemografia() {
 }
 
 function renderLinkedIn() {
-  hbar('chartSeniority', D.por_seniority.map(x=>x.seniority), D.por_seniority.map(x=>x.n), C.blue, ctx => fmt(ctx.parsed.x) + ' deudores');
-  donut('chartTier', D.por_tier.map(x=>x.tier), D.por_tier.map(x=>x.n));
-  hbar('chartIndustria', D.top_industrias.slice(0,20).map(x=>x.industry), D.top_industrias.slice(0,20).map(x=>x.n), C.blue, ctx => fmt(ctx.parsed.x) + ' deudores');
+  hbar('chartSeniority', D.por_seniority.map(x=>trSen(x.seniority)), D.por_seniority.map(x=>x.n), C.blue, ctx => fmt(ctx.parsed.x) + ' deudores');
+  donut('chartTier', D.por_tier.map(x=>trTier(x.tier)), D.por_tier.map(x=>x.n));
+  hbar('chartIndustria', D.top_industrias.slice(0,20).map(x=>trInd(x.industry)), D.top_industrias.slice(0,20).map(x=>x.n), C.blue, ctx => fmt(ctx.parsed.x) + ' deudores');
   hbar('chartEmpresa', D.top_empresas.slice(0,30).map(x=>x.company), D.top_empresas.slice(0,30).map(x=>x.n), C.blueDark, ctx => fmt(ctx.parsed.x) + ' deudores');
 
   // Comunas por perfil
   const ejec = (D.comunas_ejecutivos || []);
   const ger = (D.comunas_gerentes || []);
   const acad = (D.comunas_academicos || []);
-  if (ejec.length) hbar('chartComunaEjec', ejec.map(x => x.comuna), ejec.map(x => x.n), C.red, ctx => fmt(ctx.parsed.x) + ' ejecutivos · ' + ejec[ctx.dataIndex].region);
+  if (ejec.length) hbar('chartComunaEjec', ejec.map(x => x.comuna || '—'), ejec.map(x => x.n), C.red, ctx => fmt(ctx.parsed.x) + ' ejecutivos · ' + ejec[ctx.dataIndex].region);
   if (ger.length) hbar('chartComunaGer', ger.map(x => x.comuna), ger.map(x => x.n), C.amber, ctx => fmt(ctx.parsed.x) + ' gerentes · ' + ger[ctx.dataIndex].region);
   if (acad.length) hbar('chartComunaAcad', acad.map(x => x.comuna), acad.map(x => x.n), C.violet, ctx => fmt(ctx.parsed.x) + ' académicos · ' + acad[ctx.dataIndex].region);
 }
