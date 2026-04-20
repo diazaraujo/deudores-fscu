@@ -335,6 +335,7 @@
     <nav class="tabs-nav">
       <button class="tab-btn active" data-tab="general" onclick="switchTab('general')">General</button>
       <button class="tab-btn" data-tab="conclusiones" onclick="switchTab('conclusiones')">Conclusiones</button>
+      <button class="tab-btn" data-tab="pagadores" onclick="switchTab('pagadores')">Los que pagan</button>
       <button class="tab-btn" data-tab="global" onclick="switchTab('global')">Política Pública</button>
       <button class="tab-btn" data-tab="interesante" onclick="switchTab('interesante')">Insights</button>
       <button class="tab-btn" data-tab="evolucion" onclick="switchTab('evolucion')">Evolución</button>
@@ -483,6 +484,65 @@
       </div>
 
     </div>
+  </div>
+
+  <div class="tab-content" id="tab-pagadores">
+    <div class="section-tag">Análisis del subconjunto virtuoso</div>
+    <div class="section-title">Los que sí pagan</div>
+    <div class="section-desc">Detrás de la nómina crónica hay una historia silenciosa: las personas que sí lograron regularizar su crédito FSCU. Este análisis identifica quiénes son, cuánto pagaron, desde qué posiciones y en qué universidades, para entender qué distingue al pagador del moroso crónico.</div>
+
+    <div class="kpi-grid cols-4 mb-sm" id="kpiPagadores"></div>
+
+    <div class="card" style="padding:32px;margin-top:16px">
+      <h2 style="font-size:22px;font-weight:700;margin-bottom:14px">🎯 El hallazgo central</h2>
+      <p style="font-size:14px;line-height:1.7;color:#3A3A3A;margin-bottom:14px">
+        Entre 2022 y 2026, <b>31.983 personas (9,6% del universo)</b> mostraron comportamiento pagador: <b>23.218 salieron completamente</b> de la nómina (pago total o condonación) y <b>8.765 son "crónicos pagando"</b> — siguen figurando pero su deuda baja año a año. En conjunto recuperaron aproximadamente <b>1,95 millones de UTM (≈ $136 mil millones CLP)</b>.
+      </p>
+      <p style="font-size:14px;line-height:1.7;color:#3A3A3A;margin-bottom:14px">
+        No alcanza para detener el crecimiento de la cartera (que aumenta 7,3M UTM/año solo por intereses), pero revela quiénes son los capaces de salir del problema. Su perfil es inverso al crónico: <b>más patrimonio, sueldos más altos, concentración en industrias extractivas y ciertas universidades con mejor recuperación institucional.</b>
+      </p>
+    </div>
+
+    <div class="grid-2" style="margin-top:16px">
+      <div class="card"><div class="card-label">Ranking universidades por % de recuperación</div><div class="chart-wrap xtall"><canvas id="chartPagUniv"></canvas></div><div class="card-note">Porcentaje de deudores que SALIERON de la nómina entre 2022 y 2026. La U. Austral destaca con casi 4× el promedio nacional (5,3%).</div></div>
+      <div class="card"><div class="card-label">Top industrias de los que pagan</div><div class="chart-wrap xtall"><canvas id="chartPagIndustria"></canvas></div><div class="card-note">Minería y metales lidera, seguido de educación y construcción. Contraste directo con el ranking de cronicidad.</div></div>
+    </div>
+
+    <div class="grid-2" style="margin-top:16px">
+      <div class="card"><div class="card-label">Top seniority de los que pagan</div><div class="chart-wrap tall"><canvas id="chartPagSeniority"></canvas></div></div>
+      <div class="card"><div class="card-label">Top comunas con más pagos totales</div><div class="chart-wrap tall"><canvas id="chartPagComunas"></canvas></div></div>
+    </div>
+
+    <div class="card" style="padding:32px;margin-top:16px">
+      <h2 style="font-size:20px;font-weight:700;margin-bottom:14px">🔍 ¿Por qué la U. Austral recupera mejor?</h2>
+      <p style="font-size:14px;line-height:1.7;color:#3A3A3A;margin-bottom:10px">
+        De las 26 universidades del CRUCH, la Universidad Austral de Chile (sede Valdivia) tiene una tasa de recuperación notablemente superior al promedio: <b>18,9% de sus deudores salieron de la nómina entre 2022 y 2026 · 4.023 personas</b>. Le siguen a gran distancia la U. de Chile (8,5%), U. de Talca (8,4%) y U. de Magallanes (7,9%). El promedio nacional es 5,3%.
+      </p>
+      <p style="font-size:14px;line-height:1.7;color:#3A3A3A;margin-bottom:10px">
+        Esta asimetría abre una pregunta política importante: <b>¿qué hace distinto el administrador del FSCU de la U. Austral?</b> Podría ser una política de cobranza más activa, programas de regularización con beneficios (descuentos, cuotas flexibles), un equipo dedicado al seguimiento de deudores, o una composición de cartera con menor riesgo estructural. La respuesta merece investigación académica: si las 18 universidades que apenas demandan judicialmente adoptaran el modelo Austral, la recuperación nacional podría multiplicarse sin cambios legislativos.
+      </p>
+    </div>
+
+    <div class="card" style="padding:32px;margin-top:16px">
+      <h2 style="font-size:20px;font-weight:700;margin-bottom:14px">💰 Pagadores tienen más patrimonio</h2>
+      <p style="font-size:14px;line-height:1.7;color:#3A3A3A;margin-bottom:10px">
+        El 50,1% de los "crónicos pagando" y el 48,4% de quienes salieron están en el decil 8-10 de avalúo fiscal (30% más rico por patrimonio). En contraste, sólo el 41,4% de los "crónicos acumulando" está en ese mismo decil. <b>Los pagadores son, en promedio, más ricos.</b>
+      </p>
+      <p style="font-size:14px;line-height:1.7;color:#3A3A3A;margin-bottom:10px">
+        Este es el hallazgo más políticamente incómodo: el mecanismo de cobranza del FSCU funciona mejor con quienes tienen más capacidad de pago. Los deudores de menor patrimonio — el universo para el cual el crédito solidario fue diseñado — tienden a acumular en vez de pagar. La cobranza es <b>regresiva en la práctica</b>: el sistema captura a los que tienen y deja crecer la deuda de los que no.
+      </p>
+    </div>
+
+    <div class="card" style="padding:32px;margin-top:16px">
+      <h2 style="font-size:20px;font-weight:700;margin-bottom:14px">⛏️ Mineros pagan más que profesores</h2>
+      <p style="font-size:14px;line-height:1.7;color:#3A3A3A;margin-bottom:10px">
+        Entre los 31.983 pagadores, la industria con más representación es <b>minería y metales (556 personas)</b>, seguida de educación primaria/secundaria (527) y construcción (408). En el ranking de crónicos la jerarquía es inversa: los profesores lideran la morosidad estructural.
+      </p>
+      <p style="font-size:14px;line-height:1.7;color:#3A3A3A;margin-bottom:10px">
+        Los sueldos altos y estables del sector minero chileno (promedio sobre $2M CLP según datos del sector) hacen más efectiva la retención automática de la Tesorería vía devolución de impuestos a la renta: cuando hay ingresos formales considerables, el Estado retiene cada año y la deuda baja. Cuando los ingresos son irregulares, bajos o informales, el mecanismo es ineficaz y los intereses consolidan la deuda. Esta es una evidencia directa de que <b>la arquitectura actual del FSCU asume empleabilidad formal constante — un supuesto que no calza con la realidad de todo egresado universitario.</b>
+      </p>
+    </div>
+
   </div>
 
   <div class="tab-content" id="tab-global">
@@ -950,6 +1010,7 @@ function initTab(name) {
     if (currentYear === 2026 || currentYear === 'todos') { renderPerfiles(); renderMontoBucket('chartMontoBucket'); }
     else renderMontoBucketYear('chartMontoBucket');
   }
+  if (name === 'pagadores') renderPagadores();
   if (name === 'global') renderGlobal();
   if (name === 'interesante') renderInsights();
   if (name === 'evolucion') renderEvolucion();
@@ -1486,6 +1547,34 @@ window.convSet = function(utm) {
   i_utm.dispatchEvent(new Event('input'));
 };
 
+function renderPagadores() {
+  const p = D.pagadores || {};
+  document.getElementById('kpiPagadores').innerHTML =
+    kpiCard('Total pagadores', fmt(p.total), `${p.salieron ? fmt(p.salieron) : '—'} salieron + ${p.cronicos_pagando ? fmt(p.cronicos_pagando) : '—'} pagan`, 'users', 'green') +
+    kpiCard('% del universo', ((p.total || 0) / D.resumen.total * 100).toFixed(1) + '%', 'del total de deudores 2026', 'chart') +
+    kpiCard('UTM recuperado', fmt(Math.round(p.utm_total_recuperado/1e6)) + 'M UTM', fmtCLP(p.clp_total_recuperado), 'cash', 'green') +
+    kpiCard('vs intereses', '27%', 'de los intereses anuales acumulados', 'chart', 'amber');
+
+  const ru = (D.ranking_pagadores_universidad || []).slice(0, 15);
+  new Chart(document.getElementById('chartPagUniv'), {
+    type: 'bar', data: { labels: ru.map(x => x.universidad),
+      datasets: [{ data: ru.map(x => x.pct_salio),
+        backgroundColor: ru.map(x => x.pct_salio >= 10 ? C.green : x.pct_salio >= 6 ? C.amber : C.red),
+        borderRadius: {topRight:4,bottomRight:4}, borderSkipped: false }]},
+    options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { ...tooltipDefaults, callbacks: { label: ctx => ctx.parsed.x + '% · ' + fmt(ru[ctx.dataIndex].salieron) + ' de ' + fmt(ru[ctx.dataIndex].total) } } },
+      scales: { y: { grid: { display: false }, ticks: { ...axisSans, font: { ...defaultFont, size: 11, weight: 300 } } }, x: { grid: { color: C.gray200 }, border: { dash:[4,4], display:false }, ticks: { ...axisMono, callback: v => v + '%' } } }
+    }
+  });
+
+  const pi = D.pagadores_por_industria || [];
+  makeHbar('chartPagIndustria', pi.map(x => x.industry), pi.map(x => x.n), C.green);
+  const ps = D.pagadores_por_seniority || [];
+  makeHbar('chartPagSeniority', ps.map(x => x.seniority), ps.map(x => x.n), C.blue);
+  const pc = D.pagadores_comunas || [];
+  makeHbar('chartPagComunas', pc.map(x => x.comuna), pc.map(x => x.n), C.violet);
+}
+
 function renderGlobal() {
   const G = D.global; if (!G) return;
   const k = G.kpis;
@@ -1818,7 +1907,7 @@ function donut(id, labels, values) {
   });
 }
 
-fetch('/static/aggregates.json?v=23').then(r => r.json()).then(d => {
+fetch('/static/aggregates.json?v=24').then(r => r.json()).then(d => {
   D = d;
   renderMain();
   // Check URL hash for deep link

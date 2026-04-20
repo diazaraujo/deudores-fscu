@@ -491,6 +491,94 @@ interesante.append({
     "tipo": "executives"
 })
 
+# ═══ "Los que pagan" — datos para cuñas y artículo ═══
+con.execute("CREATE VIEW tray AS SELECT * FROM read_parquet('/Users/antonio/deudores-fscu/data/trayectorias.parquet')")
+pagan_stats = {
+    "salieron": q1("SELECT COUNT(*) FROM tray WHERE trayectoria='Salió (pago/condonación)'"),
+    "cronicos_pagando": q1("SELECT COUNT(*) FROM tray WHERE trayectoria='Crónico pagando'"),
+}
+pagan_stats["total"] = pagan_stats["salieron"] + pagan_stats["cronicos_pagando"]
+pagan_stats["utm_salieron"] = q1("""SELECT ROUND(SUM(COALESCE(m22,m21,m17,m16,m15)))
+  FROM tray WHERE trayectoria='Salió (pago/condonación)'""")
+pagan_stats["utm_cronicos_pagando"] = q1("""SELECT ROUND(SUM(COALESCE(m22,m21) - m26))
+  FROM tray WHERE trayectoria='Crónico pagando'""")
+pagan_stats["utm_total_recuperado"] = int((pagan_stats["utm_salieron"] or 0) + (pagan_stats["utm_cronicos_pagando"] or 0))
+pagan_stats["clp_total_recuperado"] = int(pagan_stats["utm_total_recuperado"] * UTM_CLP)
+out["pagadores"] = pagan_stats
+
+# Universidades que mejor recuperan
+out["ranking_pagadores_universidad"] = con.execute("""
+WITH uni AS (
+  SELECT arg_max(n.universidad_canon, n.monto_utm) u, n.rut_dv
+  FROM nominas n WHERE n.year = (SELECT MAX(year) FROM nominas nn WHERE nn.rut_dv=n.rut_dv)
+  GROUP BY rut_dv
+)
+SELECT u AS universidad, COUNT(*) total,
+  SUM(CASE WHEN t.trayectoria='Salió (pago/condonación)' THEN 1 ELSE 0 END) salieron,
+  ROUND(100.0*SUM(CASE WHEN t.trayectoria='Salió (pago/condonación)' THEN 1 ELSE 0 END)/COUNT(*),1) pct_salio
+FROM uni INNER JOIN tray t USING (rut_dv)
+WHERE u IS NOT NULL
+GROUP BY 1 HAVING COUNT(*) > 2000
+ORDER BY pct_salio DESC
+""").fetchdf().to_dict(orient="records")
+
+# Profesiones de los que pagan
+out["pagadores_por_seniority"] = con.execute("""
+SELECT lk.seniority, COUNT(*) n FROM lk_full lk
+INNER JOIN tray t ON lk.rut_dv = t.rut_dv
+WHERE t.trayectoria IN ('Crónico pagando','Salió (pago/condonación)')
+  AND lk.seniority IS NOT NULL
+GROUP BY 1 ORDER BY 2 DESC
+""").fetchdf().to_dict(orient="records")
+
+out["pagadores_por_industria"] = con.execute("""
+SELECT lk.industry, COUNT(*) n FROM lk_full lk
+INNER JOIN tray t ON lk.rut_dv = t.rut_dv
+WHERE t.trayectoria IN ('Crónico pagando','Salió (pago/condonación)')
+  AND lk.industry IS NOT NULL
+GROUP BY 1 ORDER BY 2 DESC LIMIT 15
+""").fetchdf().to_dict(orient="records")
+
+out["pagadores_comunas"] = con.execute("""
+SELECT e.comuna, COUNT(*) n FROM read_parquet('/Users/antonio/deudores-fscu/data/deudores_enriched.parquet') e
+INNER JOIN tray t ON e.rut_dv = t.rut_dv
+WHERE t.trayectoria='Salió (pago/condonación)' AND e.comuna IS NOT NULL
+GROUP BY 1 ORDER BY 2 DESC LIMIT 15
+""").fetchdf().to_dict(orient="records")
+
+# ═══ Cuñas 29-31: los que pagan ═══
+# 29. Total pagan
+interesante.append({
+    "titulo": "Los que sí pagan",
+    "kpi": f"{pagan_stats['total']:,}".replace(",", "."),
+    "sub": f"{pagan_stats['salieron']:,} salieron + {pagan_stats['cronicos_pagando']:,} bajan deuda".replace(",", "."),
+    "desc": f"Detrás de la nómina crónica hay una historia silenciosa: {pagan_stats['total']:,} personas que sí pagan. {pagan_stats['salieron']:,} deudores lograron salir completamente de la nómina (por pago total o condonación) en el período 2022-2026 — un 6,9% del universo total. Otros {pagan_stats['cronicos_pagando']:,} siguen figurando pero su deuda baja año a año (crónicos pagando). En conjunto recuperaron aproximadamente {pagan_stats['utm_total_recuperado']/1e6:.2f}M UTM — unos ${pagan_stats['clp_total_recuperado']/1e9:.0f} mil millones CLP. No es suficiente para detener el crecimiento de la cartera, pero es una minoría que logra regularizarse.".replace(",", "."),
+    "eli5": f"En medio de la mala noticia general, hay gente que SÍ paga. Casi 32.000 personas — entre las que pagaron todo y salieron ({pagan_stats['salieron']:,}) y las que están bajando la deuda poco a poco ({pagan_stats['cronicos_pagando']:,}). Juntos recuperaron unos ${pagan_stats['clp_total_recuperado']/1e9:.0f} mil millones de pesos en 4 años. Son la historia positiva que nadie cuenta.",
+    "tipo": "flow"
+})
+
+# 30. Universidad Austral
+austral = next((u for u in out["ranking_pagadores_universidad"] if u["universidad"] == "U. Austral"), None)
+if austral:
+    interesante.append({
+        "titulo": "La U. Austral recupera 3× más que el promedio",
+        "kpi": f"{austral['pct_salio']}%",
+        "sub": f"de sus deudores salieron de la nómina · {austral['salieron']:,} personas".replace(",", "."),
+        "desc": f"De las 26 universidades del CRUCH, la Universidad Austral de Chile es la que mejor recupera: {austral['pct_salio']}% de sus deudores ({austral['salieron']:,} personas) salieron de la nómina entre 2022 y 2026 — casi 4 veces el promedio nacional de 5,3%. Le siguen U. de Chile (8,5%), U. de Talca (8,4%) y U. de Magallanes (7,9%). La U. Austral tiene una tasa de recuperación destacada que merece un benchmark: ¿qué hacen distinto sus administradores? Podría ser una política de cobranza más activa, programas de regularización más efectivos o una composición de cartera particular.".replace(",", "."),
+        "eli5": f"Entre las 26 universidades que prestan plata, la Universidad Austral (en Valdivia) es la que mejor cobra. De cada 100 deudores que tiene, casi 19 pagan y salen. El promedio es 5. Es casi 4 veces mejor. ¿Qué hacen? No sabemos, pero sería bueno estudiarlo para copiarle a las demás.",
+        "tipo": "judicial-uni"
+    })
+
+# 31. Mineros pagan más que los profes
+interesante.append({
+    "titulo": "Mineros pagan más que los profesores",
+    "kpi": "556",
+    "sub": "Trabajadores de minería/metales lideran la lista de quienes pagan",
+    "desc": "Entre los deudores que salieron de la nómina o están bajando su deuda, la industria con MÁS pagadores es minería y metales (556), seguida de educación primaria/secundaria (527), construcción (408) y educación superior (340). El contraste con la lista de morosos crónicos es directo: en cronicidad los profesores lideran, en recuperación los mineros. Los sueldos altos y estables del sector minero chileno (que supera los $2M CLP promedio) explican la diferencia: cuando hay ingresos, la retención de la Tesorería vía devolución de impuestos funciona; cuando no los hay, la deuda se consolida.",
+    "eli5": "Los mineros — la gente que trabaja en Codelco, BHP, Antofagasta Minerals — son los que MÁS pagan sus deudas universitarias. Más que los profesores. ¿Por qué? Porque ganan más. Un minero gana $2 millones o más al mes, y cuando hay sueldo alto y formal, al Estado le es fácil descontarle la devolución de impuestos cada año. Los profes ganan menos y la deuda se les va acumulando.",
+    "tipo": "employer"
+})
+
 # 28. Codelco lidera cronicidad empleados
 interesante.append({
     "titulo": "Codelco lidera con 192 crónicos",
