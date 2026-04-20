@@ -298,13 +298,18 @@
       <div class="dash-desc" style="margin-top: 8px; display: flex; align-items: center; gap: 10px;">
         <span style="font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:#6B7280">Año tributario:</span>
         <select id="yearSelect" style="font-family:'Hanken Grotesk',sans-serif;font-size:13px;padding:4px 10px;border:1px solid #E5E7EB;border-radius:6px;background:#fff;cursor:pointer">
-          <option value="todos">Todos (2022-2026)</option>
+          <option value="todos">Todos (2015-2026, 9 años)</option>
+          <option value="2015">2015</option>
+          <option value="2016">2016</option>
+          <option value="2017">2017</option>
+          <option value="2021">2021</option>
           <option value="2022">2022</option>
           <option value="2023">2023</option>
           <option value="2024">2024</option>
           <option value="2025">2025</option>
           <option value="2026" selected>2026</option>
         </select>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#9CA3AF">(faltan 2018-2020 · solicitud Transparencia)</span>
       </div>
       <div class="dash-desc" style="margin-top: 8px;">Fuentes: CRUCH · Datos calculados por Unholster</div>
       <div style="margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap;">
@@ -1813,7 +1818,7 @@ function donut(id, labels, values) {
   });
 }
 
-fetch('/static/aggregates.json?v=21').then(r => r.json()).then(d => {
+fetch('/static/aggregates.json?v=22').then(r => r.json()).then(d => {
   D = d;
   renderMain();
   // Check URL hash for deep link

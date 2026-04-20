@@ -177,7 +177,9 @@ out["perfiles"] = table("""WITH p AS (SELECT CASE
     ELSE '10. Sin información adicional' END perfil FROM full_t)
 SELECT perfil, COUNT(*) n, ROUND(100.0*COUNT(*)/SUM(COUNT(*)) OVER(),1) pct FROM p GROUP BY 1 ORDER BY 1""")
 
-# ═══ EVOLUCIÓN 2022-2026 ═══
+# ═══ EVOLUCIÓN (todos los años disponibles) ═══
+all_years = sorted([r[0] for r in con.execute("SELECT DISTINCT year FROM nominas ORDER BY 1").fetchall()])
+print(f"Años disponibles: {all_years}")
 evol = con.execute("""
 SELECT year, COUNT(DISTINCT rut_dv) deudores, COUNT(*) filas,
     ROUND(SUM(monto_utm)) utm_total, ROUND(AVG(monto_utm),1) utm_avg, ROUND(MEDIAN(monto_utm),1) utm_med
@@ -195,10 +197,10 @@ FROM nominas GROUP BY 1,2
 """).fetchdf().to_dict(orient="records")
 out["evolucion_universidad"] = evol_univ
 
-# ═══ FLUJOS 2022→2023→2024→2025→2026 ═══
-# Para cada par de años consecutivos, categorizamos el movimiento del deudor.
+# ═══ FLUJOS (pares consecutivos disponibles) ═══
 flujos_transiciones = []
-for y0, y1 in [(2022,2023),(2023,2024),(2024,2025),(2025,2026)]:
+consecutive_pairs = [(all_years[i], all_years[i+1]) for i in range(len(all_years)-1) if all_years[i+1] - all_years[i] == 1]
+for y0, y1 in consecutive_pairs:
     # pivot: rut -> (monto_y0, monto_y1)
     r = con.execute(f"""
     WITH a AS (SELECT rut_dv, monto_utm m0 FROM nominas WHERE year={y0}),
@@ -540,7 +542,7 @@ print(f"\nGeneradas {len(interesante)} cuñas periodísticas")
 
 # ═══ PER-YEAR (navegación por años) ═══
 per_year = {}
-for y in [2022, 2023, 2024, 2025, 2026]:
+for y in all_years:
     r = con.execute(f"""
     SELECT COUNT(DISTINCT rut_dv) total, ROUND(SUM(monto_utm)) utm,
            ROUND(AVG(monto_utm),1) avg, ROUND(MEDIAN(monto_utm),1) med
@@ -742,12 +744,12 @@ out["global"] = global_stats
 
 # ═══ MATRIZ DE COHORTES + STREAM DE COMPOSICIÓN ═══
 cohort_matrix = []
-for cy in [2022, 2023, 2024, 2025, 2026]:
+for cy in all_years:
     base_rows = con.execute(f"""SELECT DISTINCT rut_dv FROM nominas WHERE year={cy}
                  AND rut_dv NOT IN (SELECT rut_dv FROM nominas WHERE year<{cy})""").fetchdf()
     base = len(base_rows)
     row = {"cohort": cy, "base": base, "years": {}}
-    for y in [2022, 2023, 2024, 2025, 2026]:
+    for y in all_years:
         if y < cy:
             row["years"][y] = None
         else:
@@ -757,12 +759,14 @@ for cy in [2022, 2023, 2024, 2025, 2026]:
             row["years"][y] = n
     cohort_matrix.append(row)
 out["cohort_matrix"] = cohort_matrix
+out["years_available"] = all_years
+out["years_missing"] = [y for y in range(all_years[0], all_years[-1]+1) if y not in all_years]
 
-# Stream composición: cada año qué % viene de qué cohort
+# Stream composición: cada año qué viene de qué cohort
 stream = {}
-for y in [2022, 2023, 2024, 2025, 2026]:
+for y in all_years:
     stream[y] = {}
-    for cy in [2022, 2023, 2024, 2025, 2026]:
+    for cy in all_years:
         if cy > y:
             stream[y][cy] = 0
         else:

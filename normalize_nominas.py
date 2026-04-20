@@ -6,8 +6,9 @@ from pathlib import Path
 NOM = Path('data/nominas')
 OUT = Path('data/nominas_consolidado.parquet')
 
-# Canonical name map (clave = todas las variantes encontradas; valor = nombre estandarizado)
+# Canonical name map (clave = variantes normalizadas upper; valor = nombre canónico)
 CANON = {
+    # Formato largo (2022+)
     'U.DE CHILE':                          'U. de Chile',
     'UCHILE':                              'U. de Chile',
     'PONTIFICIA U. CATOLICA DE CHILE':     'PUC de Chile',
@@ -36,23 +37,65 @@ CANON = {
     'U.ARTURO PRAT':                       'U. Arturo Prat',
     'U. DE LOS LAGOS':                     'U. de Los Lagos',
     "U. O'HIGGINS":                        "U. de O'Higgins",
-    "Universidad de O'Higgins":            "U. de O'Higgins",
-    "Universidad de O Higgins":            "U. de O'Higgins",
+    "UNIVERSIDAD DE O'HIGGINS":            "U. de O'Higgins",
+    "UNIVERSIDAD DE O HIGGINS":            "U. de O'Higgins",
+    # Códigos cortos (2015-2017 + 2021)
+    'USACH':                               'U. de Santiago',
+    'UDEC':                                'U. de Concepción',
+    'UCV':                                 'PUC de Valparaíso',
+    'UTFSM':                               'UTFSM',
+    'UACH':                                'U. Austral',
+    'UCN':                                 'U. Católica del Norte',
+    'UCSC':                                'U. Católica Santísima Concepción',
+    'UCT':                                 'U. Católica de Temuco',
+    'UCM':                                 'U. Católica del Maule',
+    'UCMAULE':                             'U. Católica del Maule',
+    'UV':                                  'U. de Valparaíso',
+    'UVALPO':                              'U. de Valparaíso',
+    'UANTOF':                              'U. de Antofagasta',
+    'UDA':                                 'U. de Atacama',
+    'UATACAMA':                            'U. de Atacama',
+    'UFRO':                                'U. de La Frontera',
+    'USERENA':                             'U. de La Serena',
+    'UMAG':                                'U. de Magallanes',
+    'UPLA':                                'U. de Playa Ancha',
+    'UTALCA':                              'U. de Talca',
+    'UTA':                                 'U. de Tarapacá',
+    'UBIOBIO':                             'U. del Bío-Bío',
+    'UBB':                                 'U. del Bío-Bío',
+    'UMCE':                                'UMCE',
+    'UTEM':                                'UTEM',
+    'UNAP':                                'U. Arturo Prat',
+    'ULAGOS':                              'U. de Los Lagos',
+    'UOH':                                 "U. de O'Higgins",
 }
 
 def normalize(u):
     s = str(u).strip()
-    # Case-insensitive lookup
     for k, v in CANON.items():
         if s.upper() == k.upper():
             return v
-    return s  # si no hay match, dejar tal cual y marcarlo
+    return s
+
+def calc_dv(rut):
+    """Calcula dígito verificador chileno mod-11."""
+    try:
+        rut = str(rut).strip()
+        mul = [2, 3, 4, 5, 6, 7]
+        s = sum(int(d) * mul[i % 6] for i, d in enumerate(reversed(rut)))
+        r = 11 - (s % 11)
+        return '0' if r == 11 else ('K' if r == 10 else str(r))
+    except Exception:
+        return ''
 
 def main():
     dfs = []
     for f in sorted(NOM.glob('*.parquet')):
         df = pd.read_parquet(f)
         df['universidad_canon'] = df['universidad'].apply(normalize)
+        # Recalcular DV (los PDFs 2016-2017 tienen DVs corruptos por extracción PDF)
+        df['dv'] = df['rut'].apply(calc_dv)
+        df['rut_dv'] = df['rut'].astype(str) + '-' + df['dv']
         desconocidas = df[df['universidad_canon'] == df['universidad']]['universidad'].unique().tolist()
         # si hay nombres NO mapeados, los reportamos
         stranger = [u for u in desconocidas if u.upper() not in CANON]
